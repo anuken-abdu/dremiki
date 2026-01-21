@@ -3,111 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Галерея</title>
+    <title>Portfolio</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <style>
-        /* 1. Базовые настройки страницы */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background-color: #0f0f0f; /* Темный фон */
+        /* Убираем отступы у браузера */
+        html, body {
+            position: relative;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: #000;
+            overflow: hidden; /* Запрещаем скролл, работает только слайдер */
+        }
+
+        /* Настройки самого слайдера */
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Настройки слайда */
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #000;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
         }
 
-        /* 2. Сетка галереи */
-        .gallery {
-            display: grid;
-            width: 100%;
-            max-width: 1000px; /* Ширина контента на ПК */
-            /* 3 колонки для ПК */
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px; /* Отступы между фото */
-        }
-
-        /* 3. Карточка фотографии */
-        .card {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            cursor: pointer;
-        }
-
-        .card img {
+        /* ГЛАВНОЕ: Как ведут себя картинки */
+        .swiper-slide img {
+            display: block;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
+            /* object-fit: cover — это аналог "Center / Cover" в Тильде.
+               Картинка заполняет весь экран, обрезая лишнее по краям, 
+               чтобы не было пустых полос. */
+            object-fit: cover; 
         }
 
-        /* Зум при наведении */
-        .card:hover img {
-            transform: scale(1.05);
-            filter: brightness(1.1);
+        /* Стиль стрелок навигации (сделаем их белыми и аккуратными) */
+        .swiper-button-next, .swiper-button-prev {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s;
+        }
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            color: #fff;
         }
 
-        /* --- РАССТАНОВКА 7 ФОТОГРАФИЙ --- */
-        
-        /* 1.jpg — Главное фото (верхнее) */
-        /* Занимает всю ширину (3 колонки) и более узкое по высоте (кинематографичное) */
-        .card:nth-child(1) {
-            grid-column: span 3; 
-            aspect-ratio: 21/9; 
+        /* Точки внизу (пагинация) */
+        .swiper-pagination-bullet {
+            background: #fff;
+            opacity: 0.5;
         }
-
-        /* Остальные фото (2-7) — обычные ячейки */
-        .card:nth-child(n+2) {
-            grid-column: span 1;
-            aspect-ratio: 4/3; 
-        }
-
-        /* --- АДАПТИВНОСТЬ --- */
-
-        /* Планшеты: перестраиваем в 2 колонки */
-        @media (max-width: 768px) {
-            .gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            /* 1-е фото растягиваем на 2 колонки */
-            .card:nth-child(1) {
-                grid-column: span 2;
-                aspect-ratio: 16/9;
-            }
-        }
-
-        /* Мобильные: 1 колонка */
-        @media (max-width: 480px) {
-            .gallery {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            body {
-                padding: 10px;
-            }
-            /* На телефоне все фото идут просто друг за другом */
-            .card:nth-child(1) {
-                grid-column: span 1;
-                aspect-ratio: 4/3;
-            }
+        .swiper-pagination-bullet-active {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
 
-    <div class="gallery">
-        <div class="card"><img src="images/1.jpg" alt="Фото 1"></div>
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <img src="images/1.jpg" alt="Slide 1">
+            </div>
+            
+            <div class="swiper-slide">
+                <img src="images/2.jpg" alt="Slide 2">
+            </div>
 
-        <div class="card"><img src="images/2.jpg" alt="Фото 2"></div>
-        <div class="card"><img src="images/3.jpg" alt="Фото 3"></div>
-        <div class="card"><img src="images/4.jpg" alt="Фото 4"></div>
-        <div class="card"><img src="images/5.jpg" alt="Фото 5"></div>
-        <div class="card"><img src="images/6.jpg" alt="Фото 6"></div>
-        <div class="card"><img src="images/7.jpg" alt="Фото 7"></div>
+            <div class="swiper-slide">
+                <img src="images/3.jpg" alt="Slide 3">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="images/4.jpg" alt="Slide 4">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="images/5.jpg" alt="Slide 5">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="images/6.jpg" alt="Slide 6">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="images/7.jpg" alt="Slide 7">
+            </div>
+
+        </div>
+        
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        
+        <div class="swiper-pagination"></div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            spaceBetween: 0,      // Нет расстояния между слайдами
+            effect: "fade",       // Эффект перехода: можно поставить "slide" (листание) или "fade" (растворение)
+            loop: true,           // Бесконечная прокрутка (после 7-го идет 1-й)
+            speed: 800,           // Скорость переключения (чем больше, тем плавнее)
+            
+            // Включаем стрелки
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            
+            // Включаем точки
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            
+            // Включаем управление клавиатурой (стрелками на ПК)
+            keyboard: {
+                enabled: true,
+            },
+
+            // Если хотите автовоспроизведение (сам листает), раскомментируйте эти строки:
+            /*
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            */
+        });
+    </script>
 </body>
 </html>
-
