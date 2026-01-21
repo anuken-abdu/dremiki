@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея</title>
+    <style>
+        /* 1. Базовые настройки страницы */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: #0f0f0f; /* Темный фон */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* 2. Сетка галереи */
+        .gallery {
+            display: grid;
+            width: 100%;
+            max-width: 1000px; /* Ширина контента на ПК */
+            /* 3 колонки для ПК */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px; /* Отступы между фото */
+        }
+
+        /* 3. Карточка фотографии */
+        .card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        /* Зум при наведении */
+        .card:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        /* --- РАССТАНОВКА 7 ФОТОГРАФИЙ --- */
+        
+        /* 1.jpg — Главное фото (верхнее) */
+        /* Занимает всю ширину (3 колонки) и более узкое по высоте (кинематографичное) */
+        .card:nth-child(1) {
+            grid-column: span 3; 
+            aspect-ratio: 21/9; 
+        }
+
+        /* Остальные фото (2-7) — обычные ячейки */
+        .card:nth-child(n+2) {
+            grid-column: span 1;
+            aspect-ratio: 4/3; 
+        }
+
+        /* --- АДАПТИВНОСТЬ --- */
+
+        /* Планшеты: перестраиваем в 2 колонки */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            /* 1-е фото растягиваем на 2 колонки */
+            .card:nth-child(1) {
+                grid-column: span 2;
+                aspect-ratio: 16/9;
+            }
+        }
+
+        /* Мобильные: 1 колонка */
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            body {
+                padding: 10px;
+            }
+            /* На телефоне все фото идут просто друг за другом */
+            .card:nth-child(1) {
+                grid-column: span 1;
+                aspect-ratio: 4/3;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gallery">
+        <div class="card"><img src="images/1.jpg" alt="Фото 1"></div>
+
+        <div class="card"><img src="images/2.jpg" alt="Фото 2"></div>
+        <div class="card"><img src="images/3.jpg" alt="Фото 3"></div>
+        <div class="card"><img src="images/4.jpg" alt="Фото 4"></div>
+        <div class="card"><img src="images/5.jpg" alt="Фото 5"></div>
+        <div class="card"><img src="images/6.jpg" alt="Фото 6"></div>
+        <div class="card"><img src="images/7.jpg" alt="Фото 7"></div>
+    </div>
+
+</body>
+</html>
+
