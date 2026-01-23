@@ -854,6 +854,75 @@
     }
     .list li{ margin: 6px 0; }
 
+    /* ===== ДОБАВЛЕНО ПО ТЗ: фото/слайдер рядом в блоке transform ===== */
+    .list-split{
+      display:grid;
+      grid-template-columns: 1fr minmax(240px, 340px);
+      gap: 14px;
+      align-items: start;
+      min-width: 0;
+    }
+    .list-media{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.16);
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+      padding: 10px;
+      min-width: 0;
+    }
+    .list-media .inner{
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      position: relative;
+      min-width: 0;
+    }
+    .list-media img{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 3 / 4;
+    }
+
+    .slider-ui{
+      display:flex;
+      justify-content: flex-end;
+      gap: 8px;
+      padding: 10px 0 0;
+    }
+    .sbtn{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.24);
+      backdrop-filter: blur(14px);
+      color: rgba(255,255,255,.92);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      user-select:none;
+    }
+    .sbtn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,155,47,.50);
+      background: rgba(0,0,0,.30);
+    }
+    .sbtn:active{ transform: translateY(0) scale(.99); }
+    .sbtn:focus-visible{
+      outline: 2px solid rgba(255,155,47,.55);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 980px){
+      .list-split{ grid-template-columns: 1fr; }
+    }
+    /* ===== /ДОБАВЛЕНО ПО ТЗ ===== */
+
     .faq{
       display:grid;
       grid-template-columns: 1fr;
@@ -1661,29 +1730,59 @@
         </div>
 
         <div class="transform">
+          <!-- 1 фото: добавлено изображение images/left.jpg рядом -->
           <div class="glass list reveal">
-            <h3><i data-lucide="cloud-rain"></i> Чтобы из жизни, когда:</h3>
-            <ul>
-              <li>Работа не приносит радости, сидишь там с утра до вечера и возвращаешься домой как выжатая тряпка</li>
-              <li>Нет уверенности за свое будущее;</li>
-              <li>вечно что-то надо успеть, кому-то помочь, о чем-то не забыть;</li>
-              <li>деньги исчезают быстрее, чем появляются - и ты уже не помнишь, когда спокойно вздыхала после зарплаты;</li>
-              <li>ощущение, что все вокруг куда-то двигаются, растут, пробуют новое… а ты как будто стоишь на месте;</li>
-              <li>страшно менять что-то, потому что нет ни времени, ни поддержки, ни понимания «с чего начать»;</li>
-              <li>внутри сидит тихая мысль: «я могу больше… но где взять шанс?»</li>
-            </ul>
+            <div class="list-split">
+              <div class="list-content">
+                <h3><i data-lucide="cloud-rain"></i> Чтобы из жизни, когда:</h3>
+                <ul>
+                  <li>Работа не приносит радости, сидишь там с утра до вечера и возвращаешься домой как выжатая тряпка</li>
+                  <li>Нет уверенности за свое будущее;</li>
+                  <li>вечно что-то надо успеть, кому-то помочь, о чем-то не забыть;</li>
+                  <li>деньги исчезают быстрее, чем появляются - и ты уже не помнишь, когда спокойно вздыхала после зарплаты;</li>
+                  <li>ощущение, что все вокруг куда-то двигаются, растут, пробуют новое… а ты как будто стоишь на месте;</li>
+                  <li>страшно менять что-то, потому что нет ни времени, ни поддержки, ни понимания «с чего начать»;</li>
+                  <li>внутри сидит тихая мысль: «я могу больше… но где взять шанс?»</li>
+                </ul>
+              </div>
+
+              <div class="list-media" aria-label="Фото">
+                <div class="inner">
+                  <img src="images/left.jpg" alt="Иллюстрация" loading="lazy">
+                </div>
+              </div>
+            </div>
           </div>
 
+          <!-- 2 фото: добавлен слайдер 1.jpg..5.jpg + кнопки -->
           <div class="glass list reveal">
-            <h3><i data-lucide="sun"></i> Попасть в жизнь, когда:</h3>
-            <ul>
-              <li>Ты работаешь дома или где хочешь — без пробок, без начальника, без нервотрепки. Хоть с кухни, хоть из другого города или страны;</li>
-              <li>у тебя есть стабильный онлайн-доход, а не вечная тревожность из-за постоянно растущих расходов;</li>
-              <li>время наконец-то твое: ты сама выбираешь график и нагрузку;</li>
-              <li>ты спокойна, потому что знаешь: твои навыки ценят, тебя выбирают, ты можешь найти проект в любой момент;</li>
-              <li>появляется чувство полезности, нужности, а не выжатости;</li>
-              <li>жизнь становится легче, свободнее и… наконец-то про твое будущее, а не про выживание</li>
-            </ul>
+            <div class="list-split">
+              <div class="list-content">
+                <h3><i data-lucide="sun"></i> Попасть в жизнь, когда:</h3>
+                <ul>
+                  <li>Ты работаешь дома или где хочешь — без пробок, без начальника, без нервотрепки. Хоть с кухни, хоть из другого города или страны;</li>
+                  <li>у тебя есть стабильный онлайн-доход, а не вечная тревожность из-за постоянно растущих расходов;</li>
+                  <li>время наконец-то твое: ты сама выбираешь график и нагрузку;</li>
+                  <li>ты спокойна, потому что знаешь: твои навыки ценят, тебя выбирают, ты можешь найти проект в любой момент;</li>
+                  <li>появляется чувство полезности, нужности, а не выжатости;</li>
+                  <li>жизнь становится легче, свободнее и… наконец-то про твое будущее, а не про выживание</li>
+                </ul>
+              </div>
+
+              <div class="list-media" aria-label="Слайдер фото">
+                <div class="inner">
+                  <img id="rightSliderImg" src="images/1.jpg" alt="Иллюстрация 1" loading="lazy">
+                </div>
+                <div class="slider-ui" aria-label="Переключение фото">
+                  <button class="sbtn" id="rightPrev" type="button" aria-label="Предыдущее фото">
+                    <i data-lucide="chevron-left"></i>
+                  </button>
+                  <button class="sbtn" id="rightNext" type="button" aria-label="Следующее фото">
+                    <i data-lucide="chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1726,16 +1825,19 @@
           <details class="faq-item">
             <summary>05. Боитесь «онлайна» и думаете, что вы «не технарь» <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
             <div class="ans">Если у вас есть телефон, мессенджер и вы умеете разбираться в бытовых задачах — вы уже на 80% готовы. На интенсиве покажем базовые приложения и логику работы</div>
+          <details class="faq-item">
+            <summary>06. Устали жить «от зарплаты до зарплаты» <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
+            <div class="ans">Деньги заканчиваются раньше месяца, а впереди только тревога: кредиты, расходы, «непредвиденные» траты. На интенсиве разберём, как начать зарабатывать онлайн и выстроить стабильный доход шаг за шагом</div>
           </details>
 
           <details class="faq-item">
-            <summary>06. Устали жить «от зарплаты до зарплаты» и хотите стабильности <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
-            <div class="ans">Вам нужна понятная профессия, которая даёт навык и доход, а не очередная «мотивация». Разберём реальные задачи ассистента и как получать за них оплату</div>
+            <summary>07. Хотите сменить сферу, но не знаете «куда идти» <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
+            <div class="ans">Есть ощущение, что вы переросли текущую работу, но страшно начинать новое. Профессия онлайн-ассистента — понятная точка входа без сложных навыков и без многолетнего обучения</div>
           </details>
 
           <details class="faq-item">
-            <summary>07. Хотите перспективу роста, а не тупик на одном месте <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
-            <div class="ans">Ассистент — стартовая позиция, из которой быстро растут в менеджера, проджекта, куратора, SMM, техспеца. Покажем дорожную карту и варианты развития</div>
+            <summary>08. Вам нужна понятная система и поддержка <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
+            <div class="ans">Не хватает структуры: что делать, где искать первые задачи, как общаться с руководителем, как не «слиться» на старте. Дадим понятный план, примеры и шаги, которые можно повторить</div>
           </details>
         </div>
 
@@ -1750,110 +1852,88 @@
         <div class="section-head reveal">
           <div>
             <h2>Регистрация на бесплатный интенсив</h2>
-            <p>Заполните форму — и получите доступ + бонус за регистрацию</p>
+            <p>Оставьте данные — и получите ссылку + бонус за регистрацию.</p>
           </div>
         </div>
 
         <div class="form-wrap">
           <div class="glass form-card reveal">
-            <h3>Забронируйте место (бесплатно)</h3>
-            <p style="margin:0; color: var(--muted); font-size: 13px; line-height: 1.7;">
-              После регистрации вы получите инструкции и ссылку на подключение.
-              Бонус отправим вместе с подтверждением.
+            <h3>Заполните форму</h3>
+            <p style="margin:0; color: var(--muted); font-size:13px; line-height:1.7;">
+              После регистрации вы получите доступ к интенсиву и бонус: <b style="color: rgba(255,255,255,.92);">«Топ-4 навыка в онлайне»</b>.
             </p>
 
-            <form id="regForm" autocomplete="on">
-              <div class="row">
-                <div class="field">
-                  <label for="name">Имя</label>
-                  <input id="name" name="name" type="text" placeholder="Например: Алия" required>
-                </div>
-                <div class="field">
-                  <label for="phone">Телефон / WhatsApp</label>
-                  <input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required>
-                </div>
+            <form id="regForm" novalidate>
+              <div class="field">
+                <label for="name">Имя</label>
+                <input id="name" name="name" type="text" placeholder="Введите ваше имя" autocomplete="name" required>
               </div>
 
               <div class="row">
                 <div class="field">
-                  <label for="status">Вы сейчас</label>
-                  <select id="status" name="status" required>
-                    <option value="" selected disabled>Выберите вариант</option>
-                    <option>Работаю в найме</option>
-                    <option>Студент / выпускник</option>
-                    <option>Мама в декрете</option>
-                    <option>В поиске работы</option>
-                    <option>Другое</option>
-                  </select>
+                  <label for="phone">Телефон</label>
+                  <input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
                 </div>
 
                 <div class="field">
                   <label for="city">Город</label>
-                  <input id="city" name="city" type="text" placeholder="Астана / Алматы / ..." required>
+                  <input id="city" name="city" type="text" placeholder="Например: Астана" autocomplete="address-level2">
                 </div>
               </div>
 
               <div class="field">
-                <label for="messenger">Куда удобнее прислать доступ?</label>
-                <select id="messenger" name="messenger" required>
+                <label for="channel">Куда отправить ссылку?</label>
+                <select id="channel" name="channel" required>
                   <option value="" selected disabled>Выберите мессенджер</option>
-                  <option>WhatsApp</option>
-                  <option>Telegram</option>
+                  <option value="whatsapp">WhatsApp</option>
+                  <option value="telegram">Telegram</option>
+                  <option value="instagram">Instagram Direct</option>
                 </select>
               </div>
 
-              <div class="field">
-                <label for="email">Email (необязательно)</label>
-                <input id="email" name="email" type="email" placeholder="name@email.com">
-              </div>
-
               <label class="consent">
-                <input id="consent" name="consent" type="checkbox" required>
+                <input type="checkbox" id="agree" required>
                 <span>
-                  Нажимая «Зарегистрироваться», вы соглашаетесь с
-                  <a href="offer.html" target="_blank" rel="noopener">публичной офертой</a> и
-                  <a href="pd-consent.html" target="_blank" rel="noopener">политикой обработки персональных данных</a>.
+                  Я согласен(на) с обработкой персональных данных и принимаю
+                  <a href="privacy.html" target="_blank" rel="noopener">политику конфиденциальности</a>.
                 </span>
               </label>
 
               <button class="btn btn-primary" type="submit">
                 <i data-lucide="arrow-right"></i>
-                ЗАРЕГИСТРИРОВАТЬСЯ
+                ЗАРЕГИСТРИРОВАТЬСЯ И ПОЛУЧИТЬ БОНУС
               </button>
 
               <div class="success" id="successBox">
-                <b>Готово!</b> Заявка принята. Проверьте мессенджер — туда придёт подтверждение и бонус.
+                <b>Готово!</b> Заявка отправлена. Проверьте выбранный мессенджер — скоро придёт ссылка на интенсив и бонус.
               </div>
 
               <div class="disclaimer">
-                Важно: участие бесплатное. Количество мест может быть ограничено форматом эфира.
+                Нажимая кнопку, вы подтверждаете корректность данных. Мы не передаём информацию третьим лицам.
               </div>
             </form>
           </div>
 
           <aside class="glass side-info reveal">
             <div class="block">
-              <h4><i data-lucide="calendar-clock"></i> Даты и время</h4>
-              <p><b style="color: rgba(255,255,255,.92);">13-14-15 января</b><br>в 20:00 по Астане</p>
+              <h4><i data-lucide="calendar-days"></i> Когда пройдет интенсив</h4>
+              <p><b style="color: rgba(255,255,255,.92);">13–14–15 января</b><br>в <b style="color: rgba(255,255,255,.92);">20:00 по Астане</b></p>
             </div>
 
             <div class="block">
-              <h4><i data-lucide="gift"></i> БОНУС за регистрацию</h4>
-              <p><b style="color: rgba(255,255,255,.92);">Топ-4 навыка в онлайне</b><br>за которые платят от 300 000 тенге в месяц</p>
+              <h4><i data-lucide="gift"></i> Что вы получите</h4>
+              <p>
+                — 3 дня практики и пошаговый план старта<br>
+                — понимание, как войти в профессию без опыта<br>
+                — бонус за регистрацию: <b style="color: rgba(255,255,255,.92);">Топ-4 навыка в онлайне</b>
+              </p>
             </div>
 
             <div class="block">
-              <h4><i data-lucide="shield-check"></i> Что будет после регистрации</h4>
-              <p>— подтверждение участия<br>— ссылка на подключение<br>— чек-лист/бонус в сообщении</p>
-            </div>
-
-            <div class="block">
-              <h4><i data-lucide="help-circle"></i> Если не пришло сообщение</h4>
-              <p>Проверьте правильность номера и выбранного мессенджера, затем повторите регистрацию.</p>
-            </div>
-
-            <div class="disclaimer">
-              Заполняя форму, вы подтверждаете согласие на получение сервисных сообщений по мероприятию.
+              <h4><i data-lucide="shield-check"></i> Безопасный старт</h4>
+              <p>
+                Можно начинать без увольнения и без риска: 2–3 часа в день на старте и понятная система действий.
+              </p>
             </div>
           </aside>
         </div>
@@ -1871,252 +1951,173 @@
 
     <div class="container">
       <div class="footer-grid">
-        <div style="min-width: 240px;">
-          <img class="logo" src="images/logo.jpg" alt="NextGen Academy" style="height:34px;">
-          <div class="copy" style="margin-top:10px;">
-            NextGen Academy — образовательный проект. Информация на сайте носит ознакомительный характер и не является публичным обещанием результата.
-          </div>
-
-          <div class="devline">
-  Разработчик сайта: <a href="https://anukenn.vercel.app/" target="_blank" rel="noopener">Anuken</a>
-          </div>
+        <div class="copy">
+          <b style="color: rgba(255,255,255,.92);">NextGen Academy</b><br>
+          ЭКСКЛЮЗИВНЫЙ 3х дневный бесплатный интенсив по выходу на удаленку с нуля.
         </div>
 
         <div class="footer-links">
-          <a href="offer.html" target="_blank" rel="noopener">Публичная оферта</a>
-          <a href="pd-consent.html" target="_blank" rel="noopener">Политика ПДн</a>
-          <a href="cookies.html" target="_blank" rel="noopener">Cookie</a>
-          <a href="#register">Регистрация</a>
+          <a href="privacy.html" target="_blank" rel="noopener">Политика конфиденциальности</a>
+          <a href="terms.html" target="_blank" rel="noopener">Пользовательское соглашение</a>
+          <a href="pd-consent.html" target="_blank" rel="noopener">Согласие на обработку ПД</a>
         </div>
       </div>
 
-      <div class="copy" style="margin-top:14px;">
-        © <span id="yearNow"></span> NextGen Academy. Все права защищены.
+      <div class="devline">
+        Разработано: <a href="https://anuken.vercel.app" target="_blank" rel="noopener">Anuken</a>
       </div>
     </div>
   </footer>
 
   <!-- Sticky CTA (mobile) -->
-  <div class="sticky-cta" id="stickyCta" aria-label="Быстрая регистрация">
+  <div class="sticky-cta" aria-label="Быстрая регистрация">
     <div class="inner">
       <div class="txt">
-        <b>Бесплатный интенсив • 3 дня</b>
+        <b>Бесплатный интенсив</b>
         <span>13-14-15 января • 20:00 по Астане</span>
       </div>
       <a class="btn btn-primary" href="#register">
         <span class="muted-dot" aria-hidden="true"></span>
-        ЗАРЕГИСТРИРОВАТЬСЯ
+        Зарегистрироваться
       </a>
     </div>
   </div>
 
-  <!-- Cookie -->
-  <div class="cookie" id="cookieBar" role="dialog" aria-live="polite" aria-label="Cookie">
+  <!-- Cookie notice -->
+  <div class="cookie" id="cookieBar" role="dialog" aria-label="Cookie уведомление">
     <div class="bar">
-      <p>
-        Мы используем cookie, чтобы улучшать работу сайта. Продолжая пользоваться сайтом, вы соглашаетесь с использованием cookie.
-        <a href="cookies.html" target="_blank" rel="noopener" style="text-decoration: underline; text-underline-offset: 3px;">Подробнее</a>
-      </p>
-      <button class="btn btn-primary" id="cookieAccept" type="button">
-        <span class="muted-dot" aria-hidden="true"></span>
-        Понятно
-      </button>
+      <p>Мы используем файлы cookie для улучшения работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с их использованием.</p>
+      <button class="btn" id="cookieOk" type="button">Понятно</button>
     </div>
   </div>
 
-  <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-
   <script>
-    // ===== CONFIG =====
-    const VIDEO_URL = "";           // вставьте ссылку на видео (YouTube/Instagram/и т.д.)
-    const FORM_ENDPOINT = "";       // вставьте webhook/endpoint для отправки формы (если есть)
+    // Icons
+    lucide.createIcons();
 
-    // ===== lucide =====
-    if (window.lucide) lucide.createIcons();
-
-    // ===== year =====
-    document.getElementById("yearNow").textContent = new Date().getFullYear();
-
-    // ===== reveal on scroll =====
-    (function(){
-      const els = Array.from(document.querySelectorAll(".reveal"));
-      if (!("IntersectionObserver" in window)){
-        els.forEach(el => el.classList.add("show"));
-        return;
-      }
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){
-            e.target.classList.add("show");
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.12 });
-      els.forEach(el => io.observe(el));
-    })();
-
-    // ===== program tabs =====
-    (function(){
-      const data = {
-        d1: {
-          title: "Что будет на 1-м дне:",
-          list: [
-            "Кто такой онлайн-ассистент и почему на него растёт спрос",
-            "Какие задачи реально делают ассистенты (и за что платят)",
-            "Сколько можно зарабатывать на старте и как устроена оплата",
-            "Где искать первые проекты и как не попасть на мошенников",
-            "Какие навыки уже есть у вас (и как их «упаковать»)"
-          ],
-          bonus: "<b>Бонус дня:</b> карта «4 навыка, за которые платят от 300 000₸/мес»"
-        },
-        d2: {
-          title: "Что будет на 2-м дне:",
-          list: [
-            "Базовые инструменты: таблицы, документы, задачи, календарь",
-            "Как вести коммуникацию с руководителем и клиентом",
-            "Как быстро обучаться новому и не «тупить» в задачах",
-            "Как работать 2–3 часа в день и успевать больше",
-            "Ошибки новичков, из-за которых не берут на проекты"
-          ],
-          bonus: "<b>Бонус дня:</b> чек-лист «инструменты ассистента»"
-        },
-        d3: {
-          title: "Что будет на 3-м дне:",
-          list: [
-            "Как сделать первый шаг к доходу: план на 7–14 дней",
-            "Как оформить себя: анкета/резюме/описание навыков",
-            "Как проходить отбор и тестовые задания без паники",
-            "Как повысить доход и брать несколько проектов",
-            "Траектория роста: куда можно вырасти дальше"
-          ],
-          bonus: "<b>Бонус дня:</b> шаблон сообщения для отклика на проект"
-        }
-      };
-
-      const tabs = Array.from(document.querySelectorAll(".tab"));
-      const title = document.getElementById("programTitle");
-      const list = document.getElementById("programList");
-      const bonus = document.getElementById("programBonus");
-
-      function render(key){
-        const d = data[key];
-        if(!d) return;
-        title.textContent = d.title;
-        list.innerHTML = d.list.map(x => `<li>${x}</li>`).join("");
-        bonus.innerHTML = d.bonus || "";
-      }
-
-      tabs.forEach(btn=>{
-        btn.addEventListener("click", ()=>{
-          tabs.forEach(b=>b.classList.remove("active"));
-          btn.classList.add("active");
-          render(btn.dataset.tab);
-        });
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); }
       });
+    }, { threshold: 0.12 });
+    reveals.forEach(el=>io.observe(el));
 
-      render("d1");
-    })();
-
-    // ===== video click =====
-    (function(){
-      const frame = document.getElementById("videoFrame");
-      const btn = document.getElementById("playVideo");
-      if (!frame || !btn) return;
-
-      if (VIDEO_URL) frame.dataset.videoUrl = VIDEO_URL;
-
-      function openVideo(){
-        const url = frame.dataset.videoUrl || "";
-        if (!url){
-          alert("Добавьте ссылку на видео в переменную VIDEO_URL внизу файла.");
-          return;
-        }
-        window.open(url, "_blank", "noopener,noreferrer");
+    // Program content
+    const program = {
+      d1: {
+        title: 'Что будет на 1-м дне:',
+        list: [
+          'Что такое профессия онлайн-ассистент и почему это лучшая точка входа в онлайн',
+          'Какие задачи выполняет ассистент и за что ему платят',
+          'Какие навыки уже есть у вас и как упаковать их в профессию',
+          'С чего начать, если вы никогда не работали в онлайне'
+        ],
+        bonus: '<b>Бонус дня 1:</b> чек-лист «Топ-4 навыка в онлайне» (для зарегистрированных)'
+      },
+      d2: {
+        title: 'Что будет на 2-м дне:',
+        list: [
+          'Где искать проекты и первых клиентов (без опыта и без «связей»)',
+          'Как правильно откликаться, чтобы вам отвечали',
+          'Как составить сильное мини-резюме/анкету ассистента',
+          'Ошибки новичков и как не «слиться» на старте'
+        ],
+        bonus: '<b>Бонус дня 2:</b> шаблон отклика и примеры сообщений'
+      },
+      d3: {
+        title: 'Что будет на 3-м дне:',
+        list: [
+          'Как вести задачи и быть «незаменимой правой рукой»',
+          'Как выстроить график 2–3 часа в день и выйти на стабильный доход',
+          'Как повышать чек и расти в менеджера/проджекта/куратора',
+          'Пошаговый план действий на ближайшие 7 дней после интенсива'
+        ],
+        bonus: '<b>Бонус дня 3:</b> дорожная карта «первые деньги в онлайне»'
       }
+    };
 
-      btn.addEventListener("click", openVideo);
-      btn.addEventListener("keydown", (e)=>{
-        if(e.key === "Enter" || e.key === " "){
-          e.preventDefault();
-          openVideo();
-        }
+    const tabs = document.querySelectorAll('.tab');
+    const programTitle = document.getElementById('programTitle');
+    const programList = document.getElementById('programList');
+    const programBonus = document.getElementById('programBonus');
+
+    function renderProgram(key){
+      const data = program[key];
+      programTitle.textContent = data.title;
+      programList.innerHTML = data.list.map(x=>`<li>${x}</li>`).join('');
+      programBonus.innerHTML = data.bonus;
+    }
+    renderProgram('d1');
+
+    tabs.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        tabs.forEach(t=>t.classList.remove('active'));
+        btn.classList.add('active');
+        const key = btn.dataset.tab;
+        renderProgram(key);
       });
-    })();
+    });
 
-    // ===== sticky CTA show after scroll (mobile) =====
-    (function(){
-      const el = document.getElementById("stickyCta");
-      if(!el) return;
+    // Video open
+    const play = document.getElementById('playVideo');
+    const frame = document.getElementById('videoFrame');
+    play?.addEventListener('click', ()=>{
+      const url = frame?.dataset.videoUrl;
+      if(url){ window.open(url, '_blank'); }
+      else{ alert('Добавьте ссылку на видео в data-video-url="" у блока #videoFrame'); }
+    });
+    play?.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); play.click(); }
+    });
 
-      function update(){
-        const isMobile = window.matchMedia("(max-width: 640px)").matches;
-        const show = isMobile && window.scrollY > 220;
-        el.style.display = show ? "block" : "none";
+    // Right slider (images/1.jpg..5.jpg)
+    const sliderImg = document.getElementById('rightSliderImg');
+    const prevBtn = document.getElementById('rightPrev');
+    const nextBtn = document.getElementById('rightNext');
+    const sliderTotal = 5;
+    let idx = 1;
+
+    function setSlide(n){
+      idx = n;
+      sliderImg.src = `images/${idx}.jpg`;
+      sliderImg.alt = `Иллюстрация ${idx}`;
+    }
+    prevBtn?.addEventListener('click', ()=>{
+      const n = idx - 1 < 1 ? sliderTotal : idx - 1;
+      setSlide(n);
+    });
+    nextBtn?.addEventListener('click', ()=>{
+      const n = idx + 1 > sliderTotal ? 1 : idx + 1;
+      setSlide(n);
+    });
+
+    // Cookie
+    const cookieBar = document.getElementById('cookieBar');
+    const cookieOk = document.getElementById('cookieOk');
+    try{
+      const seen = localStorage.getItem('cookie_ok');
+      if(!seen){
+        cookieBar.style.display = 'block';
       }
-      update();
-      window.addEventListener("scroll", update, { passive: true });
-      window.addEventListener("resize", update);
-    })();
-
-    // ===== cookie bar =====
-    (function(){
-      const bar = document.getElementById("cookieBar");
-      const btn = document.getElementById("cookieAccept");
-      if(!bar || !btn) return;
-
-      const KEY = "cookie_ok_v1";
-      const ok = localStorage.getItem(KEY) === "1";
-      if(!ok){
-        setTimeout(()=>{ bar.style.display = "block"; }, 900);
-      }
-      btn.addEventListener("click", ()=>{
-        localStorage.setItem(KEY, "1");
-        bar.style.display = "none";
+      cookieOk?.addEventListener('click', ()=>{
+        localStorage.setItem('cookie_ok', '1');
+        cookieBar.style.display = 'none';
       });
-    })();
+    }catch(e){ /* ignore */ }
 
-    // ===== form submit (no backend by default) =====
-    (function(){
-      const form = document.getElementById("regForm");
-      const box = document.getElementById("successBox");
-      if(!form || !box) return;
-
-      async function send(payload){
-        if(!FORM_ENDPOINT) return { ok: true };
-        const res = await fetch(FORM_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-        return { ok: res.ok };
-      }
-
-      form.addEventListener("submit", async (e)=>{
-        e.preventDefault();
-
-        const fd = new FormData(form);
-        const payload = Object.fromEntries(fd.entries());
-
-        // checkbox -> boolean
-        payload.consent = !!fd.get("consent");
-
-        try{
-          const r = await send(payload);
-          if(!r.ok) throw new Error("send failed");
-
-          box.style.display = "block";
-          form.querySelectorAll("input, select, button").forEach(el => {
-            if(el.id !== "consent") el.disabled = true;
-          });
-          // оставим чекбокс как есть, чтобы визуально было понятно
-          form.scrollIntoView({ behavior: "smooth", block: "start" });
-        }catch(err){
-          alert("Не удалось отправить форму. Попробуйте ещё раз или проверьте настройки FORM_ENDPOINT.");
-        }
-      });
-    })();
+    // Simple form submit (demo)
+    const form = document.getElementById('regForm');
+    const successBox = document.getElementById('successBox');
+    form?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const ok = form.checkValidity();
+      if(!ok){ form.reportValidity(); return; }
+      successBox.style.display = 'block';
+      form.reset();
+    });
   </script>
 </body>
 </html>
-
