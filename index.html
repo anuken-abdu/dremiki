@@ -528,60 +528,96 @@
       line-height: 1.65;
     }
 
-    .skills{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 14px;
-      align-items: start;
-      min-width: 0;
-    }
-    .skill-list{
-      display:flex; flex-direction:column; gap: 12px;
-      min-width: 0;
-    }
-    .skill{
-      border-radius: var(--radius2);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      backdrop-filter: blur(14px);
-      padding: 14px 14px;
-      display:grid;
-      grid-template-columns: 1.2fr 1.2fr .6fr;
-      gap: 12px;
-      align-items: start;
-      min-width: 0;
-    }
-    .skill .k{
-      font-weight: 800;
-      font-size: 13px;
-      letter-spacing: .01em;
-      color: rgba(255,255,255,.92);
-      display:flex; gap: 10px; align-items:flex-start;
-      min-width: 0;
-    }
-    .skill .k i{ margin-top: 2px; opacity: .95; }
-    .skill .v{
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.55;
-      min-width: 0;
-    }
-    .skill .pay{
-      display:flex; justify-content:flex-end;
-      font-weight: 900;
-      color: rgba(255,255,255,.92);
-      font-size: 12px;
-      text-align:right;
-      white-space: nowrap;
-      min-width: 0;
-    }
-    .skill .pay span{
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,122,24,.35);
-      background: rgba(255,122,24,.12);
-      color: rgba(255,255,255,.92);
-    }
+    /* ===== SKILLS (блок "Навыки") ===== */
+.skills{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 14px;
+  align-items: start;
+  min-width: 0;
+}
+
+/* ВАЖНО: делаем список навыков GRID, чтобы gap работал стабильно на телефонах (в т.ч. Safari) */
+.skill-list{
+  display:grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.skill{
+  border-radius: var(--radius2);
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  backdrop-filter: blur(14px);
+  padding: 14px 14px;
+  display:grid;
+  grid-template-columns: 1.2fr 1.2fr .6fr;
+  gap: 12px;
+  align-items: start;
+  min-width: 0;
+}
+
+.skill .k{
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: .01em;
+  color: rgba(255,255,255,.92);
+  display:flex;
+  gap: 10px;
+  align-items:flex-start;
+  min-width: 0;
+}
+.skill .k i{
+  margin-top: 2px;
+  opacity: .95;
+}
+
+.skill .v{
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+  min-width: 0;
+}
+
+.skill .pay{
+  display:flex;
+  justify-content:flex-end;
+  font-weight: 900;
+  color: rgba(255,255,255,.92);
+  font-size: 12px;
+  text-align:right;
+  white-space: nowrap;
+  min-width: 0;
+}
+.skill .pay span{
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,122,24,.35);
+  background: rgba(255,122,24,.12);
+  color: rgba(255,255,255,.92);
+}
+
+/* Мобилка: карточка навыка становится в 1 колонку,
+   а плашка дохода аккуратно фиксируется справа сверху */
+@media (max-width: 640px){
+  .skill{
+    grid-template-columns: 1fr;
+    gap: 10px;
+    position: relative;
+    padding-top: 52px; /* место под плашку дохода */
+  }
+
+  .skill .pay{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    justify-content: flex-end;
+  }
+
+  .skill .pay span{
+    white-space: nowrap;
+  }
+}
 
     .skills-aside{
       border-radius: var(--radius);
