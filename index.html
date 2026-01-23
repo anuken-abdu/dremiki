@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#0b0b0f" />
-  <title>NextGen Academy — Бесплатный 3-дневный интенсив</title>
-  <meta name="description" content="Эксклюзивный 3-дневный бесплатный интенсив по выходу на удалёнку с нуля: профессия онлайн-ассистент, старт без опыта, сертификат, бонус за регистрацию." />
+  <title>NextGen Academy — ЭКСКЛЮЗИВНЫЙ 3х дневный бесплатный интенсив</title>
+  <meta name="description" content="13-14-15 января в 20:00 по Астане. ЭКСКЛЮЗИВНЫЙ 3х дневный бесплатный интенсив по выходу на удаленку с нуля: как с нуля войти в профессию ОНЛАЙН-АССИСТЕНТ с доходом от 300 000 тенге в месяц. Бонус за регистрацию." />
 
-  <meta property="og:title" content="NextGen Academy — Бесплатный 3-дневный интенсив" />
-  <meta property="og:description" content="Как с нуля войти в профессию онлайн-ассистент и начать зарабатывать онлайн. Регистрация и бонус." />
+  <meta property="og:title" content="NextGen Academy — ЭКСКЛЮЗИВНЫЙ 3х дневный бесплатный интенсив" />
+  <meta property="og:description" content="Как с нуля войти в профессию ОНЛАЙН-АССИСТЕНТ с доходом от 300 000 тенге в месяц. 13-14-15 января, 20:00 по Астане." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ru_RU" />
 
@@ -78,11 +78,12 @@
     a{ color: inherit; text-decoration: none; }
     .container{ width: min(var(--max), calc(100% - 2*var(--pad))); margin: 0 auto; }
 
+    /* ЛОГО: квадратные края */
     .logo{
       height: 34px;
       width: auto;
       display:block;
-      border-radius: 10px;
+      border-radius: 0;
     }
 
     .header{
@@ -414,18 +415,6 @@
       line-height: 1.5;
     }
 
-    .note{
-      margin-top: 10px;
-      border-radius: 18px;
-      padding: 14px 14px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.16);
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.6;
-    }
-    .note b{ color: rgba(255,255,255,.88); }
-
     section{
       padding: clamp(34px, 6vw, 74px) 0;
       position: relative;
@@ -529,95 +518,95 @@
     }
 
     /* ===== SKILLS (блок "Навыки") ===== */
-.skills{
-  display:grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 14px;
-  align-items: start;
-  min-width: 0;
-}
+    .skills{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      align-items: start;
+      min-width: 0;
+    }
 
-/* ВАЖНО: делаем список навыков GRID, чтобы gap работал стабильно на телефонах (в т.ч. Safari) */
-.skill-list{
-  display:grid;
-  gap: 12px;
-  min-width: 0;
-}
+    /* ВАЖНО: делаем список навыков GRID, чтобы gap работал стабильно на телефонах (в т.ч. Safari) */
+    .skill-list{
+      display:grid;
+      gap: 12px;
+      min-width: 0;
+    }
 
-.skill{
-  border-radius: var(--radius2);
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.04);
-  backdrop-filter: blur(14px);
-  padding: 14px 14px;
-  display:grid;
-  grid-template-columns: 1.2fr 1.2fr .6fr;
-  gap: 12px;
-  align-items: start;
-  min-width: 0;
-}
+    .skill{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(14px);
+      padding: 14px 14px;
+      display:grid;
+      grid-template-columns: 1.2fr 1.2fr .6fr;
+      gap: 12px;
+      align-items: start;
+      min-width: 0;
+    }
 
-.skill .k{
-  font-weight: 800;
-  font-size: 13px;
-  letter-spacing: .01em;
-  color: rgba(255,255,255,.92);
-  display:flex;
-  gap: 10px;
-  align-items:flex-start;
-  min-width: 0;
-}
-.skill .k i{
-  margin-top: 2px;
-  opacity: .95;
-}
+    .skill .k{
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: .01em;
+      color: rgba(255,255,255,.92);
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      min-width: 0;
+    }
+    .skill .k i{
+      margin-top: 2px;
+      opacity: .95;
+    }
 
-.skill .v{
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.55;
-  min-width: 0;
-}
+    .skill .v{
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+      min-width: 0;
+    }
 
-.skill .pay{
-  display:flex;
-  justify-content:flex-end;
-  font-weight: 900;
-  color: rgba(255,255,255,.92);
-  font-size: 12px;
-  text-align:right;
-  white-space: nowrap;
-  min-width: 0;
-}
-.skill .pay span{
-  padding: 8px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,122,24,.35);
-  background: rgba(255,122,24,.12);
-  color: rgba(255,255,255,.92);
-}
+    .skill .pay{
+      display:flex;
+      justify-content:flex-end;
+      font-weight: 900;
+      color: rgba(255,255,255,.92);
+      font-size: 12px;
+      text-align:right;
+      white-space: nowrap;
+      min-width: 0;
+    }
+    .skill .pay span{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,122,24,.35);
+      background: rgba(255,122,24,.12);
+      color: rgba(255,255,255,.92);
+    }
 
-/* Мобилка: карточка навыка становится в 1 колонку,
-   а плашка дохода аккуратно фиксируется справа сверху */
-@media (max-width: 640px){
-  .skill{
-    grid-template-columns: 1fr;
-    gap: 10px;
-    position: relative;
-    padding-top: 52px; /* место под плашку дохода */
-  }
+    /* Мобилка: карточка навыка становится в 1 колонку,
+       а плашка дохода аккуратно фиксируется справа сверху */
+    @media (max-width: 640px){
+      .skill{
+        grid-template-columns: 1fr;
+        gap: 10px;
+        position: relative;
+        padding-top: 52px; /* место под плашку дохода */
+      }
 
-  .skill .pay{
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    justify-content: flex-end;
-  }
+      .skill .pay{
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        justify-content: flex-end;
+      }
 
-  .skill .pay span{
-    white-space: nowrap;
-  }
-}
+      .skill .pay span{
+        white-space: nowrap;
+      }
+    }
 
     .skills-aside{
       border-radius: var(--radius);
@@ -1095,6 +1084,23 @@
       max-width: 66ch;
     }
 
+    /* Линия разработчика */
+    .devline{
+      margin-top: 10px;
+      color: rgba(255,255,255,.60);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .devline a{
+      color: rgba(255,255,255,.88);
+      border-bottom: 1px dashed rgba(255,255,255,.30);
+      padding-bottom: 2px;
+    }
+    .devline a:hover{
+      color: rgba(255,255,255,.95);
+      border-bottom-color: rgba(255,255,255,.45);
+    }
+
     .reveal{
       opacity: 0;
       transform: translateY(10px);
@@ -1237,16 +1243,17 @@
         <nav class="nav" aria-label="Навигация">
           <a href="#who">Кому</a>
           <a href="#skills">Навыки</a>
+          <a href="#benefits">Профессия</a>
           <a href="#program">Программа</a>
-          <a href="#faq">FAQ</a>
+          <a href="#faq">Этот интенсив</a>
           <a href="#register">Регистрация</a>
         </nav>
 
         <div class="actions">
-          <span class="pill" id="datePill"><b>13–15 января</b> • 20:00 (Астана)</span>
+          <span class="pill" id="datePill"><b>13-14-15 января</b> • 20:00 по Астане</span>
           <a class="btn btn-primary" href="#register">
             <span class="muted-dot" aria-hidden="true"></span>
-            Зарегистрироваться
+            ЗАРЕГИСТРИРОВАТЬСЯ
           </a>
         </div>
       </div>
@@ -1262,76 +1269,72 @@
           <div class="reveal">
             <div class="kicker">
               <span class="spark" aria-hidden="true"></span>
-              Эксклюзивный 3-дневный бесплатный интенсив
+              ЭКСКЛЮЗИВНЫЙ 3х дневный бесплатный интенсив по выходу на удаленку с нуля
             </div>
 
             <h1>
-              Выход на удалёнку <span class="accent">с нуля</span> — без опыта и без риска
+              Как с нуля войти в профессию <span class="accent">ОНЛАЙН-АССИСТЕНТ</span> с доходом<br>
+              от 300 000 тенге в месяц
             </h1>
 
             <p class="lead">
-              Как с нуля войти в профессию <b>ОНЛАЙН-АССИСТЕНТ</b> и начать зарабатывать онлайн.
-              Упор на понятный план, практику и первые шаги к проектам.
+              Выберись из жизни, где деньги заканчиваются быстрее, чем месяц, а работа забирает все силы, время и мечты
             </p>
 
             <div class="hero-meta">
-              <span class="badge"><i data-lucide="calendar"></i> <span id="heroDates">13–15 января</span></span>
-              <span class="badge"><i data-lucide="clock-3"></i> <span id="heroTime">20:00 (Астана)</span></span>
+              <span class="badge"><i data-lucide="calendar"></i> <span id="heroDates">13-14-15 января</span></span>
+              <span class="badge"><i data-lucide="clock-3"></i> <span id="heroTime">20:00 по Астане</span></span>
               <span class="badge"><i data-lucide="sparkles"></i> 3 дня</span>
-              <span class="badge"><i data-lucide="award"></i> Сертификат после</span>
-              <span class="badge"><i data-lucide="laptop"></i> Онлайн</span>
-              <span class="badge"><i data-lucide="user-check"></i> Без опыта</span>
+              <span class="badge"><i data-lucide="award"></i> сертификат после интенсива</span>
+              <span class="badge"><i data-lucide="laptop"></i> в онлайне</span>
+              <span class="badge"><i data-lucide="user-check"></i> без опыта</span>
             </div>
 
             <div class="hero-cta">
               <a class="btn btn-primary" href="#register">
                 <i data-lucide="arrow-right"></i>
-                Зарегистрироваться
+                ЗАРЕГИСТРИРОВАТЬСЯ
               </a>
               <div class="sub-cta">
-                <span>и получить бонус за регистрацию:</span>
+                <span>и получить БОНУС за регистрацию:</span>
                 <a href="#register">
                   <i data-lucide="gift"></i>
-                  <b>Топ-4 навыка в онлайне</b>, за которые платят от 300 000 ₸/мес
+                  <b>Топ-4 навыка в онлайне</b>, за которые платят от 300 000 тенге в месяц
                 </a>
               </div>
             </div>
-
-            <div class="note">
-              <b>Месседж:</b> выберись из жизни, где деньги заканчиваются быстрее, чем месяц, а работа забирает силы, время и мечты.
-            </div>
           </div>
 
-          <aside class="hero-card reveal float" aria-label="Карточка автора">
+          <aside class="hero-card reveal float" aria-label="Карточка интенсива">
             <div class="author">
               <div>
                 <div class="author-top">
                   <div class="author-meta">
-                    <div class="name">Автор интенсива</div>
-                    <div class="role">Спикер • практик • наставник по старту в онлайне</div>
+                    <div class="name">3 дня • сертификат • без опыта</div>
+                    <div class="role">после интенсива • в онлайне</div>
                   </div>
 
-                  <div class="author-photo" aria-label="Фото автора">
-                    <img src="images/author.jpg" alt="Автор NextGen Academy" />
+                  <div class="author-photo" aria-label="Изображение">
+                    <img src="images/author.jpg" alt="NextGen Academy" />
                   </div>
                 </div>
 
                 <div class="author-points">
                   <div class="mini">
-                    <div class="t"><i data-lucide="shield-check"></i> Безопасный вход</div>
-                    <div class="d">Пошагово, без “прыжка в неизвестность”.</div>
+                    <div class="t"><i data-lucide="calendar-days"></i> 13-14-15 января</div>
+                    <div class="d">в 20:00 по Астане</div>
                   </div>
                   <div class="mini">
-                    <div class="t"><i data-lucide="zap"></i> Практика</div>
-                    <div class="d">Разбор задач и простые действия “сегодня”.</div>
+                    <div class="t"><i data-lucide="gift"></i> БОНУС</div>
+                    <div class="d">за регистрацию</div>
                   </div>
                   <div class="mini">
-                    <div class="t"><i data-lucide="briefcase"></i> Портфолио</div>
-                    <div class="d">Соберём основу за один вечер.</div>
+                    <div class="t"><i data-lucide="briefcase"></i> Профессия</div>
+                    <div class="d">ОНЛАЙН-АССИСТЕНТ</div>
                   </div>
                   <div class="mini">
-                    <div class="t"><i data-lucide="route"></i> План на 72 часа</div>
-                    <div class="d">Чтобы не “остыть” после эфира.</div>
+                    <div class="t"><i data-lucide="coins"></i> Доход</div>
+                    <div class="d">от 300 000 тенге в месяц</div>
                   </div>
                 </div>
               </div>
@@ -1346,47 +1349,60 @@
         <div class="section-head reveal">
           <div>
             <h2>Кому обязательно быть</h2>
-            <p>Онлайн-ассистент — профессия, которую реально может освоить любая девушка 20–35 лет, даже без опыта в онлайне.</p>
+            <p>~Работники в найме ~Студенты/выпускники ~Мамы в декрете</p>
           </div>
-          <a class="btn btn-ghost" href="#register"><i data-lucide="arrow-right"></i> Присоединиться</a>
+          <a class="btn btn-ghost" href="#register"><i data-lucide="arrow-right"></i> ПРИСОЕДИНИТЬСЯ</a>
         </div>
 
         <div class="grid-3">
           <div class="card reveal">
             <div class="icon"><i data-lucide="building-2"></i></div>
             <h3>Работники в найме</h3>
-            <p>Если устали от офлайна, пробок и графика — и хотите перейти в онлайн без резких решений.</p>
+            <p></p>
           </div>
           <div class="card reveal">
             <div class="icon"><i data-lucide="graduation-cap"></i></div>
-            <h3>Студенты / выпускники</h3>
-            <p>Если хотите стартовать карьеру в онлайне и не упираться в “везде нужен опыт”.</p>
+            <h3>Студенты/выпускники</h3>
+            <p></p>
           </div>
           <div class="card reveal">
             <div class="icon"><i data-lucide="baby"></i></div>
             <h3>Мамы в декрете</h3>
-            <p>Если нужен доход из дома и хочется зайти в онлайн мягко, без перегруза.</p>
+            <p></p>
           </div>
         </div>
 
         <div class="glass reveal" style="margin-top:14px; padding:18px;">
           <div class="grid-2">
             <div class="card" style="min-height:auto;">
-              <div class="icon"><i data-lucide="alert-triangle"></i></div>
-              <h3>Если вы сейчас узнаёте себя</h3>
+              <div class="icon"><i data-lucide="user-check"></i></div>
+              <h3>Онлайн-ассистент — это профессия, которую реально может освоить любая девушка 20-35 лет</h3>
               <p>
-                Живёте “от зарплаты до зарплаты”, устаете так, что дома нет сил, работа — не про развитие, а про “дотянуть до выходных”.
-                Деньги уходят быстрее, чем приходят: кредиты, расходы, постоянная тревога.
+                Даже если ты никогда не работала в онлайне<br>
+                Даже если ты боишься, что ничего не умеешь
               </p>
             </div>
+
             <div class="card" style="min-height:auto;">
-              <div class="icon"><i data-lucide="compass"></i></div>
-              <h3>И внутри сидит мысль: “я могу больше…”</h3>
-              <p>
-                На интенсиве вы получите понятный план, практику и первые заготовки для старта.
-                Без давления и без “магии”, только структура и действия.
+              <div class="icon"><i data-lucide="alert-triangle"></i></div>
+              <h3>Рекомендую вам все отложить и прийти на мастер-класс, если вы сейчас:</h3>
+              <p style="line-height:1.8;">
+                — Живёте «от зарплаты до зарплаты» и боитесь потерять даже эту работу<br>
+                — Устаете так, что дома нет сил даже просто лечь<br>
+                — Работа — это не про развитие, а про «выжить и дотянуть до выходных»<br>
+                — Ежедневные пробки, будильники и начальство забирают все силы<br>
+                — Деньги уходят быстрее, чем приходят: кредиты, расходы, постоянная тревога<br>
+                — С 2026 года — страх увольнений и непонимание, что будет дальше<br>
+                — Пытаетесь откликаться, но вас не берут: будто вы «неподходящая»<br>
+                — Хочется работать из дома, но кажется, что «в онлайне меня никто не ждёт»<br>
+                — Чувствуете, что застряли: жизнь идёт, а вы топчетесь на месте<br>
+                — Внутри сидит тихая мысль: «я могу больше… но где взять шанс?»
               </p>
             </div>
+          </div>
+
+          <div style="margin-top:14px;">
+            <a class="btn btn-primary" href="#register"><i data-lucide="arrow-right"></i> ПРИСОЕДИНИТЬСЯ</a>
           </div>
         </div>
       </div>
@@ -1396,56 +1412,71 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <h2>Вы уже делаете это — просто не замечаете</h2>
-            <p>Вы каждый день выполняете бесплатно то, за что онлайн-ассистент получает деньги. Здесь — перевод “быта” в профессиональные навыки.</p>
+            <h2>А что если я скажу, что вы уже выполняете работу ассистента?</h2>
+            <p>Вы уже каждый день делаете бесплатно то, за что ассистент получает деньги:</p>
           </div>
-          <a class="btn btn-primary" href="#register"><i data-lucide="gift"></i> Получить бонус</a>
+          <a class="btn btn-primary" href="#register"><i data-lucide="arrow-right"></i> ОСВОИТЬ ПРОФЕССИЮ БЕСПЛАТНО</a>
         </div>
 
         <div class="skills">
           <div class="skill-list reveal" aria-label="Список навыков">
             <div class="skill">
-              <div class="k"><i data-lucide="check-square"></i> Наводить порядок в делах</div>
-              <div class="v">Списки покупок/дел семьи → ведение задач руководителя в Trello / Google Calendar.</div>
-              <div class="pay"><span>70 000 ₸/мес</span></div>
+              <div class="k"><i data-lucide="check-square"></i> УМЕНИЕ НАВОДИТЬ ПОРЯДОК В ДЕЛАХ И ЗАДАЧАХ</div>
+              <div class="v">
+                Ведение списка покупок, напоминаний, дел семьи, расписания врачей и секций<br>
+                Ведение списка задач руководителя в Trello / Google Calendar
+              </div>
+              <div class="pay"><span>70.000тг/мес</span></div>
             </div>
 
             <div class="skill">
-              <div class="k"><i data-lucide="search"></i> Замечать детали</div>
-              <div class="v">“Ты забыл ключи” → проверка текстов, ссылок, документов перед отправкой/публикацией.</div>
-              <div class="pay"><span>100 000 ₸/мес</span></div>
+              <div class="k"><i data-lucide="search"></i> УМЕНИЕ ЗАМЕЧАТЬ ДЕТАЛИ</div>
+              <div class="v">
+                Замечать ошибки, недочеты, забытые вещи: «ты забыл ключи», «у тебя опечатка», «дата не та»<br>
+                Проверка текстов, ссылок, документов перед отправкой/публикацией
+              </div>
+              <div class="pay"><span>100.000тг/мес</span></div>
             </div>
 
             <div class="skill">
-              <div class="k"><i data-lucide="message-circle"></i> Доносить информацию</div>
-              <div class="v">Объяснять “куда идти/что делать” → ведение клиентского чата и коммуникации.</div>
-              <div class="pay"><span>120 000 ₸/мес</span></div>
+              <div class="k"><i data-lucide="message-circle"></i> УМЕНИЕ ОБЩАТЬСЯ И ДОНОСИТЬ ИНФОРМАЦИЮ</div>
+              <div class="v">
+                Объяснять домашним, что где лежит, что когда делать, кому куда идти / Объяснять курьеру где находится ваш подъезд<br>
+                Ведение клиентского чата: ответы, порядок, передача информации руководителю
+              </div>
+              <div class="pay"><span>120.000тг/мес</span></div>
             </div>
 
             <div class="skill">
-              <div class="k"><i data-lucide="rocket"></i> Быстро разбираться в новом</div>
-              <div class="v">Найти сервис/решение → объяснить команде, как пользоваться, собрать инструкции.</div>
-              <div class="pay"><span>150 000 ₸/мес</span></div>
+              <div class="k"><i data-lucide="rocket"></i> УМЕНИЕ БЫСТРО РАЗБИРАТЬСЯ В НОВОМ</div>
+              <div class="v">
+                Найти, как записаться в поликлинику, оформить доставку, подобрать школу, разобраться с новым приложением<br>
+                Поиск нужного сервиса/решения и объяснение команде, как им пользоваться
+              </div>
+              <div class="pay"><span>150.000тг/мес</span></div>
             </div>
 
             <div class="skill">
-              <div class="k"><i data-lucide="table"></i> Базовые приложения</div>
-              <div class="v">Заметки/ссылки/списки → таблицы и документы в Google Sheets и других сервисах.</div>
-              <div class="pay"><span>170 000 ₸/мес</span></div>
+              <div class="k"><i data-lucide="table"></i> УМЕНИЕ ПОЛЬЗОВАТЬСЯ БАЗОВЫМИ ПРИЛОЖЕНИЯМИ</div>
+              <div class="v">
+                Создавать заметки, отправлять ссылки в мессенджере, вести списки в телефоне<br>
+                Создание таблиц, документов и рабочих файлов в Google таблицах или др. сервисах
+              </div>
+              <div class="pay"><span>170.000тг/мес</span></div>
             </div>
           </div>
 
           <aside class="skills-aside reveal">
-            <h3>Итог</h3>
+            <h3>Вы УЖЕ используете все 5 ключевых навыков онлайн-ассистента ЕЖЕДНЕВНО</h3>
             <p>
-              Вы уже используете все 5 ключевых навыков онлайн-ассистента ежедневно — просто бесплатно.
-              В роли ассистента эти навыки могут стоить от <b>150 000 ₸</b> до <b>300 000 ₸</b> в месяц.
+              Просто бесплатно<br>
+              В роли онлайн-ассистента эти же ВАШИ навыки стоят от 150.000₸ до 300.000₸ в месяц
             </p>
             <div class="big">
-              “Тёплый и безопасный вход в онлайн” — это когда есть <span>понятные шаги</span>, практика и поддержка, а не страх “я ничего не умею”.
+              ОСВОИТЬ ПРОФЕССИЮ БЕСПЛАТНО
             </div>
             <div style="margin-top:12px;">
-              <a class="btn btn-primary" href="#register"><i data-lucide="arrow-right"></i> Освоить профессию бесплатно</a>
+              <a class="btn btn-primary" href="#register"><i data-lucide="arrow-right"></i> ОСВОИТЬ ПРОФЕССИЮ БЕСПЛАТНО</a>
             </div>
           </aside>
         </div>
@@ -1456,8 +1487,8 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <h2>Почему онлайн-ассистент — лучшая точка входа в онлайн</h2>
-            <p>Профессия, которая даёт быстрый старт: спрос, рост, гибкость и понятные задачи.</p>
+            <h2>ПРОФЕССИЯ ОНЛАЙН-АССИСТЕНТ ЛУЧШАЯ ТОЧКА ВХОДА В ОНЛАЙН</h2>
+            <p></p>
           </div>
         </div>
 
@@ -1465,33 +1496,63 @@
           <div class="card reveal">
             <div class="icon"><i data-lucide="coins"></i></div>
             <h3>Зарабатываешь больше, а работаешь меньше</h3>
-            <p>На старте достаточно 2–3 часов в день, чтобы взять первый проект и начать расти.</p>
+            <p>
+              Тебе не нужно сидеть в офисе с 9 до 18, чтобы получать нормальные деньги.
+              Онлайн-ассистент ведет задачи, помогает руководителю освобождать время и может зарабатывать от 150.000₸-300.000₸ в месяц,
+              уделяя 2-3 часа в день на старте
+            </p>
           </div>
+
           <div class="card reveal">
             <div class="icon"><i data-lucide="users"></i></div>
             <h3>Ассистенты нужны всем</h3>
-            <p>Руководители тонут в задачах — им нужна “правая рука”, которая наведёт порядок и снимет рутину.</p>
+            <p>
+              Каждый руководитель в онлайне тонет в хаосе задач. Им нужна правая рука - человек, который напомнит, организует,
+              возьмет рутину на себя. Онлайн-ассистент закрывает этот вопрос, поэтому спрос растет из года в год
+              и даже ИИ никогда не заменит живого ассистента
+            </p>
           </div>
+
           <div class="card reveal">
             <div class="icon"><i data-lucide="trending-up"></i></div>
             <h3>Профессия с быстрым ростом</h3>
-            <p>Через практику можно вырасти в менеджера, проджекта, куратора, дизайнера, тех. спеца.</p>
+            <p>
+              Через 2-3 месяца практики доход увеличивается до 150.000–3000.000₸, а дальше можно расти в менеджера, проджекта, куратора,
+              дизайнера, тех. спеца - куда захочешь
+            </p>
           </div>
+
           <div class="card reveal">
             <div class="icon"><i data-lucide="globe"></i></div>
-            <h3>Работа из любой точки мира</h3>
-            <p>Нужны телефон и ноутбук — без пробок, без офиса, без лишнего стресса.</p>
+            <h3>Можно работать из любой точки мира</h3>
+            <p>
+              Поехала в другой город? Переехала в другую страну? Работа остается с тобой.
+              Тебе нужен только телефон и ноут - все. Не нужно стоять в пробках по дороге на работу и отчитываться за опоздания
+            </p>
           </div>
+
           <div class="card reveal">
             <div class="icon"><i data-lucide="layers"></i></div>
             <h3>Можно совмещать с основной работой</h3>
-            <p>Добавляете +1 доход сверху, не увольняясь и не рискуя “всё потерять”.</p>
+            <p>
+              На старте достаточно 2–3 часов в день, чтобы взять первый проект.
+              Ты не увольняешься, не рискуешь, не стрессуешь. Просто добавляешь +1 зарплату сверху к текущей
+            </p>
           </div>
+
           <div class="card reveal">
             <div class="icon"><i data-lucide="heart-handshake"></i></div>
             <h3>Освоит любая девушка</h3>
-            <p>Не нужен диплом, “технический склад” или блог. Старт через понятные навыки и структуру.</p>
+            <p>
+              Не нужен диплом, не нужно быть технарем, блогером или айтишником.
+              Мы учим с нуля: как вести задачи, как общаться, как работать в приложениях.
+              Даже если ты думаешь «я ничего не умею» - на деле, все это уже есть у тебя в быту
+            </p>
           </div>
+        </div>
+
+        <div style="margin-top:14px;" class="reveal">
+          <a class="btn btn-primary" href="#register"><i data-lucide="arrow-right"></i> ОСВОИТЬ ПРОФЕССИЮ БЕСПЛАТНО</a>
         </div>
       </div>
     </section>
@@ -1500,8 +1561,11 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <h2>Почему ассистенты “на вес золота”</h2>
-            <p>Короткое видео для понимания: почему спрос растёт и как можно начать зарабатывать уже в ближайший месяц.</p>
+            <h2>Почему онлайн-ассистенты на вес золота?</h2>
+            <p>
+              Смотри это короткое видео, чтобы понять, почему на самом деле руководители ищут онлайн-ассистентов,
+              почему спрос на них растет каждый месяц и как ты можешь начать зарабатывать в онлайне уже в ближайший месяц
+            </p>
           </div>
         </div>
 
@@ -1520,14 +1584,14 @@
 
           <div class="glass reveal" style="padding:18px;">
             <div class="card" style="min-height:auto; background: rgba(255,255,255,.03);">
-              <div class="icon"><i data-lucide="sparkles"></i></div>
-              <h3>Что вы поймёте после просмотра</h3>
-              <p>Какие задачи закрывает ассистент, почему руководители готовы брать новичков и как выделиться среди “просто откликов”.</p>
+              <div class="icon"><i data-lucide="search"></i></div>
+              <h3>Почему руководители ищут онлайн-ассистентов</h3>
+              <p>Почему спрос на них растет каждый месяц</p>
             </div>
             <div class="card" style="min-height:auto; margin-top:14px; background: rgba(255,255,255,.03);">
-              <div class="icon"><i data-lucide="shield"></i></div>
-              <h3>Формат — спокойно и по делу</h3>
-              <p>Без агрессивных продаж. Цель — дать ясность и план: что делать, чтобы начать быстро и безопасно.</p>
+              <div class="icon"><i data-lucide="arrow-right"></i></div>
+              <h3>Как начать зарабатывать в онлайне</h3>
+              <p>Уже в ближайший месяц</p>
             </div>
           </div>
         </div>
@@ -1538,10 +1602,10 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <h2>Программа интенсива: 3 дня — 3 результата</h2>
-            <p>Каждый день — конкретные темы + практика. В конце — план действий на первые 72 часа после эфира.</p>
+            <h2>Программа: что будет на 1-м, 2-м и 3-м дне</h2>
+            <p></p>
           </div>
-          <a class="btn btn-ghost" href="#register"><i data-lucide="arrow-right"></i> Успеть на регистрацию</a>
+          <a class="btn btn-ghost" href="#register"><i data-lucide="arrow-right"></i> ЗАРЕГИСТРИРОВАТЬСЯ</a>
         </div>
 
         <div class="tabs reveal" role="tablist" aria-label="Программа по дням">
@@ -1552,41 +1616,35 @@
 
         <div class="program">
           <div class="glass program-main reveal" id="programMain" aria-live="polite">
-            <h3 id="programTitle">День 1: Понимание профессии + первое задание</h3>
-            <ul id="programList">
-              <li>Что делает онлайн-ассистент и почему это самая быстрая точка входа в онлайн.</li>
-              <li>Кому нужны ассистенты в 2026 году и какие задачи они закрывают ежедневно.</li>
-              <li>7 типов задач, которые не требуют “особых навыков”, но за них платят.</li>
-              <li>Практика в эфире: собрать информацию, структурировать входящие, составить ТЗ, оформить мини-презентацию.</li>
-              <li>Как бытовые навыки превращаются в онлайн-доход.</li>
-            </ul>
-            <div class="bonus" id="programBonus"><b>Бонус дня:</b> “10 навыков, которые помогут вам найти удалённую работу за 24 часа”.</div>
+            <h3 id="programTitle">Что будет на 1-м дне:</h3>
+            <ul id="programList"></ul>
+            <div class="bonus" id="programBonus"></div>
           </div>
 
           <aside class="glass program-side reveal">
             <div class="stat">
               <div class="t">
-                <span><i data-lucide="target"></i> Результат дня</span>
-                <span style="color: var(--orange2); font-weight: 900;">+ ясность</span>
+                <span><i data-lucide="calendar-clock"></i> Даты и время</span>
+                <span style="color: var(--orange2); font-weight: 900;">13-14-15 января</span>
               </div>
-              <div class="v">Вы поймёте, какие задачи реально делаются и почему “я ничего не умею” — чаще иллюзия.</div>
+              <div class="v">в 20:00 по Астане</div>
             </div>
 
             <div class="stat">
               <div class="t">
-                <span><i data-lucide="file-check"></i> Практика</span>
-                <span style="color: var(--orange2); font-weight: 900;">+ действие</span>
+                <span><i data-lucide="gift"></i> БОНУС за регистрацию</span>
+                <span style="color: var(--orange2); font-weight: 900;">получить</span>
               </div>
-              <div class="v">Сделаете первое мини-задание ассистента, чтобы почувствовать уверенность и контроль.</div>
+              <div class="v">Топ-4 навыка в онлайне, за которые платят от 300 000 тенге в месяц</div>
             </div>
 
             <div class="stat">
               <div class="t">
-                <span><i data-lucide="gift"></i> Бонусы</span>
-                <span style="color: var(--orange2); font-weight: 900;">+ материалы</span>
+                <span><i data-lucide="arrow-right"></i> Действие</span>
+                <span style="color: var(--orange2); font-weight: 900;">сейчас</span>
               </div>
-              <div class="v">Каждый день — полезный файл/шаблон, который можно применить сразу.</div>
-              <div class="highlight"><i data-lucide="lock-open"></i> Доступно после регистрации</div>
+              <div class="v">ЗАРЕГИСТРИРОВАТЬСЯ</div>
+              <div class="highlight"><i data-lucide="lock-open"></i> бесплатно</div>
             </div>
           </aside>
         </div>
@@ -1597,147 +1655,40 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <h2>Из “выживания” — в спокойный онлайн-доход</h2>
-            <p>Это про свободу, время и ощущение, что у вас есть реальный шанс и понятный путь.</p>
+            <h2>Чтобы из жизни, когда — попасть в жизнь, когда</h2>
+            <p></p>
           </div>
         </div>
 
         <div class="transform">
           <div class="glass list reveal">
-            <h3><i data-lucide="cloud-rain"></i> Из жизни, когда…</h3>
+            <h3><i data-lucide="cloud-rain"></i> Чтобы из жизни, когда:</h3>
             <ul>
-              <li>Работа не приносит радости и вы возвращаетесь домой “выжатой”.</li>
-              <li>Нет уверенности в будущем, постоянная тревога из-за расходов.</li>
-              <li>Вечно надо всё успеть, кому-то помочь, о чём-то не забыть.</li>
-              <li>Ощущение, что другие растут, а вы “топчетесь на месте”.</li>
-              <li>Страшно менять что-то — нет понимания “с чего начать”.</li>
+              <li>Работа не приносит радости, сидишь там с утра до вечера и возвращаешься домой как выжатая тряпка</li>
+              <li>Нет уверенности за свое будущее;</li>
+              <li>вечно что-то надо успеть, кому-то помочь, о чем-то не забыть;</li>
+              <li>деньги исчезают быстрее, чем появляются - и ты уже не помнишь, когда спокойно вздыхала после зарплаты;</li>
+              <li>ощущение, что все вокруг куда-то двигаются, растут, пробуют новое… а ты как будто стоишь на месте;</li>
+              <li>страшно менять что-то, потому что нет ни времени, ни поддержки, ни понимания «с чего начать»;</li>
+              <li>внутри сидит тихая мысль: «я могу больше… но где взять шанс?»</li>
             </ul>
           </div>
 
           <div class="glass list reveal">
-            <h3><i data-lucide="sun"></i> В жизнь, когда…</h3>
+            <h3><i data-lucide="sun"></i> Попасть в жизнь, когда:</h3>
             <ul>
-              <li>Работаете дома или где хотите — без пробок и начальника.</li>
-              <li>Есть стабильный онлайн-доход, а не постоянная тревожность.</li>
-              <li>Время становится вашим: вы выбираете график и нагрузку.</li>
-              <li>Вы спокойны, потому что ваши навыки ценят и выбирают.</li>
-              <li>Появляется лёгкость и ощущение “теперь это про моё будущее”.</li>
+              <li>Ты работаешь дома или где хочешь — без пробок, без начальника, без нервотрепки. Хоть с кухни, хоть из другого города или страны;</li>
+              <li>у тебя есть стабильный онлайн-доход, а не вечная тревожность из-за постоянно растущих расходов;</li>
+              <li>время наконец-то твое: ты сама выбираешь график и нагрузку;</li>
+              <li>ты спокойна, потому что знаешь: твои навыки ценят, тебя выбирают, ты можешь найти проект в любой момент;</li>
+              <li>появляется чувство полезности, нужности, а не выжатости;</li>
+              <li>жизнь становится легче, свободнее и… наконец-то про твое будущее, а не про выживание</li>
             </ul>
           </div>
         </div>
 
         <div style="margin-top:14px;" class="reveal">
-          <a class="btn btn-primary" href="#register"><i data-lucide="arrow-right"></i> Зарегистрироваться и получить бонус</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="register">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <h2>Регистрация на интенсив</h2>
-            <p>Оставьте контакты — и получите бонус за регистрацию. После отправки вы увидите инструкции и ссылку на бонус.</p>
-          </div>
-        </div>
-
-        <div class="form-wrap">
-          <div class="glass form-card reveal">
-            <h3>Заполните форму</h3>
-            <p style="margin:0; color: var(--muted); font-size:13px; line-height:1.7;">
-              Мы используем данные только для связи и доступа к интенсиву. Можно указать WhatsApp или Telegram.
-            </p>
-
-            <form id="regForm" novalidate>
-              <div class="row">
-                <div class="field">
-                  <label for="name">Имя</label>
-                  <input id="name" name="name" type="text" placeholder="Например: Алия" autocomplete="name" required />
-                </div>
-                <div class="field">
-                  <label for="phone">Телефон</label>
-                  <input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" required />
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="field">
-                  <label for="messenger">Мессенджер</label>
-                  <select id="messenger" name="messenger" required>
-                    <option value="" selected>Выберите…</option>
-                    <option value="WhatsApp">WhatsApp</option>
-                    <option value="Telegram">Telegram</option>
-                    <option value="Email">Email</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="contact">Контакт в мессенджере</label>
-                  <input id="contact" name="contact" type="text" placeholder="Номер WhatsApp / @telegram / email" required />
-                </div>
-              </div>
-
-              <div class="field">
-                <label for="comment">Комментарий (опционально)</label>
-                <input id="comment" name="comment" type="text" placeholder="Например: работаю в найме / в декрете / студентка" />
-              </div>
-
-              <input type="hidden" name="utm_source" id="utm_source" />
-              <input type="hidden" name="utm_medium" id="utm_medium" />
-              <input type="hidden" name="utm_campaign" id="utm_campaign" />
-              <input type="hidden" name="utm_content" id="utm_content" />
-              <input type="hidden" name="utm_term" id="utm_term" />
-
-              <div class="consent">
-                <input id="agree" type="checkbox" required />
-                <div>
-                  Я согласен(а) с <a href="privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>
-                  и обработкой персональных данных.
-                </div>
-              </div>
-
-              <button class="btn btn-primary" type="submit">
-                <i data-lucide="send"></i>
-                Зарегистрироваться
-              </button>
-
-              <div class="success" id="successBox" role="status" aria-live="polite">
-                <b>Готово.</b> Заявка отправлена. Теперь:
-                <ul style="margin:10px 0 0; padding-left:18px; color: rgba(255,255,255,.86); line-height:1.65;">
-                  <li>Проверьте выбранный мессенджер/почту — мы пришлём доступ.</li>
-                  <li>Ваш бонус: <b>“Топ-4 навыка в онлайне…”</b> — по кнопке ниже.</li>
-                </ul>
-                <div style="margin-top:12px;">
-                  <a class="btn" href="#" id="bonusLink"><i data-lucide="download"></i> Получить бонус</a>
-                </div>
-              </div>
-
-              <div class="disclaimer">
-                Дисклеймер: указанные суммы дохода зависят от навыков, опыта, занятости и рынка и не являются гарантией результата.
-              </div>
-            </form>
-          </div>
-
-          <aside class="glass side-info reveal">
-            <div class="block">
-              <h4><i data-lucide="calendar-clock"></i> Даты и время</h4>
-              <p><b id="sideDates">13–15 января</b>, <b id="sideTime">20:00 по Астане</b>.</p>
-            </div>
-
-            <div class="block">
-              <h4><i data-lucide="award"></i> Сертификат</h4>
-              <p>После интенсива — сертификат участия (условия выдачи вы можете уточнить и подставить в текст).</p>
-            </div>
-
-            <div class="block">
-              <h4><i data-lucide="gift"></i> Бонус за регистрацию</h4>
-              <p>“Топ-4 навыка в онлайне, за которые платят от 300 000 ₸/мес”. Можно выдать PDF, ссылкой или сообщением в мессенджере.</p>
-            </div>
-
-            <div class="block">
-              <h4><i data-lucide="shield-check"></i> Спокойная подача</h4>
-              <p>Мы не “кричим” продажами: дизайн и структура создают доверие и ощущение премиального продукта.</p>
-            </div>
-          </aside>
+          <a class="btn btn-primary" href="#register"><i data-lucide="arrow-right"></i> ЗАРЕГИСТРИРОВАТЬСЯ</a>
         </div>
       </div>
     </section>
@@ -1746,461 +1697,426 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <h2>FAQ</h2>
-            <p>Самые частые вопросы — чтобы снять сомнения и понять формат.</p>
+            <h2>Этот интенсив для вас, если вы</h2>
+            <p>девушка 20–35 лет, которая хочет зарабатывать онлайн и начать новую карьеру без риска, и:</p>
           </div>
         </div>
 
         <div class="faq reveal">
           <details class="faq-item">
-            <summary>Можно ли без опыта? <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
-            <div class="ans">Да. Интенсив построен так, чтобы вы увидели, что часть навыков уже есть в быту, а остальное — понятные инструменты и структура.</div>
+            <summary>01. Сотрудник в найме, уставший от оффлайна <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
+            <div class="ans">Каждый день одно и то же: пробки, будильник, график 5/2. Хотите выбраться из рутины, не увольняясь с работы, но не знаете с чего начать</div>
           </details>
 
           <details class="faq-item">
-            <summary>Где проходит интенсив? <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
-            <div class="ans">Онлайн. После регистрации вы получите инструкции и ссылку (в WhatsApp/Telegram или на email — как выберете).</div>
+            <summary>02. Студент или выпускник без опыта работы <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
+            <div class="ans">Учитесь или недавно закончили вуз, но не понимаете, где взять опыт и как начать зарабатывать. На интенсиве разберём понятный путь «с нуля» и первые шаги</div>
           </details>
 
           <details class="faq-item">
-            <summary>Будет ли запись? <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
-            <div class="ans">Можно добавить запись как опцию. Укажите условия (например, доступ на 24–48 часов) — и мы вставим в текст.</div>
+            <summary>03. Мама в декрете, которой нужен доход из дома <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
+            <div class="ans">Хотите быть рядом с ребёнком, но при этом иметь свои деньги. Вам важно начать без риска и без «обязаловки» на полный день — покажем, как стартовать мягко</div>
           </details>
 
           <details class="faq-item">
-            <summary>Как получить бонус? <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
-            <div class="ans">Сразу после регистрации: кнопка на странице + дублирование в выбранный мессенджер/почту (по настройке).</div>
+            <summary>04. Хотите подработку и дополнительный доход без увольнения <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
+            <div class="ans">Не готовы резко менять жизнь, но понимаете, что одного дохода мало. Профессия ассистента — один из самых безопасных входов: 2–3 часа в день на старте</div>
           </details>
 
           <details class="faq-item">
-            <summary>Сколько времени нужно в день? <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
-            <div class="ans">Рекомендуем выделить время под эфир + 20–40 минут на практику (зависит от темпа). Всё делаем спокойно и последовательно.</div>
+            <summary>05. Боитесь «онлайна» и думаете, что вы «не технарь» <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
+            <div class="ans">Если у вас есть телефон, мессенджер и вы умеете разбираться в бытовых задачах — вы уже на 80% готовы. На интенсиве покажем базовые приложения и логику работы</div>
           </details>
 
           <details class="faq-item">
-            <summary>Доход гарантирован? <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
-            <div class="ans">Нет гарантий: доход зависит от навыков, активности, рынка и времени. На интенсиве вы получите план и практику для стартовых шагов.</div>
+            <summary>06. Устали жить «от зарплаты до зарплаты» и хотите стабильности <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
+            <div class="ans">Вам нужна понятная профессия, которая даёт навык и доход, а не очередная «мотивация». Разберём реальные задачи ассистента и как получать за них оплату</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>07. Хотите перспективу роста, а не тупик на одном месте <span class="chev"><i data-lucide="chevron-down"></i></span></summary>
+            <div class="ans">Ассистент — стартовая позиция, из которой быстро растут в менеджера, проджекта, куратора, SMM, техспеца. Покажем дорожную карту и варианты развития</div>
           </details>
         </div>
 
         <div style="margin-top:14px;" class="reveal">
-          <a class="btn btn-primary" href="#register"><i data-lucide="arrow-right"></i> Зарегистрироваться</a>
+          <a class="btn btn-primary" href="#register"><i data-lucide="arrow-right"></i> ЗАРЕГИСТРИРОВАТЬСЯ</a>
         </div>
       </div>
     </section>
+
+    <section id="register">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Регистрация на бесплатный интенсив</h2>
+            <p>Заполните форму — и получите доступ + бонус за регистрацию</p>
+          </div>
+        </div>
+
+        <div class="form-wrap">
+          <div class="glass form-card reveal">
+            <h3>Забронируйте место (бесплатно)</h3>
+            <p style="margin:0; color: var(--muted); font-size: 13px; line-height: 1.7;">
+              После регистрации вы получите инструкции и ссылку на подключение.
+              Бонус отправим вместе с подтверждением.
+            </p>
+
+            <form id="regForm" autocomplete="on">
+              <div class="row">
+                <div class="field">
+                  <label for="name">Имя</label>
+                  <input id="name" name="name" type="text" placeholder="Например: Алия" required>
+                </div>
+                <div class="field">
+                  <label for="phone">Телефон / WhatsApp</label>
+                  <input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label for="status">Вы сейчас</label>
+                  <select id="status" name="status" required>
+                    <option value="" selected disabled>Выберите вариант</option>
+                    <option>Работаю в найме</option>
+                    <option>Студент / выпускник</option>
+                    <option>Мама в декрете</option>
+                    <option>В поиске работы</option>
+                    <option>Другое</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="city">Город</label>
+                  <input id="city" name="city" type="text" placeholder="Астана / Алматы / ..." required>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="messenger">Куда удобнее прислать доступ?</label>
+                <select id="messenger" name="messenger" required>
+                  <option value="" selected disabled>Выберите мессенджер</option>
+                  <option>WhatsApp</option>
+                  <option>Telegram</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="email">Email (необязательно)</label>
+                <input id="email" name="email" type="email" placeholder="name@email.com">
+              </div>
+
+              <label class="consent">
+                <input id="consent" name="consent" type="checkbox" required>
+                <span>
+                  Нажимая «Зарегистрироваться», вы соглашаетесь с
+                  <a href="offer.html" target="_blank" rel="noopener">публичной офертой</a> и
+                  <a href="pd-consent.html" target="_blank" rel="noopener">политикой обработки персональных данных</a>.
+                </span>
+              </label>
+
+              <button class="btn btn-primary" type="submit">
+                <i data-lucide="arrow-right"></i>
+                ЗАРЕГИСТРИРОВАТЬСЯ
+              </button>
+
+              <div class="success" id="successBox">
+                <b>Готово!</b> Заявка принята. Проверьте мессенджер — туда придёт подтверждение и бонус.
+              </div>
+
+              <div class="disclaimer">
+                Важно: участие бесплатное. Количество мест может быть ограничено форматом эфира.
+              </div>
+            </form>
+          </div>
+
+          <aside class="glass side-info reveal">
+            <div class="block">
+              <h4><i data-lucide="calendar-clock"></i> Даты и время</h4>
+              <p><b style="color: rgba(255,255,255,.92);">13-14-15 января</b><br>в 20:00 по Астане</p>
+            </div>
+
+            <div class="block">
+              <h4><i data-lucide="gift"></i> БОНУС за регистрацию</h4>
+              <p><b style="color: rgba(255,255,255,.92);">Топ-4 навыка в онлайне</b><br>за которые платят от 300 000 тенге в месяц</p>
+            </div>
+
+            <div class="block">
+              <h4><i data-lucide="shield-check"></i> Что будет после регистрации</h4>
+              <p>— подтверждение участия<br>— ссылка на подключение<br>— чек-лист/бонус в сообщении</p>
+            </div>
+
+            <div class="block">
+              <h4><i data-lucide="help-circle"></i> Если не пришло сообщение</h4>
+              <p>Проверьте правильность номера и выбранного мессенджера, затем повторите регистрацию.</p>
+            </div>
+
+            <div class="disclaimer">
+              Заполняя форму, вы подтверждаете согласие на получение сервисных сообщений по мероприятию.
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer>
     <div class="footer-video" aria-hidden="true">
-      <video autoplay muted loop playsinline preload="metadata">
-        <source src="images/footer-bg.mp4" type="video/mp4" />
+      <video autoplay muted loop playsinline>
+        <source src="images/footer.mp4" type="video/mp4">
       </video>
     </div>
 
     <div class="container">
       <div class="footer-grid">
-        <div class="brand" style="min-width:auto;">
-          <img class="logo" src="images/logo.jpg" alt="NextGen Academy" />
+        <div style="min-width: 240px;">
+          <img class="logo" src="images/logo.jpg" alt="NextGen Academy" style="height:34px;">
+          <div class="copy" style="margin-top:10px;">
+            NextGen Academy — образовательный проект. Информация на сайте носит ознакомительный характер и не является публичным обещанием результата.
+          </div>
+
+          <div class="devline">
+            Разработка: <a href="#top">ваш разработчик</a>
+          </div>
         </div>
 
-        <div class="footer-links" aria-label="Ссылки в футере">
-          <a href="privacy.html" target="_blank" rel="noopener">Политика конфиденциальности</a>
-          <a href="offer.html" target="_blank" rel="noopener">Публичная оферта / условия</a>
+        <div class="footer-links">
+          <a href="offer.html" target="_blank" rel="noopener">Публичная оферта</a>
+          <a href="pd-consent.html" target="_blank" rel="noopener">Политика ПДн</a>
+          <a href="cookies.html" target="_blank" rel="noopener">Cookie</a>
           <a href="#register">Регистрация</a>
         </div>
       </div>
 
-      <div style="margin-top:16px;">
-        <div class="copy">
-          © <span id="yearNow">2026</span> NextGen Academy. Все права защищены.
-          <div style="margin-top:8px;">
-            Дисклеймер: информация о доходах приведена в ознакомительных целях и не является обещанием или гарантией результата.
-          </div>
-        </div>
+      <div class="copy" style="margin-top:14px;">
+        © <span id="yearNow"></span> NextGen Academy. Все права защищены.
       </div>
     </div>
   </footer>
 
-  <div class="sticky-cta" aria-label="Быстрая регистрация">
+  <!-- Sticky CTA (mobile) -->
+  <div class="sticky-cta" id="stickyCta" aria-label="Быстрая регистрация">
     <div class="inner">
       <div class="txt">
-        <b>3-дневный бесплатный интенсив</b>
-        <span><span id="stickyDates">13–15 января</span> • <span id="stickyTime">20:00 (Астана)</span></span>
+        <b>Бесплатный интенсив • 3 дня</b>
+        <span>13-14-15 января • 20:00 по Астане</span>
       </div>
-      <a class="btn btn-primary" href="#register" style="padding:12px 14px;">
-        <i data-lucide="arrow-right"></i>
-        Войти
+      <a class="btn btn-primary" href="#register">
+        <span class="muted-dot" aria-hidden="true"></span>
+        ЗАРЕГИСТРИРОВАТЬСЯ
       </a>
     </div>
   </div>
 
-  <div class="cookie" id="cookie">
+  <!-- Cookie -->
+  <div class="cookie" id="cookieBar" role="dialog" aria-live="polite" aria-label="Cookie">
     <div class="bar">
       <p>
-        Мы используем cookies для улучшения работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с
-        <a href="privacy.html" target="_blank" rel="noopener" style="text-decoration:underline; text-underline-offset:3px; color: rgba(255,255,255,.88);">политикой конфиденциальности</a>.
+        Мы используем cookie, чтобы улучшать работу сайта. Продолжая пользоваться сайтом, вы соглашаетесь с использованием cookie.
+        <a href="cookies.html" target="_blank" rel="noopener" style="text-decoration: underline; text-underline-offset: 3px;">Подробнее</a>
       </p>
-      <button class="btn" id="cookieBtn"><i data-lucide="check"></i> Понятно</button>
+      <button class="btn btn-primary" id="cookieAccept" type="button">
+        <span class="muted-dot" aria-hidden="true"></span>
+        Понятно
+      </button>
     </div>
   </div>
 
+  <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <script>
-    const SETTINGS = {
-      dates: "13–15 января",
-      time: "20:00 (Астана)",
-      timezoneNote: "20:00 по Астане",
-      year: "2026",
-      heroBgImage: "images/hero-bg.jpg",
-      footerVideo: "images/footer-bg.mp4",
-      bonusUrl: "images/bonus.pdf",
-      explainerVideoUrl: ""
-    };
+    // ===== CONFIG =====
+    const VIDEO_URL = "";           // вставьте ссылку на видео (YouTube/Instagram/и т.д.)
+    const FORM_ENDPOINT = "";       // вставьте webhook/endpoint для отправки формы (если есть)
 
-    function applySettings(){
-      document.getElementById("heroDates").textContent = SETTINGS.dates;
-      document.getElementById("heroTime").textContent = SETTINGS.time;
-      document.getElementById("sideDates").textContent = SETTINGS.dates;
-      document.getElementById("sideTime").textContent = SETTINGS.timezoneNote;
-      document.getElementById("stickyDates").textContent = SETTINGS.dates;
-      document.getElementById("stickyTime").textContent = SETTINGS.time;
-      document.getElementById("yearNow").textContent = SETTINGS.year;
+    // ===== lucide =====
+    if (window.lucide) lucide.createIcons();
 
-      const datePill = document.getElementById("datePill");
-      if(datePill) datePill.innerHTML = `<b>${SETTINGS.dates}</b> • ${SETTINGS.time}`;
+    // ===== year =====
+    document.getElementById("yearNow").textContent = new Date().getFullYear();
 
-      document.documentElement.style.setProperty("--hero-bg-image", `url("${SETTINGS.heroBgImage}")`);
-
-      const footerVideo = document.querySelector(".footer-video video source");
-      if(footerVideo) footerVideo.setAttribute("src", SETTINGS.footerVideo);
-
-      const bonusLink = document.getElementById("bonusLink");
-      if(bonusLink) bonusLink.setAttribute("href", SETTINGS.bonusUrl);
-
-      const videoFrame = document.getElementById("videoFrame");
-      if(videoFrame) videoFrame.dataset.videoUrl = SETTINGS.explainerVideoUrl || "";
-    }
-
-    const revealEls = [];
-    function initReveal(){
-      document.querySelectorAll(".reveal").forEach(el => revealEls.push(el));
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
+    // ===== reveal on scroll =====
+    (function(){
+      const els = Array.from(document.querySelectorAll(".reveal"));
+      if (!("IntersectionObserver" in window)){
+        els.forEach(el => el.classList.add("show"));
+        return;
+      }
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
           if(e.isIntersecting){
             e.target.classList.add("show");
             io.unobserve(e.target);
           }
         });
       }, { threshold: 0.12 });
-      revealEls.forEach(el => io.observe(el));
-    }
+      els.forEach(el => io.observe(el));
+    })();
 
-    const PROGRAM = {
-      d1: {
-        title: "День 1: Понимание профессии + первое задание",
-        items: [
-          "Что делает онлайн-ассистент и почему это самая быстрая точка входа в онлайн.",
-          "Кому нужны ассистенты в 2026 году и какие задачи они закрывают ежедневно.",
-          "7 типов задач, которые не требуют “особых навыков”, но за них платят.",
-          "Практика в эфире: собрать информацию, структурировать входящие, составить ТЗ, оформить мини-презентацию.",
-          "Как бытовые навыки превращаются в онлайн-доход."
-        ],
-        bonus: "“10 навыков, которые помогут вам найти удалённую работу за 24 часа”."
-      },
-      d2: {
-        title: "День 2: Реальные задачи + портфолио за один вечер",
-        items: [
-          "Разбор настоящих заданий онлайн-ассистента и учениц (контент, графика, процессы, коммуникации).",
-          "Практика в эфире: создаём основу портфолио — таск-менеджер/отчётность в Google-таблице.",
-          "Разбор работ участников.",
-          "Почему это можно сразу отправлять работодателю.",
-          "На что смотрит руководитель и как выделиться среди новичков."
-        ],
-        bonus: "“Пример продающего резюме, с которым получают оффер на 300 000 ₸”."
-      },
-      d3: {
-        title: "День 3: Первый проект + первые 300 000 ₸",
-        items: [
-          "Пошаговый алгоритм выхода на доход: где искать проекты, как писать работодателю, собеседования, что писать без опыта.",
-          "Как собрать резюме и портфолио с нуля (примеры).",
-          "Примеры тестовых заданий и правильные ответы работодателям.",
-          "История ученицы + ответы на вопросы участников.",
-          "План на первые 72 часа после мастер-класса: что сделать сразу, чтобы не “остыть”."
-        ],
-        bonus: "“11 проверенных мест, где находят удалённую работу даже новички”."
+    // ===== program tabs =====
+    (function(){
+      const data = {
+        d1: {
+          title: "Что будет на 1-м дне:",
+          list: [
+            "Кто такой онлайн-ассистент и почему на него растёт спрос",
+            "Какие задачи реально делают ассистенты (и за что платят)",
+            "Сколько можно зарабатывать на старте и как устроена оплата",
+            "Где искать первые проекты и как не попасть на мошенников",
+            "Какие навыки уже есть у вас (и как их «упаковать»)"
+          ],
+          bonus: "<b>Бонус дня:</b> карта «4 навыка, за которые платят от 300 000₸/мес»"
+        },
+        d2: {
+          title: "Что будет на 2-м дне:",
+          list: [
+            "Базовые инструменты: таблицы, документы, задачи, календарь",
+            "Как вести коммуникацию с руководителем и клиентом",
+            "Как быстро обучаться новому и не «тупить» в задачах",
+            "Как работать 2–3 часа в день и успевать больше",
+            "Ошибки новичков, из-за которых не берут на проекты"
+          ],
+          bonus: "<b>Бонус дня:</b> чек-лист «инструменты ассистента»"
+        },
+        d3: {
+          title: "Что будет на 3-м дне:",
+          list: [
+            "Как сделать первый шаг к доходу: план на 7–14 дней",
+            "Как оформить себя: анкета/резюме/описание навыков",
+            "Как проходить отбор и тестовые задания без паники",
+            "Как повысить доход и брать несколько проектов",
+            "Траектория роста: куда можно вырасти дальше"
+          ],
+          bonus: "<b>Бонус дня:</b> шаблон сообщения для отклика на проект"
+        }
+      };
+
+      const tabs = Array.from(document.querySelectorAll(".tab"));
+      const title = document.getElementById("programTitle");
+      const list = document.getElementById("programList");
+      const bonus = document.getElementById("programBonus");
+
+      function render(key){
+        const d = data[key];
+        if(!d) return;
+        title.textContent = d.title;
+        list.innerHTML = d.list.map(x => `<li>${x}</li>`).join("");
+        bonus.innerHTML = d.bonus || "";
       }
-    };
 
-    function setProgram(dayKey){
-      const data = PROGRAM[dayKey];
-      if(!data) return;
-
-      document.getElementById("programTitle").textContent = data.title;
-
-      const ul = document.getElementById("programList");
-      ul.innerHTML = data.items.map(t => `<li>${t}</li>`).join("");
-
-      document.getElementById("programBonus").innerHTML = `<b>Бонус дня:</b> ${data.bonus}`;
-
-      document.querySelectorAll(".tab").forEach(btn => {
-        const isActive = btn.dataset.tab === dayKey;
-        btn.classList.toggle("active", isActive);
-        btn.setAttribute("aria-selected", isActive ? "true" : "false");
+      tabs.forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          tabs.forEach(b=>b.classList.remove("active"));
+          btn.classList.add("active");
+          render(btn.dataset.tab);
+        });
       });
-    }
 
-    function initTabs(){
-      document.querySelectorAll(".tab").forEach(btn => {
-        btn.addEventListener("click", () => setProgram(btn.dataset.tab));
-      });
-    }
+      render("d1");
+    })();
 
-    function openExplainerVideo(){
+    // ===== video click =====
+    (function(){
       const frame = document.getElementById("videoFrame");
-      const url = (frame && frame.dataset.videoUrl) ? frame.dataset.videoUrl.trim() : "";
-      if(!url){
-        alert("Видео пока недоступно.");
-        return;
-      }
-      window.open(url, "_blank", "noopener");
-    }
+      const btn = document.getElementById("playVideo");
+      if (!frame || !btn) return;
 
-    function initVideo(){
-      const play = document.getElementById("playVideo");
-      if(!play) return;
-      play.addEvent
-Listener("click", openExplainerVideo);
-      play.addEventListener("keydown", (e) => {
-        if(e.key === "Enter" || e.key === " "){
-          e.preventDefault();
-          openExplainerVideo();
-        }
-      });
+      if (VIDEO_URL) frame.dataset.videoUrl = VIDEO_URL;
 
-      // Дополнительно: кликабельная область кадра
-      const frame = document.getElementById("videoFrame");
-      if(frame){
-        frame.addEventListener("click", (e) => {
-          // чтобы клики по элементам внутри не дублировались
-          if(e.target && (e.target.closest && e.target.closest("#playVideo"))) return;
-          openExplainerVideo();
-        });
-      }
-    }
-
-    function initCookie(){
-      const box = document.getElementById("cookie");
-      const btn = document.getElementById("cookieBtn");
-      if(!box || !btn) return;
-
-      const KEY = "cookieAccepted";
-      const accepted = localStorage.getItem(KEY) === "1";
-      if(accepted) return;
-
-      // Показ через небольшую задержку
-      setTimeout(() => {
-        box.style.display = "block";
-      }, 900);
-
-      btn.addEventListener("click", () => {
-        localStorage.setItem(KEY, "1");
-        box.style.display = "none";
-      });
-    }
-
-    function initUTM(){
-      const sp = new URLSearchParams(window.location.search);
-      const map = [
-        ["utm_source","utm_source"],
-        ["utm_medium","utm_medium"],
-        ["utm_campaign","utm_campaign"],
-        ["utm_content","utm_content"],
-        ["utm_term","utm_term"]
-      ];
-
-      map.forEach(([param, id]) => {
-        const el = document.getElementById(id);
-        if(!el) return;
-        el.value = sp.get(param) || "";
-      });
-    }
-
-    function formatPhone(value){
-      // Маска: +7 (###) ###-##-##
-      const digits = String(value || "").replace(/\D/g, "");
-      // убираем ведущие 7/8 при вводе
-      let d = digits;
-      if(d.startsWith("8")) d = "7" + d.slice(1);
-      if(d.startsWith("7")) d = d.slice(1);
-
-      const a = d.slice(0, 10);
-      let out = "+7";
-      if(a.length > 0) out += " (" + a.slice(0,3);
-      if(a.length >= 3) out += ") ";
-      if(a.length > 3) out += a.slice(3,6);
-      if(a.length >= 6) out += "-";
-      if(a.length > 6) out += a.slice(6,8);
-      if(a.length >= 8) out += "-";
-      if(a.length > 8) out += a.slice(8,10);
-
-      // если ничего не введено — пусто
-      if(!digits) return "";
-      return out;
-    }
-
-    function markInvalid(el, on){
-      if(!el) return;
-      if(on){
-        el.setAttribute("aria-invalid", "true");
-        el.style.borderColor = "rgba(255,122,24,.70)";
-      } else {
-        el.removeAttribute("aria-invalid");
-        el.style.borderColor = "";
-      }
-    }
-
-    function initForm(){
-      const form = document.getElementById("regForm");
-      const success = document.getElementById("successBox");
-      const agree = document.getElementById("agree");
-      if(!form || !success || !agree) return;
-
-      const name = document.getElementById("name");
-      const phone = document.getElementById("phone");
-      const messenger = document.getElementById("messenger");
-      const contact = document.getElementById("contact");
-
-      // Телефонная маска (мягкая)
-      if(phone){
-        phone.addEventListener("input", () => {
-          const caretEnd = phone.selectionStart || phone.value.length;
-          const formatted = formatPhone(phone.value);
-          phone.value = formatted;
-          // стараемся не “ломать” ввод (без сложных вычислений caret)
-          phone.setSelectionRange(caretEnd, caretEnd);
-          markInvalid(phone, false);
-        });
-        phone.addEventListener("blur", () => {
-          // если ввели мало — подсветим
-          const digits = phone.value.replace(/\D/g, "");
-          if(phone.value && digits.length < 11) markInvalid(phone, true);
-        });
-      }
-
-      // Снятие подсветки при вводе
-      [name, messenger, contact].forEach(el => {
-        if(!el) return;
-        el.addEventListener("input", () => markInvalid(el, false));
-        el.addEventListener("change", () => markInvalid(el, false));
-      });
-      agree.addEventListener("change", () => {
-        // просто снимаем подсветку (если была)
-        markInvalid(agree, false);
-      });
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        // Базовая валидация
-        let ok = true;
-
-        if(name && !name.value.trim()){
-          markInvalid(name, true); ok = false;
-        }
-        if(phone){
-          const digits = phone.value.replace(/\D/g, "");
-          // ожидаем +7 и 10 цифр (итого 11)
-          if(!phone.value.trim() || digits.length < 11){
-            markInvalid(phone, true); ok = false;
-          }
-        }
-        if(messenger && !messenger.value){
-          markInvalid(messenger, true); ok = false;
-        }
-        if(contact && !contact.value.trim()){
-          markInvalid(contact, true); ok = false;
-        }
-        if(!agree.checked){
-          // для чекбокса подсветим через outline
-          agree.style.outline = "2px solid rgba(255,122,24,.75)";
-          agree.style.outlineOffset = "4px";
-          setTimeout(() => {
-            agree.style.outline = "";
-            agree.style.outlineOffset = "";
-          }, 1600);
-          ok = false;
-        }
-
-        if(!ok){
-          // фокус на первое невалидное
-          const first = form.querySelector('[aria-invalid="true"]') || form.querySelector(":invalid");
-          if(first && first.focus) first.focus();
+      function openVideo(){
+        const url = frame.dataset.videoUrl || "";
+        if (!url){
+          alert("Добавьте ссылку на видео в переменную VIDEO_URL внизу файла.");
           return;
         }
+        window.open(url, "_blank", "noopener,noreferrer");
+      }
 
-        // Здесь можно подключить реальную отправку (fetch) на ваш эндпоинт/CRM.
-        // Сейчас — мягкий “успех” для статического лендинга:
-        success.style.display = "block";
-
-        // Можно заблокировать кнопку, чтобы не спамили
-        const submitBtn = form.querySelector('button[type="submit"]');
-        if(submitBtn){
-          submitBtn.disabled = true;
-          submitBtn.style.opacity = ".85";
-          submitBtn.style.cursor = "not-allowed";
-          submitBtn.innerHTML = '<i data-lucide="check"></i> Заявка принята';
+      btn.addEventListener("click", openVideo);
+      btn.addEventListener("keydown", (e)=>{
+        if(e.key === "Enter" || e.key === " "){
+          e.preventDefault();
+          openVideo();
         }
-
-        // Обновим иконки (после изменения кнопки)
-        try{ lucide.createIcons(); } catch(err){}
-
-        // Прокрутка к блоку успеха
-        success.scrollIntoView({ behavior: "smooth", block: "start" });
       });
-    }
+    })();
 
-    function initSticky(){
-      const sticky = document.querySelector(".sticky-cta");
-      const reg = document.getElementById("register");
-      if(!sticky || !reg) return;
+    // ===== sticky CTA show after scroll (mobile) =====
+    (function(){
+      const el = document.getElementById("stickyCta");
+      if(!el) return;
 
       function update(){
-        const y = window.scrollY || 0;
-        const regTop = reg.getBoundingClientRect().top;
-        const nearRegister = regTop < 220; // если близко к форме — прячем
-        const shouldShow = y > 260 && !nearRegister;
-
-        // hidden перекрывает display из CSS
-        sticky.hidden = !shouldShow;
+        const isMobile = window.matchMedia("(max-width: 640px)").matches;
+        const show = isMobile && window.scrollY > 220;
+        el.style.display = show ? "block" : "none";
       }
-
+      update();
       window.addEventListener("scroll", update, { passive: true });
       window.addEventListener("resize", update);
-      update();
-    }
+    })();
 
-    // Инициализация
-    (function init(){
-      applySettings();
+    // ===== cookie bar =====
+    (function(){
+      const bar = document.getElementById("cookieBar");
+      const btn = document.getElementById("cookieAccept");
+      if(!bar || !btn) return;
 
-      // Перезагрузить видео-футер после смены src
-      const v = document.querySelector(".footer-video video");
-      if(v){
-        try{ v.load(); } catch(e){}
+      const KEY = "cookie_ok_v1";
+      const ok = localStorage.getItem(KEY) === "1";
+      if(!ok){
+        setTimeout(()=>{ bar.style.display = "block"; }, 900);
+      }
+      btn.addEventListener("click", ()=>{
+        localStorage.setItem(KEY, "1");
+        bar.style.display = "none";
+      });
+    })();
+
+    // ===== form submit (no backend by default) =====
+    (function(){
+      const form = document.getElementById("regForm");
+      const box = document.getElementById("successBox");
+      if(!form || !box) return;
+
+      async function send(payload){
+        if(!FORM_ENDPOINT) return { ok: true };
+        const res = await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        return { ok: res.ok };
       }
 
-      try{ lucide.createIcons(); } catch(e){}
+      form.addEventListener("submit", async (e)=>{
+        e.preventDefault();
 
-      initReveal();
-      initTabs();
-      setProgram("d1");
-      initVideo();
-      initCookie();
-      initUTM();
-      initForm();
-      initSticky();
+        const fd = new FormData(form);
+        const payload = Object.fromEntries(fd.entries());
+
+        // checkbox -> boolean
+        payload.consent = !!fd.get("consent");
+
+        try{
+          const r = await send(payload);
+          if(!r.ok) throw new Error("send failed");
+
+          box.style.display = "block";
+          form.querySelectorAll("input, select, button").forEach(el => {
+            if(el.id !== "consent") el.disabled = true;
+          });
+          // оставим чекбокс как есть, чтобы визуально было понятно
+          form.scrollIntoView({ behavior: "smooth", block: "start" });
+        }catch(err){
+          alert("Не удалось отправить форму. Попробуйте ещё раз или проверьте настройки FORM_ENDPOINT.");
+        }
+      });
     })();
   </script>
 </body>
 </html>
+
