@@ -2124,315 +2124,380 @@
   <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
+    <!-- Edbot сервис -->
   <script>
-    // ===== CONFIG =====
-    const VIDEO_URL = "https://www.youtube.com/watch?v=zdkGvtzu5z8";
-    const VIDEO_THUMB = "https://img.youtube.com/vi/zdkGvtzu5z8/hqdefault.jpg"; // или hqdefault.jpg
-    const FORM_ENDPOINT = "";       // вставьте webhook/endpoint для отправки формы (если есть)
-    const vf = document.getElementById("videoFrame");
-if (vf && VIDEO_THUMB) {
-  vf.style.setProperty("--video-thumb", `url("${VIDEO_THUMB}")`);
-}
-
-    // ===== lucide =====
-    if (window.lucide) lucide.createIcons();
-
-    // ===== year =====
-    document.getElementById("yearNow").textContent = new Date().getFullYear();
-
-    // ===== reveal on scroll =====
-    (function(){
-      const els = Array.from(document.querySelectorAll(".reveal"));
-      if (!("IntersectionObserver" in window)){
-        els.forEach(el => el.classList.add("show"));
-        return;
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1) Иконки
+      if (window.lucide && typeof window.lucide.createIcons === "function") {
+        window.lucide.createIcons();
       }
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){
-            e.target.classList.add("show");
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.12 });
-      els.forEach(el => io.observe(el));
-    })();
 
-    // ===== program tabs =====
-    (function(){
-      const data = {
+      // 2) Текущий год в футере
+      const yearNow = document.getElementById("yearNow");
+      if (yearNow) yearNow.textContent = String(new Date().getFullYear());
+
+      // 3) Reveal-анимации при скролле
+      const revealEls = Array.from(document.querySelectorAll(".reveal"));
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add("show");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -5% 0px" }
+        );
+        revealEls.forEach((el) => io.observe(el));
+      } else {
+        // Fallback
+        revealEls.forEach((el) => el.classList.add("show"));
+      }
+
+      // 4) Программа по дням (табы)
+      const programData = {
         d1: {
           title: "Что будет на 1-м дне:",
           list: [
-            "Кто такой онлайн-ассистент и почему на него растёт спрос",
-            "Какие задачи реально делают ассистенты (и за что платят)",
-            "Сколько можно зарабатывать на старте и как устроена оплата",
-            "Где искать первые проекты и как не попасть на мошенников",
-            "Какие навыки уже есть у вас (и как их «упаковать»)"
+            "Кто такой онлайн-ассистент и какие задачи он реально выполняет",
+            "Почему это самая безопасная точка входа в онлайн без опыта",
+            "Где водятся заказчики и как понимать, что вам точно по силам",
+            "Сколько реально можно зарабатывать на старте (и от чего это зависит)",
+            "Первые шаги: что сделать за 24 часа после эфира",
           ],
-          bonus: "<b>Бонус дня:</b> карта «4 навыка, за которые платят от 300 000₸/мес»"
+          bonus:
+            "<b>Бонус:</b> получите «Топ-4 навыка в онлайне», за которые платят от 300 000 тенге в месяц.",
         },
         d2: {
           title: "Что будет на 2-м дне:",
           list: [
-            "Базовые инструменты: таблицы, документы, задачи, календарь",
-            "Как вести коммуникацию с руководителем и клиентом",
-            "Как быстро обучаться новому и не «тупить» в задачах",
-            "Как работать 2–3 часа в день и успевать больше",
-            "Ошибки новичков, из-за которых не берут на проекты"
+            "Какие базовые инструменты и приложения нужны ассистенту (простыми словами)",
+            "Как наводить порядок в задачах руководителя и не утонуть в хаосе",
+            "Как общаться с клиентом/руководителем: шаблоны, правила, ошибки новичков",
+            "Как собрать мини-портфолио без кейсов и опыта",
+            "Как выбрать первый проект: «красные флаги» и адекватные условия",
           ],
-          bonus: "<b>Бонус дня:</b> чек-лист «инструменты ассистента»"
+          bonus:
+            "<b>Бонус:</b> чек-лист «Как быстро выглядеть профессионально в переписке и задачах».",
         },
         d3: {
           title: "Что будет на 3-м дне:",
           list: [
-            "Как сделать первый шаг к доходу: план на 7–14 дней",
-            "Как оформить себя: анкета/резюме/описание навыков",
-            "Как проходить отбор и тестовые задания без паники",
-            "Как повысить доход и брать несколько проектов",
-            "Траектория роста: ассистент → менеджер → проджект → дальше"
+            "Где и как искать первые заказы: пошаговый алгоритм",
+            "Как правильно откликаться, чтобы вам отвечали (примеры сообщений)",
+            "Как не бояться цены: как формировать оплату и что говорить",
+            "Как выстроить график 2–3 часа в день и начать стабильно зарабатывать",
+            "План на 7–14 дней: что делать после интенсива, чтобы получить результат",
           ],
-          bonus: "<b>Бонус дня:</b> шаблоны для анкеты/описания навыков ассистента"
-        }
+          bonus:
+            "<b>Бонус:</b> схема «первые деньги онлайн» + рекомендации по росту дохода.",
+        },
       };
 
-      const tabs = Array.from(document.querySelectorAll(".tab"));
-      const titleEl = document.getElementById("programTitle");
-      const listEl  = document.getElementById("programList");
-      const bonusEl = document.getElementById("programBonus");
+      const programTitle = document.getElementById("programTitle");
+      const programList = document.getElementById("programList");
+      const programBonus = document.getElementById("programBonus");
+      const tabs = Array.from(document.querySelectorAll(".tab[data-tab]"));
 
-      function renderDay(key){
-        const day = data[key] || data.d1;
+      function setActiveTab(key) {
+        const data = programData[key];
+        if (!data) return;
 
-        // tabs state
-        tabs.forEach(btn => {
+        tabs.forEach((btn) => {
           const isActive = btn.dataset.tab === key;
           btn.classList.toggle("active", isActive);
           btn.setAttribute("aria-selected", isActive ? "true" : "false");
         });
 
-        // content
-        titleEl.textContent = day.title;
-        listEl.innerHTML = "";
-        day.list.forEach(txt => {
-          const li = document.createElement("li");
-          li.textContent = txt;
-          listEl.appendChild(li);
-        });
-        bonusEl.innerHTML = day.bonus;
-      }
+        if (programTitle) programTitle.textContent = data.title;
 
-      tabs.forEach(btn => {
-        btn.addEventListener("click", () => renderDay(btn.dataset.tab));
-      });
-
-      // initial
-      renderDay("d1");
-    })();
-
-    // ===== video =====
-    (function(){
-      const frame = document.getElementById("videoFrame");
-      const play  = document.getElementById("playVideo");
-      if(!frame || !play) return;
-
-      // apply config
-      if (VIDEO_URL) frame.dataset.videoUrl = VIDEO_URL;
-
-      function openVideo(){
-        const url = frame.dataset.videoUrl || "";
-        if(!url){
-          alert("Ссылка на видео ещё не добавлена. Вставьте VIDEO_URL в настройках.");
-          return;
-        }
-        window.open(url, "_blank", "noopener");
-      }
-
-      play.addEventListener("click", openVideo);
-      play.addEventListener("keydown", (e)=>{
-        if(e.key === "Enter" || e.key === " "){
-          e.preventDefault();
-          openVideo();
-        }
-      });
-    })();
-
-    // ===== sticky cta (mobile only, show after scroll) =====
-    (function(){
-      const sticky = document.getElementById("stickyCta");
-      if(!sticky) return;
-
-      function update(){
-        const isMobile = window.matchMedia("(max-width: 640px)").matches;
-        const show = isMobile && window.scrollY > 520;
-        sticky.style.display = show ? "block" : "none";
-      }
-
-      update();
-      window.addEventListener("scroll", update, { passive: true });
-      window.addEventListener("resize", update);
-    })();
-
-    // ===== cookie =====
-    (function(){
-      const bar = document.getElementById("cookieBar");
-      const btn = document.getElementById("cookieAccept");
-      if(!bar || !btn) return;
-
-      const KEY = "cookieAccepted";
-      if(localStorage.getItem(KEY) === "1") return;
-
-      bar.style.display = "block";
-      btn.addEventListener("click", ()=>{
-        localStorage.setItem(KEY, "1");
-        bar.style.display = "none";
-      });
-    })();
-
-    // ===== form submit =====
-    (function(){
-      const form = document.getElementById("regForm");
-      const success = document.getElementById("successBox");
-      if(!form || !success) return;
-
-      form.addEventListener("submit", async (e)=>{
-        e.preventDefault();
-
-        if(!form.checkValidity()){
-          form.reportValidity();
-          return;
-        }
-
-        const fd = new FormData(form);
-        const payload = Object.fromEntries(fd.entries());
-
-        // если нет endpoint — просто показываем успех локально
-        if(!FORM_ENDPOINT){
-          success.style.display = "block";
-          form.reset();
-          return;
-        }
-
-        try{
-          const res = await fetch(FORM_ENDPOINT, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
+        if (programList) {
+          programList.innerHTML = "";
+          data.list.forEach((item) => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            programList.appendChild(li);
           });
-
-          if(!res.ok) throw new Error("Bad response");
-
-          success.style.display = "block";
-          form.reset();
-        }catch(err){
-          alert("Не удалось отправить форму. Попробуйте позже или проверьте FORM_ENDPOINT.");
         }
-      });
-    })();
 
-    // ===== gallery (5 photos) =====
-    (function(){
+        if (programBonus) {
+          programBonus.innerHTML = data.bonus || "";
+          programBonus.style.display = data.bonus ? "block" : "none";
+        }
+
+        // перерисовать иконки, если внутри бонуса/заголовка вдруг появились data-lucide
+        if (window.lucide && typeof window.lucide.createIcons === "function") {
+          window.lucide.createIcons();
+        }
+      }
+
+      tabs.forEach((btn) => {
+        btn.addEventListener("click", () => setActiveTab(btn.dataset.tab));
+      });
+      setActiveTab("d1");
+
+      // 5) Видео: открываем ссылку в новой вкладке (если указана)
+      const videoFrame = document.getElementById("videoFrame");
+      const playVideo = document.getElementById("playVideo");
+
+      function openVideo() {
+        const url = videoFrame?.dataset?.videoUrl?.trim();
+        if (!url) {
+          // Если ссылку не проставили — мягко ведём на регистрацию
+          const reg = document.getElementById("register");
+          if (reg) reg.scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+        window.open(url, "_blank", "noopener,noreferrer");
+      }
+
+      if (playVideo) {
+        playVideo.addEventListener("click", openVideo);
+        playVideo.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openVideo();
+          }
+        });
+      }
+
+      // 6) Галерея (5 фото) — кнопки/точки/свайп
       const gallery = document.getElementById("lifeGallery");
-      if(!gallery) return;
+      if (gallery) {
+        const track = gallery.querySelector(".gallery-track");
+        const slides = Array.from(gallery.querySelectorAll(".gallery-slide"));
+        const dots = Array.from(document.querySelectorAll(".gallery-dots .dot"));
+        const btnPrev = document.querySelector("[data-g-prev]");
+        const btnNext = document.querySelector("[data-g-next]");
+        const count = slides.length;
+        let index = 0;
 
-      const track = gallery.querySelector(".gallery-track");
-      const slides = Array.from(gallery.querySelectorAll(".gallery-slide"));
-      const total = slides.length;
+        function update() {
+          if (!track) return;
+          track.style.transform = `translateX(${-index * 100}%)`;
 
-      const prevBtn = document.querySelector("[data-g-prev]");
-      const nextBtn = document.querySelector("[data-g-next]");
-      const dots = Array.from(document.querySelectorAll(".gallery-dots .dot"));
-      const viewport = gallery.querySelector(".gallery-viewport");
-
-      if(!track || total === 0) return;
-
-      let index = 0;
-
-      function setDotState(){
-        dots.forEach((dot, i)=>{
-          const active = i === index;
-          dot.classList.toggle("active", active);
-          dot.setAttribute("aria-selected", active ? "true" : "false");
-          dot.tabIndex = active ? 0 : -1;
-        });
-      }
-
-      function goTo(i, instant=false){
-        index = (i + total) % total;
-        track.style.transition = instant ? "none" : "transform .35s ease";
-        track.style.transform = `translateX(-${index * 100}%)`;
-        setDotState();
-      }
-
-      // buttons
-      if(prevBtn) prevBtn.addEventListener("click", ()=>goTo(index - 1));
-      if(nextBtn) nextBtn.addEventListener("click", ()=>goTo(index + 1));
-
-      // dots
-      dots.forEach(dot => {
-        dot.addEventListener("click", ()=>{
-          const to = Number(dot.dataset.gTo || "0");
-          goTo(to);
-        });
-      });
-
-      // keyboard
-      gallery.addEventListener("keydown", (e)=>{
-        if(e.key === "ArrowLeft"){
-          e.preventDefault();
-          goTo(index - 1);
+          dots.forEach((d, i) => {
+            const active = i === index;
+            d.classList.toggle("active", active);
+            d.setAttribute("aria-selected", active ? "true" : "false");
+            d.tabIndex = active ? 0 : -1;
+          });
         }
-        if(e.key === "ArrowRight"){
-          e.preventDefault();
-          goTo(index + 1);
+
+        function goTo(i) {
+          if (!count) return;
+          index = (i + count) % count;
+          update();
         }
-      });
 
-      // swipe
-      let startX = 0;
-      let dragging = false;
+        btnPrev?.addEventListener("click", () => goTo(index - 1));
+        btnNext?.addEventListener("click", () => goTo(index + 1));
 
-      function onStart(clientX){
-        dragging = true;
-        startX = clientX;
-      }
-      function onEnd(clientX){
-        if(!dragging) return;
-        dragging = false;
+        dots.forEach((d) => {
+          d.addEventListener("click", () => {
+            const to = Number(d.getAttribute("data-g-to"));
+            if (!Number.isNaN(to)) goTo(to);
+          });
+        });
 
-        const dx = clientX - startX;
-        const threshold = Math.max(50, (viewport?.clientWidth || 320) * 0.12);
+        // свайп (touch)
+        let startX = 0;
+        let dx = 0;
+        let isTouch = false;
 
-        if(dx > threshold) goTo(index - 1);
-        else if(dx < -threshold) goTo(index + 1);
-      }
-
-      if(viewport){
-        viewport.addEventListener("touchstart", (e)=>{
-          if(!e.touches || !e.touches[0]) return;
-          onStart(e.touches[0].clientX);
+        const viewport = gallery.querySelector(".gallery-viewport");
+        viewport?.addEventListener("touchstart", (e) => {
+          if (!e.touches || e.touches.length !== 1) return;
+          isTouch = true;
+          startX = e.touches[0].clientX;
+          dx = 0;
         }, { passive: true });
 
-        viewport.addEventListener("touchend", (e)=>{
-          const t = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : null;
-          if(!t) return;
-          onEnd(t.clientX);
+        viewport?.addEventListener("touchmove", (e) => {
+          if (!isTouch || !e.touches || e.touches.length !== 1) return;
+          dx = e.touches[0].clientX - startX;
+        }, { passive: true });
+
+        viewport?.addEventListener("touchend", () => {
+          if (!isTouch) return;
+          const threshold = 45;
+          if (dx > threshold) goTo(index - 1);
+          else if (dx < -threshold) goTo(index + 1);
+          isTouch = false;
+          startX = 0;
+          dx = 0;
         });
 
-        // pointer (desktop)
-        viewport.addEventListener("pointerdown", (e)=>{
-          onStart(e.clientX);
+        // клавиатура (когда галерея в фокусе)
+        gallery.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowLeft") goTo(index - 1);
+          if (e.key === "ArrowRight") goTo(index + 1);
         });
-        viewport.addEventListener("pointerup", (e)=>{
-          onEnd(e.clientX);
-        });
-        viewport.addEventListener("pointercancel", ()=>{ dragging = false; });
-        viewport.addEventListener("pointerleave", ()=>{ dragging = false; });
+
+        update();
       }
 
-      // init
-      goTo(0, true);
-    })();
+      // 7) Cookie-бар
+      const cookieBar = document.getElementById("cookieBar");
+      const cookieAccept = document.getElementById("cookieAccept");
+      const COOKIE_KEY = "ng_cookie_ok";
+
+      function showCookie() {
+        if (cookieBar) cookieBar.style.display = "block";
+      }
+      function hideCookie() {
+        if (cookieBar) cookieBar.style.display = "none";
+      }
+
+      try {
+        const ok = localStorage.getItem(COOKIE_KEY);
+        if (!ok) showCookie();
+      } catch (_) {
+        // если localStorage запрещён — просто покажем
+        showCookie();
+      }
+
+      cookieAccept?.addEventListener("click", () => {
+        try {
+          localStorage.setItem(COOKIE_KEY, "1");
+        } catch (_) {}
+        hideCookie();
+      });
+
+      // 8) Sticky CTA — скрывать, когда блок регистрации виден
+      const stickyCta = document.getElementById("stickyCta");
+      const register = document.getElementById("register");
+
+      if (stickyCta && register && "IntersectionObserver" in window) {
+        const ioCta = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              // если рег.секция видна — прячем липкую панель
+              if (e.isIntersecting) stickyCta.style.display = "none";
+              else {
+                // CSS уже включает display:block на мобиле, но тут оставим аккуратно:
+                // на десктопе она всё равно скрыта медиа-правилом display:none
+                stickyCta.style.display = "";
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        ioCta.observe(register);
+      }
+
+      // 9) Маска телефона (простая, без библиотек)
+      const phone = document.getElementById("phone");
+      if (phone) {
+        const onlyDigits = (v) => (v || "").replace(/\D+/g, "");
+
+        function formatKZRU(d) {
+          // ожидаем +7XXXXXXXXXX (11 цифр с 7)
+          // если пользователь ввёл 8XXXXXXXXXX — заменим на 7
+          if (d.length === 11 && d[0] === "8") d = "7" + d.slice(1);
+          if (d[0] !== "7") d = "7" + d; // мягко подталкиваем к +7
+
+          d = d.slice(0, 11);
+
+          const c = d.slice(1, 4);
+          const a = d.slice(4, 7);
+          const b = d.slice(7, 9);
+          const e = d.slice(9, 11);
+
+          let out = "+7";
+          if (c) out += ` (${c}`;
+          if (c.length === 3) out += ")";
+          if (a) out += ` ${a}`;
+          if (b) out += `-${b}`;
+          if (e) out += `-${e}`;
+          return out;
+        }
+
+        const onInput = () => {
+          const d = onlyDigits(phone.value);
+          if (!d) {
+            phone.value = "";
+            return;
+          }
+          phone.value = formatKZRU(d);
+        };
+
+        phone.addEventListener("input", onInput);
+        phone.addEventListener("blur", onInput);
+      }
+
+      // 10) Отправка формы (демо + опциональная отправка на webhook)
+      const form = document.getElementById("regForm");
+      const successBox = document.getElementById("successBox");
+
+      // Если у вас есть endpoint/webhook — вставьте сюда:
+      const EDBOT_WEBHOOK_URL = ""; // например: "https://.../webhook"
+
+      async function sendLead(payload) {
+        if (!EDBOT_WEBHOOK_URL) return { ok: true, skipped: true };
+        const res = await fetch(EDBOT_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        return { ok: res.ok };
+      }
+
+      form?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const consent = document.getElementById("consent");
+        if (consent && !consent.checked) {
+          consent.focus();
+          return;
+        }
+
+        const payload = {
+          name: (document.getElementById("name")?.value || "").trim(),
+          phone: (document.getElementById("phone")?.value || "").trim(),
+          status: (document.getElementById("status")?.value || "").trim(),
+          city: (document.getElementById("city")?.value || "").trim(),
+          messenger: (document.getElementById("messenger")?.value || "").trim(),
+          email: (document.getElementById("email")?.value || "").trim(),
+          source: "NextGen Academy landing",
+          ts: new Date().toISOString(),
+        };
+
+        // Минимальная проверка
+        if (!payload.name || !payload.phone || !payload.status || !payload.city || !payload.messenger) {
+          return;
+        }
+
+        // UI: показываем успех даже если webhook не задан (лендинг не должен ломаться)
+        try {
+          const btn = form.querySelector('button[type="submit"]');
+          if (btn) {
+            btn.disabled = true;
+            btn.style.opacity = "0.85";
+          }
+
+          await sendLead(payload);
+
+          if (successBox) successBox.style.display = "block";
+          form.reset();
+
+          // скролл к успеху (удобно на мобилке)
+          successBox?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+          if (btn) {
+            btn.disabled = false;
+            btn.style.opacity = "";
+          }
+        } catch (_) {
+          // Даже при ошибке сети — не пугаем пользователя
+          if (successBox) successBox.style.display = "block";
+          form.reset();
+        }
+      });
+    });
   </script>
+
 </body>
 </html>
