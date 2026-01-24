@@ -2125,93 +2125,15 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <script>
-    <script>
-  // ===== CONFIG =====
-  const VIDEO_URL = "https://www.youtube.com/watch?v=zdkGvtzu5z8";
-  const VIDEO_THUMB = "https://img.youtube.com/vi/zdkGvtzu5z8/hqdefault.jpg";
-  const FORM_ENDPOINT = "";
+    // ===== CONFIG =====
+    const VIDEO_URL = "https://www.youtube.com/watch?v=zdkGvtzu5z8";
+    const VIDEO_THUMB = "https://img.youtube.com/vi/zdkGvtzu5z8/hqdefault.jpg"; // или hqdefault.jpg
+    const FORM_ENDPOINT = "";       // вставьте webhook/endpoint для отправки формы (если есть)
+    const vf = document.getElementById("videoFrame");
+if (vf && VIDEO_THUMB) {
+  vf.style.setProperty("--video-thumb", `url("${VIDEO_THUMB}")`);
+}
 
-  // ===== AUTO DATES (Astana, переключение в 20:00) =====
-  (function(){
-    const TZ = "Asia/Almaty";     // Астана
-    const SWITCH_HOUR = 20;       // в 20:00 перелистываем на следующий день
-
-    function astanaNow(){
-      return new Date(new Date().toLocaleString("en-US", { timeZone: TZ }));
-    }
-
-    function addDays(d, n){
-      const x = new Date(d);
-      x.setDate(x.getDate() + n);
-      return x;
-    }
-
-    function ruParts(date){
-      const fmt = new Intl.DateTimeFormat("ru-RU", { day:"numeric", month:"long", timeZone: TZ });
-      const parts = fmt.formatToParts(date);
-      return {
-        day: parts.find(p => p.type === "day")?.value || "",
-        month: parts.find(p => p.type === "month")?.value || ""
-      };
-    }
-
-    function makeLabel(){
-      const now = astanaNow();
-
-      const start = new Date(now);
-      if (start.getHours() >= SWITCH_HOUR) start.setDate(start.getDate() + 1);
-      start.setHours(0,0,0,0);
-
-      const d0 = start;
-      const d1 = addDays(start, 1);
-      const d2 = addDays(start, 2);
-
-      const p0 = ruParts(d0);
-      const p1 = ruParts(d1);
-      const p2 = ruParts(d2);
-
-      // один месяц → "13-14-15 января"
-      if (p0.month === p1.month && p1.month === p2.month){
-        return `${p0.day}-${p1.day}-${p2.day} ${p0.month}`;
-      }
-      // переход месяца → "31 января — 1 февраля — 2 февраля"
-      return `${p0.day} ${p0.month} — ${p1.day} ${p1.month} — ${p2.day} ${p2.month}`;
-    }
-
-    function render(){
-      const label = makeLabel();
-
-      // все элементы, где вы поставили класс js-dates
-      document.querySelectorAll(".js-dates").forEach(el => el.textContent = label);
-
-      // ваш уже существующий heroDates
-      const heroDates = document.getElementById("heroDates");
-      if (heroDates) heroDates.textContent = label;
-    }
-
-    function scheduleNext(){
-      const now = astanaNow();
-      const next = new Date(now);
-      next.setHours(SWITCH_HOUR, 0, 2, 0); // +2 секунды
-      if (now >= next) next.setDate(next.getDate() + 1);
-
-      setTimeout(() => {
-        render();
-        setInterval(render, 24 * 60 * 60 * 1000);
-      }, Math.max(1000, next - now));
-    }
-
-    render();
-    scheduleNext();
-
-    document.addEventListener("visibilitychange", () => {
-      if (!document.hidden) render();
-    });
-  })();
-
-  // дальше ваш код без изменений...
-</script>
-   
     // ===== lucide =====
     if (window.lucide) lucide.createIcons();
 
@@ -2514,4 +2436,3 @@
   </script>
 </body>
 </html>
-
