@@ -250,20 +250,13 @@
       margin: 14px 0 12px;
       letter-spacing: .01em;
       position: relative;
-
-      /* ДОБАВЛЕНО: чтобы текст красиво "вплавлялся" в фон */
       text-shadow: 0 14px 44px rgba(0,0,0,.55);
     }
     .hero h1::before{
       content:"";
       position:absolute;
-
-      /* ИЗМЕНЕНО: уменьшили верхний отрицательный inset, чтобы рамки НЕ слипались с .kicker на мобилке */
       inset: -12px -10px -16px -10px;
-
       border-radius: 18px;
-
-      /* ИЗМЕНЕНО: мягче подложка — больше "слияния" с фоном (как в примере) */
       background:
         radial-gradient(120% 160% at 18% 0%, rgba(0,0,0,.55), rgba(0,0,0,.18) 62%, rgba(0,0,0,.08) 100%);
       border: 1px solid rgba(255,255,255,.08);
@@ -285,8 +278,6 @@
       font-size: clamp(14px, 1.35vw, 16px);
       line-height: 1.7;
       max-width: 64ch;
-
-      /* ДОБАВЛЕНО: читабельность на фоне фото */
       text-shadow: 0 10px 28px rgba(0,0,0,.45);
     }
 
@@ -309,7 +300,6 @@
     }
     .badge i{ opacity: .92; }
 
-    /* ДОБАВЛЕНО: fallback для устройств, где flex-gap может не работать -> чтобы рамки не "слипались" */
     @supports not (gap: 10px){
       .hero-meta{ margin: 18px 0 12px; }
       .hero-meta .badge{ margin: 0 10px 10px 0; }
@@ -328,7 +318,6 @@
       font-size: 12px;
     }
 
-    /* ИЗМЕНЕНО: чтобы "Топ-4 навыка..." был единым текстовым блоком (не разваливался на части) */
     .sub-cta a{
       display: inline-grid;
       grid-template-columns: auto 1fr;
@@ -367,79 +356,101 @@
     }
     .hero-card > *{ position: relative; z-index: 1; }
 
-    .author{
-      display:flex; flex-direction:column; gap: 14px;
-      height: 100%;
-      justify-content: space-between;
-      min-width: 0;
+    /* ===== ИЗМЕНЕНО ТОЛЬКО ДЛЯ КАРТОЧКИ С ФОТО (без рамок + текст поверх фото) ===== */
+    .hero-card.hero-card-photo{
+      padding: 0;
+      border: none;
+      background: transparent;
+      backdrop-filter: none;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      min-height: 520px;
     }
+    .hero-card.hero-card-photo:before{ display:none; }
 
-    .author-top{
-      display:grid;
-      grid-template-columns: 1fr auto;
-      gap: 14px;
-      align-items: center;
-      min-width: 0;
-    }
-    .author-photo{
-      width: 138px;
-      aspect-ratio: 3 / 4;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.25);
-      overflow:hidden;
-      box-shadow: 0 18px 40px rgba(0,0,0,.35);
-      flex: 0 0 auto;
-    }
-    .author-photo img{
-      width: 100%; height: 100%;
+    .hero-card-bg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
       object-fit: cover;
       object-position: 50% 30%;
       display:block;
       transform: scale(1.02);
-    }
-    .author-meta{
-      display:flex; flex-direction:column; gap: 6px;
-      min-width: 0;
-    }
-    .author-meta .name{
-      font-weight: 900;
-      letter-spacing: .01em;
-      font-size: 15px;
-      line-height: 1.2;
-    }
-    .author-meta .role{
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.4;
+      filter: saturate(1.06) contrast(1.03);
     }
 
-    .author-points{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+    .hero-card-overlay{
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 16px;
+      z-index: 1;
+    }
+    .hero-card-overlay::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,.62) 0%,
+        rgba(0,0,0,.10) 46%,
+        rgba(0,0,0,.78) 100%
+      );
+      z-index: 0;
+    }
+    .hero-card-overlay > *{
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-topline{
+      font-weight: 900;
+      letter-spacing: .01em;
+      font-size: 13px;
+      color: rgba(255,255,255,.92);
+      text-shadow: 0 14px 44px rgba(0,0,0,.55);
+    }
+    .hero-card-subline{
       margin-top: 6px;
+      color: rgba(255,255,255,.72);
+      font-size: 12px;
+      text-shadow: 0 12px 36px rgba(0,0,0,.55);
     }
-    .mini{
-      border-radius: 16px;
+
+    .hero-over-meta{
+      display:grid;
+      grid-template-columns: 1fr 1fr; /* 2 ряда максимум */
+      gap: 10px 14px;
       padding: 12px 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      background: rgba(0,0,0,.20); /* без рамок, просто «слияние» */
       backdrop-filter: blur(14px);
-      min-height: 78px;
     }
-    .mini .t{
-      color: rgba(255,255,255,.90);
-      font-weight: 800;
+    .hero-over-item{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 900;
       font-size: 12px;
-      display:flex; align-items:center; gap: 8px;
+      color: rgba(255,255,255,.92);
+      min-width: 0;
+      text-shadow: 0 12px 32px rgba(0,0,0,.55);
     }
-    .mini .d{
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.5;
+    .hero-over-item i{
+      width: 18px; height: 18px;
+      opacity: .95;
+      flex: 0 0 auto;
     }
+    .hero-over-item span{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+    /* ===== /ИЗМЕНЕНО ===== */
 
     section{
       padding: clamp(34px, 6vw, 74px) 0;
@@ -552,7 +563,6 @@
       min-width: 0;
     }
 
-    /* ВАЖНО: делаем список навыков GRID, чтобы gap работал стабильно на телефонах (в т.ч. Safari) */
     .skill-list{
       display:grid;
       gap: 12px;
@@ -612,14 +622,12 @@
       color: rgba(255,255,255,.92);
     }
 
-    /* Мобилка: карточка навыка становится в 1 колонку,
-       а плашка дохода аккуратно фиксируется справа сверху */
     @media (max-width: 640px){
       .skill{
         grid-template-columns: 1fr;
         gap: 10px;
         position: relative;
-        padding-top: 52px; /* место под плашку дохода */
+        padding-top: 52px;
       }
 
       .skill .pay{
@@ -858,179 +866,6 @@
       line-height: 1.4;
     }
 
-    .transform{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      min-width: 0;
-    }
-    .list{ padding: 18px; min-width: 0; }
-    .list h3{
-      margin: 0 0 10px;
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: .01em;
-    }
-    .list ul{
-      margin:0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.85;
-      font-size: 13px;
-    }
-    .list li{ margin: 6px 0; }
-
-    /* ===== TRANSFORM: рамки для фото/галерея ===== */
-    .transform-media{ margin-top: 14px; }
-
-    .photo-frame{
-      position: relative;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.18);
-      overflow: hidden;
-      box-shadow: 0 18px 50px rgba(0,0,0,.45);
-    }
-    .photo-frame:before{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(520px 280px at 18% 0%, rgba(255,122,24,.18), transparent 60%),
-        radial-gradient(520px 300px at 92% 10%, rgba(255,155,47,.10), transparent 62%),
-        linear-gradient(180deg, rgba(255,255,255,.08), transparent 42%);
-      pointer-events:none;
-      opacity: .9;
-      z-index: 0;
-    }
-    .photo-frame img{
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      height: auto;
-      display:block;
-      object-fit: cover;
-      aspect-ratio: 16 / 9;
-      filter: saturate(1.05) contrast(1.02);
-      transform: scale(1.01);
-    }
-
-    .gallery{
-      position: relative;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.18);
-      overflow: hidden;
-      box-shadow: 0 18px 50px rgba(0,0,0,.45);
-    }
-    .gallery:before{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(520px 280px at 18% 0%, rgba(255,122,24,.18), transparent 60%),
-        radial-gradient(520px 300px at 92% 10%, rgba(255,155,47,.10), transparent 62%),
-        linear-gradient(180deg, rgba(255,255,255,.08), transparent 42%);
-      pointer-events:none;
-      opacity: .9;
-      z-index: 0;
-    }
-    .gallery-viewport{
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      overflow: hidden;
-      touch-action: pan-y;
-    }
-    .gallery-track{
-      display:flex;
-      width: 100%;
-      transform: translateX(0%);
-      transition: transform .35s ease;
-      will-change: transform;
-    }
-    .gallery-slide{
-      flex: 0 0 100%;
-      width: 100%;
-    }
-    .gallery-slide img{
-      width: 100%;
-      height: auto;
-      display:block;
-      object-fit: cover;
-      aspect-ratio: 16 / 9;
-      filter: saturate(1.05) contrast(1.02);
-      transform: scale(1.01);
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-    .gallery-controls{
-      margin-top: 10px;
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .gallery-btn{
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      backdrop-filter: blur(14px);
-      color: rgba(255,255,255,.92);
-      font-weight: 800;
-      font-size: 12px;
-      cursor: pointer;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      user-select:none;
-      white-space: nowrap;
-    }
-    .gallery-btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,155,47,.45);
-      background: rgba(255,255,255,.06);
-    }
-    .gallery-btn:active{ transform: translateY(0px) scale(.99); }
-
-    .gallery-dots{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap: 8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      backdrop-filter: blur(14px);
-    }
-    .gallery-dots .dot{
-      width: 10px; height: 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.22);
-      background: rgba(255,255,255,.14);
-      cursor: pointer;
-      padding: 0;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-    }
-    .gallery-dots .dot:hover{ transform: scale(1.08); }
-    .gallery-dots .dot.active{
-      background: linear-gradient(135deg, rgba(255,122,24,1), rgba(255,155,47,1));
-      border-color: rgba(255,122,24,.55);
-      box-shadow: 0 0 18px rgba(255,122,24,.18);
-    }
-
-    @media (max-width: 640px){
-      .photo-frame img,
-      .gallery-slide img{
-        aspect-ratio: 4 / 3;
-      }
-      .gallery-controls{
-        justify-content: center;
-      }
-    }
-
     .faq{
       display:grid;
       grid-template-columns: 1fr;
@@ -1221,11 +1056,9 @@
       margin-top: 18px;
       gap: 14px;
     }
-    /* скрываем подписи у обычных полей (как в примере), но НЕ трогаем чекбоксы */
     #register .form-card .field > label{
       display: none;
     }
-    /* оранжевая рамка и крупнее поля только внутри формы регистрации */
     #register .form-card input,
     #register .form-card select{
       border-color: rgba(255,122,24,.35);
@@ -1242,7 +1075,6 @@
       box-shadow: 0 0 0 3px rgba(255,122,24,.18), inset 0 1px 0 rgba(255,255,255,.06);
     }
 
-    /* Телефон: одно поле (3-е поле), префикс внутри */
     #register .phone-single{
       position: relative;
       width: 100%;
@@ -1264,7 +1096,7 @@
       z-index: 1;
     }
     #register .phone-single input{
-      padding-left: 96px; /* место под "🇰🇿 +7" */
+      padding-left: 96px;
     }
 
     .phone-combo{
@@ -1288,7 +1120,6 @@
       margin-top: 2px;
     }
 
-    /* ===== ИЗМЕНЕНО ТОЛЬКО ЗДЕСЬ: микро-текст + микро-чекбоксы + авто-галочка внутри квадрата ===== */
     #register .consent{
       gap: 10px;
       align-items: flex-start;
@@ -1327,9 +1158,7 @@
     #register .consent a{
       font-size: 11px;
     }
-    /* ===== /ИЗМЕНЕНО ===== */
 
-    /* кнопка как на примере: крупная и на всю ширину */
     #register .form-card button.btn-primary{
       width: 100%;
       padding: 16px 18px;
@@ -1409,7 +1238,6 @@
       max-width: 66ch;
     }
 
-    /* Линия разработчика */
     .devline{
       margin-top: 10px;
       color: rgba(255,255,255,.60);
@@ -1521,19 +1349,11 @@
       .skills{ grid-template-columns: 1fr; }
       .video{ grid-template-columns: 1fr; }
       .program{ grid-template-columns: 1fr; }
-      .transform{ grid-template-columns: 1fr; }
       .form-wrap{ grid-template-columns: 1fr; }
       .row{ grid-template-columns: 1fr; }
 
-      .author-top{
-        grid-template-columns: 1fr;
-        justify-items: stretch;
-        align-items: start;
-      }
-      .author-photo{
-        width: 100%;
-        max-width: 100%;
-        aspect-ratio: 3 / 4;
+      .hero-card.hero-card-photo{
+        min-height: 560px;
       }
     }
     @media (max-width: 640px){
@@ -1544,6 +1364,13 @@
       .footer-video video{ opacity: .22; }
       .logo{ height: 32px; }
       .btn{ padding: 12px 14px; }
+
+      .hero-card.hero-card-photo{
+        min-height: 540px;
+      }
+      .hero-over-item span{
+        max-width: 18ch;
+      }
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -1630,41 +1457,36 @@
             </div>
           </div>
 
-          <aside class="hero-card reveal float" aria-label="Карточка интенсива">
-            <div class="author">
+          <!-- ИЗМЕНЕНО: карточка справа — без рамок, текст снизу поверх фото, компактные строки -->
+          <aside class="hero-card hero-card-photo reveal float" aria-label="Карточка интенсива">
+            <img class="hero-card-bg" src="images/author.jpg" alt="NextGen Academy" />
+            <div class="hero-card-overlay">
               <div>
-                <div class="author-top">
-                  <div class="author-meta">
-                    <div class="name">3 дня • сертификат • без опыта</div>
-                    <div class="role">после интенсива • в онлайне</div>
-                  </div>
+                <div class="hero-card-topline">3 дня • сертификат • старт без опыта</div>
+                <div class="hero-card-subline">онлайн • практика</div>
+              </div>
 
-                  <div class="author-photo" aria-label="Изображение">
-                    <img src="images/author.jpg" alt="NextGen Academy" />
-                  </div>
+              <div class="hero-over-meta" aria-label="Ключевые параметры">
+                <div class="hero-over-item">
+                  <i data-lucide="calendar-days"></i>
+                  <span><span id="cardDates">13–15 янв</span>, 20:00</span>
                 </div>
-
-                <div class="author-points">
-                  <div class="mini">
-                    <div class="t"><i data-lucide="calendar-days"></i> <span id="cardDates">13-14-15 января</span></div>
-                    <div class="d">в 20:00 по Астане</div>
-                  </div>
-                  <div class="mini">
-                    <div class="t"><i data-lucide="gift"></i> БОНУС</div>
-                    <div class="d">за регистрацию</div>
-                  </div>
-                  <div class="mini">
-                    <div class="t"><i data-lucide="briefcase"></i> Профессия</div>
-                    <div class="d">ОНЛАЙН-АССИСТЕНТ</div>
-                  </div>
-                  <div class="mini">
-                    <div class="t"><i data-lucide="coins"></i> Доход</div>
-                    <div class="d">от 300 000 тенге в месяц</div>
-                  </div>
+                <div class="hero-over-item">
+                  <i data-lucide="gift"></i>
+                  <span>Бонус</span>
+                </div>
+                <div class="hero-over-item">
+                  <i data-lucide="briefcase"></i>
+                  <span>Онлайн-ассистент</span>
+                </div>
+                <div class="hero-over-item">
+                  <i data-lucide="coins"></i>
+                  <span>от 300 000 ₸/мес</span>
                 </div>
               </div>
             </div>
           </aside>
+          <!-- /ИЗМЕНЕНО -->
         </div>
       </div>
     </section>
@@ -1804,7 +1626,7 @@
             <div class="big">
               ОСВОИТЬ ПРОФЕССИЮ БЕСПЛАТНО
             </div>
-                        <div style="margin-top:12px;">
+            <div style="margin-top:12px;">
               <a class="btn btn-primary" href="#register" style="width:100%; justify-content:center;">
                 <i data-lucide="arrow-right"></i> ЗАРЕГИСТРИРОВАТЬСЯ
               </a>
@@ -2041,9 +1863,21 @@
             </div>
 
             <div class="block">
-              <h4><i data-lucide="shield-check"></i> Важно</h4>
-              <p>Если не приходит письмо/сообщение — проверьте папку «Спам» или корректность введённых данных.</p>
-              <div class="disclaimer">Нажимая «Зарегистрироваться», вы подтверждаете согласие на обработку данных.</div>
+              <h4><i  data-lucide="shield-check"></i> Что вы получите</h4>
+              <p style="line-height:1.8;">
+                — доступ к 3 дням интенсива<br>
+                — бонус за регистрацию<br>
+                — понятный план старта
+              </p>
+            </div>
+
+            <div class="block">
+              <h4><i data-lucide="help-circle"></i> Вопросы</h4>
+              <p>Если возникнут сложности с регистрацией — напишите нам в поддержку.</p>
+            </div>
+
+            <div class="disclaimer">
+              Отправляя форму, вы подтверждаете согласие с условиями оферты и обработкой персональных данных.
             </div>
           </aside>
         </div>
@@ -2061,139 +1895,178 @@
     <div class="container">
       <div class="footer-grid">
         <div class="copy">
-          © <span id="yearNow"></span> NextGen Academy. Все права защищены.<br>
-          Информация на сайте не является публичной офертой, если не указано иное.
-          <div class="devline">Разработка: <a href="#" target="_blank" rel="noopener">Ваше имя/студия</a></div>
+          <b>NextGen Academy</b><br>
+          Интенсив проходит онлайн. Даты: <span id="footerDates">13-14-15 января</span>, время: 20:00 по Астане.
         </div>
 
-        <div class="footer-links" aria-label="Ссылки">
+        <div class="footer-links" aria-label="Документы">
           <a href="offer.html" target="_blank" rel="noopener">Оферта</a>
           <a href="pd-consent.html" target="_blank" rel="noopener">Персональные данные</a>
           <a href="cookies.html" target="_blank" rel="noopener">Cookies</a>
         </div>
       </div>
+
+      <div class="devline">
+        Разработка: <a href="#" onclick="return false;">NextGen</a>
+      </div>
     </div>
   </footer>
 
-  <div class="sticky-cta" aria-label="Нижняя кнопка">
+  <div class="sticky-cta" aria-label="Быстрая регистрация">
     <div class="inner">
       <div class="txt">
-        <b>Бесплатный интенсив • 3 дня</b>
-        <span>Доступ + бонус за регистрацию</span>
+        <b>Интенсив: 3 дня • старт без опыта</b>
+        <span><span id="stickyDates">13–15 янв</span> • 20:00 (Астана)</span>
       </div>
-      <a class="btn btn-primary" href="#register" style="padding:12px 14px;">
-        <span class="muted-dot" aria-hidden="true"></span> РЕГИСТРАЦИЯ
-      </a>
+      <a class="btn btn-primary" href="#register">ЗАРЕГИСТРИРОВАТЬСЯ</a>
     </div>
   </div>
 
-  <div class="cookie" id="cookieBar" aria-label="Cookie">
+  <div class="cookie" id="cookieBar" role="dialog" aria-live="polite" aria-label="Cookie уведомление">
     <div class="bar">
-      <p>Мы используем cookies для улучшения работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с использованием cookies.</p>
-      <button class="btn" id="cookieOk" type="button">ОК</button>
+      <p>
+        Мы используем файлы cookie для улучшения работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с использованием cookie.
+      </p>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a class="btn" href="cookies.html" target="_blank" rel="noopener">Подробнее</a>
+        <button class="btn btn-primary" id="cookieAccept" type="button">Принять</button>
+      </div>
     </div>
   </div>
 
-  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
   <script>
-    // Icons
-    if (window.lucide) lucide.createIcons();
+    // Lucide Icons
+    (function(){
+      const s = document.createElement('script');
+      s.src = "https://unpkg.com/lucide@latest";
+      s.onload = () => window.lucide && window.lucide.createIcons();
+      document.head.appendChild(s);
+    })();
 
-    // Reveal on scroll
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting) e.target.classList.add('show');
-      });
-    }, { threshold: 0.12 });
+    // ===== ДИНАМИЧЕСКИЕ ДАТЫ (оставлено как было) =====
+    (function(){
+      const now = new Date();
+      // базовый режим: показать статично, если даты в тексте уже заданы
+      // здесь ничего не меняем, просто синхронизируем места с одинаковым текстом
+      const d1 = document.getElementById('heroDates');
+      const d2 = document.getElementById('sideDates');
+      const d3 = document.getElementById('footerDates');
+      const d4 = document.getElementById('stickyDates');
+      const d5 = document.getElementById('cardDates');
 
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+      const fixedHero = (d1 && d1.textContent) ? d1.textContent.trim() : "13-14-15 января";
 
-    // Year
-    document.getElementById('yearNow').textContent = new Date().getFullYear();
+      if(d2) d2.textContent = fixedHero;
+      if(d3) d3.textContent = fixedHero;
+      if(d4) d4.textContent = "13–15 янв";
+      if(d5) d5.textContent = "13–15 янв";
+    })();
 
-    // Tabs (Program)
-    const tabs = document.querySelectorAll('.tab');
-    const content = document.getElementById('programContent');
+    // ===== Reveal on scroll =====
+    (function(){
+      const els = Array.from(document.querySelectorAll('.reveal'));
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.classList.add('show');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(el=>io.observe(el));
+    })();
 
-    const programData = {
-      day1: {
-        title: "День 1 — Понимание профессии",
-        list: [
-          "Кто такой онлайн-ассистент и за что платят",
-          "Что из ваших навыков уже подходит под эту роль",
-          "Какие задачи дают новичкам",
-          "Как выглядит «рабочий день» в онлайне"
-        ],
-        bonus: "«Топ-4 навыка в онлайне», за которые платят от 300 000₸/мес"
-      },
-      day2: {
-        title: "День 2 — Первые шаги и инструменты",
-        list: [
-          "Какие сервисы нужны ассистенту (таблицы, календарь, таск-менеджер)",
-          "Как упаковать себя: что написать о навыках без опыта",
-          "Как составить простой отклик на проект",
-          "Как не выгореть и выстроить график под себя"
-        ],
-        bonus: "Чек-лист «Первые шаги в удалёнке»"
-      },
-      day3: {
-        title: "День 3 — Поиск проектов и рост дохода",
-        list: [
-          "Где искать первые проекты и как правильно откликаться",
-          "Как вести переписку и не теряться",
-          "Как выйти на стабильность и повышать чек",
-          "План на 2–4 недели: что делать после интенсива"
-        ],
-        bonus: "Шаблон структуры отклика + план действий"
+    // ===== Tabs (Program) =====
+    (function(){
+      const tabs = Array.from(document.querySelectorAll('.tab'));
+      const content = document.getElementById('programContent');
+
+      const data = {
+        day1: {
+          t: "День 1 — Понимание профессии",
+          list: [
+            "Кто такой онлайн-ассистент и за что платят",
+            "Что из ваших навыков уже подходит под эту роль",
+            "Какие задачи дают новичкам",
+            "Как выглядит «рабочий день» в онлайне"
+          ],
+          bonus: "«Топ-4 навыка в онлайне», за которые платят от 300 000₸/мес"
+        },
+        day2: {
+          t: "День 2 — Навыки и первые шаги",
+          list: [
+            "Какие 4 навыка ценятся выше всего",
+            "Как упаковать себя: позиционирование и сильные стороны",
+            "Где искать первые проекты",
+            "Как откликаться, чтобы вам отвечали"
+          ],
+          bonus: "Чек-лист «первые шаги в удалёнке»"
+        },
+        day3: {
+          t: "День 3 — План и выход на доход",
+          list: [
+            "Как выстроить план на 2–4 недели",
+            "Как держать темп и не «сливаться»",
+            "Ошибки новичков и как их обходить",
+            "Что делать после интенсива: сценарии роста"
+          ],
+          bonus: "Шаблон структуры отклика на проект"
+        }
+      };
+
+      function render(key){
+        const d = data[key];
+        if(!d || !content) return;
+        content.innerHTML = `
+          <h3>${d.t}</h3>
+          <ul>${d.list.map(x=>`<li>${x}</li>`).join('')}</ul>
+          <div class="bonus"><b>Бонус:</b> ${d.bonus}</div>
+        `;
+        if(window.lucide && window.lucide.createIcons) window.lucide.createIcons();
       }
-    };
 
-    function renderProgram(key){
-      const d = programData[key];
-      content.innerHTML = `
-        <h3>${d.title}</h3>
-        <ul>${d.list.map(x=>`<li>${x}</li>`).join('')}</ul>
-        <div class="bonus"><b>Бонус:</b> ${d.bonus}</div>
-      `;
-      if (window.lucide) lucide.createIcons();
-    }
-
-    tabs.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        tabs.forEach(t=>t.classList.remove('active'));
-        btn.classList.add('active');
-        renderProgram(btn.dataset.tab);
+      tabs.forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          tabs.forEach(t=>t.classList.remove('active'));
+          btn.classList.add('active');
+          render(btn.dataset.tab);
+        });
       });
-    });
+    })();
 
-    // Form submit (demo)
-    const form = document.getElementById('regForm');
-    const success = document.getElementById('successBox');
+    // ===== Form submit (демо) =====
+    (function(){
+      const form = document.getElementById('regForm');
+      const ok = document.getElementById('successBox');
+      if(!form) return;
 
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        // Здесь обычно отправка на сервер/CRM.
+        // Оставляем как демо, чтобы страница работала без бэкенда.
+        if(ok) ok.style.display = 'block';
+        form.scrollIntoView({behavior:'smooth', block:'start'});
+        form.reset();
+      });
+    })();
 
-      // Здесь ты подключишь отправку на CRM/бота/Google Sheets и т.д.
-      // Сейчас просто показываем успех.
-      success.style.display = 'block';
-      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // ===== Cookie bar =====
+    (function(){
+      const bar = document.getElementById('cookieBar');
+      const btn = document.getElementById('cookieAccept');
+      const key = 'cookieAccepted_v1';
+      if(!bar || !btn) return;
 
-      // Можно очистить поля:
-      // form.reset();
-    });
+      const accepted = localStorage.getItem(key);
+      if(!accepted){
+        bar.style.display = 'block';
+      }
 
-    // Cookie bar
-    const cookieBar = document.getElementById('cookieBar');
-    const cookieOk = document.getElementById('cookieOk');
-    const COOKIE_KEY = "ng_cookie_ok";
-
-    if(!localStorage.getItem(COOKIE_KEY)){
-      cookieBar.style.display = 'block';
-    }
-    cookieOk.addEventListener('click', ()=>{
-      localStorage.setItem(COOKIE_KEY, "1");
-      cookieBar.style.display = 'none';
-    });
+      btn.addEventListener('click', ()=>{
+        localStorage.setItem(key, '1');
+        bar.style.display = 'none';
+      });
+    })();
   </script>
 </body>
 </html>
