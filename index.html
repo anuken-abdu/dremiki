@@ -526,7 +526,6 @@
       min-width: 0;
     }
 
-    /* ВАЖНО: делаем список навыков GRID, чтобы gap работал стабильно на телефонах (в т.ч. Safari) */
     .skill-list{
       display:grid;
       gap: 12px;
@@ -586,14 +585,12 @@
       color: rgba(255,255,255,.92);
     }
 
-    /* Мобилка: карточка навыка становится в 1 колонку,
-       а плашка дохода аккуратно фиксируется справа сверху */
     @media (max-width: 640px){
       .skill{
         grid-template-columns: 1fr;
         gap: 10px;
         position: relative;
-        padding-top: 52px; /* место под плашку дохода */
+        padding-top: 52px;
       }
 
       .skill .pay{
@@ -631,19 +628,6 @@
       color: var(--muted);
       font-size: 13px;
       line-height: 1.7;
-    }
-    .skills-aside .big{
-      margin-top: 14px;
-      padding: 14px 14px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.16);
-      color: rgba(255,255,255,.88);
-      font-weight: 800;
-      line-height: 1.5;
-    }
-    .skills-aside .big span{
-      color: var(--orange2);
     }
 
     .video{
@@ -758,7 +742,7 @@
     }
     .program{
       display:grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 0.9fr;
       gap: 14px;
       align-items: stretch;
       min-width: 0;
@@ -790,47 +774,6 @@
       line-height: 1.7;
     }
     .bonus b{ color: rgba(255,255,255,.96); font-weight: 900; }
-
-    .program-side{
-      padding: 18px;
-      display:flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 12px;
-      min-width: 0;
-    }
-    .stat{
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.16);
-      padding: 14px;
-      min-width: 0;
-    }
-    .stat .t{
-      display:flex; align-items:center; justify-content:space-between;
-      color: rgba(255,255,255,.90);
-      font-weight: 900;
-      font-size: 12px;
-      gap: 12px;
-      min-width: 0;
-    }
-    .stat .v{
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.65;
-    }
-    .highlight{
-      display:inline-flex; align-items:center; gap: 10px;
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,122,24,.35);
-      background: rgba(255,122,24,.10);
-      color: rgba(255,255,255,.90);
-      font-size: 12px;
-      line-height: 1.4;
-    }
 
     .transform{
       display:grid;
@@ -1005,52 +948,6 @@
       }
     }
 
-    .faq{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      min-width: 0;
-    }
-    details.faq-item{
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      backdrop-filter: blur(14px);
-      padding: 14px 16px;
-      transition: border-color .18s ease, background .18s ease;
-      min-width: 0;
-    }
-    details.faq-item[open]{
-      border-color: rgba(255,122,24,.45);
-      background: rgba(255,122,24,.08);
-    }
-    .faq-item summary{
-      cursor: pointer;
-      list-style: none;
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 12px;
-      font-weight: 900;
-      color: rgba(255,255,255,.92);
-      font-size: 13px;
-      min-width: 0;
-    }
-    .faq-item summary::-webkit-details-marker{ display:none; }
-    .faq-item .ans{
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.75;
-      max-width: 90ch;
-    }
-    .chev{
-      opacity: .85;
-      transition: transform .18s ease;
-      flex: 0 0 auto;
-    }
-    details[open] .chev{ transform: rotate(180deg); }
-
     .form-wrap{
       display:grid;
       grid-template-columns: 1fr .9fr;
@@ -1195,11 +1092,9 @@
       margin-top: 18px;
       gap: 14px;
     }
-    /* скрываем подписи у обычных полей (как в примере), но НЕ трогаем чекбоксы */
     #register .form-card .field > label{
       display: none;
     }
-    /* оранжевая рамка и крупнее поля только внутри формы регистрации */
     #register .form-card input,
     #register .form-card select{
       border-color: rgba(255,122,24,.35);
@@ -1216,7 +1111,6 @@
       box-shadow: 0 0 0 3px rgba(255,122,24,.18), inset 0 1px 0 rgba(255,255,255,.06);
     }
 
-    /* Телефон: одно поле (3-е поле), префикс внутри */
     #register .phone-single{
       position: relative;
       width: 100%;
@@ -1238,7 +1132,7 @@
       z-index: 1;
     }
     #register .phone-single input{
-      padding-left: 96px; /* место под "🇰🇿 +7" */
+      padding-left: 96px;
     }
 
     .phone-combo{
@@ -1262,7 +1156,6 @@
       margin-top: 2px;
     }
 
-    /* ===== ИЗМЕНЕНО ТОЛЬКО ЗДЕСЬ: микро-текст + микро-чекбоксы + авто-галочка внутри квадрата ===== */
     #register .consent{
       gap: 10px;
       align-items: flex-start;
@@ -1301,9 +1194,7 @@
     #register .consent a{
       font-size: 11px;
     }
-    /* ===== /ИЗМЕНЕНО ===== */
 
-    /* кнопка как на примере: крупная и на всю ширину */
     #register .form-card button.btn-primary{
       width: 100%;
       padding: 16px 18px;
@@ -1383,7 +1274,6 @@
       max-width: 66ch;
     }
 
-    /* Линия разработчика */
     .devline{
       margin-top: 10px;
       color: rgba(255,255,255,.60);
@@ -1415,6 +1305,7 @@
       50%{ transform: translateY(-6px); }
     }
 
+    /* (CSS sticky-cta оставлен, но HTML блока удален по задаче) */
     .sticky-cta{
       position: fixed;
       left: 0; right: 0; bottom: 0;
@@ -1424,35 +1315,6 @@
       border-top: 1px solid rgba(255,255,255,.08);
       backdrop-filter: blur(16px);
       display:none;
-    }
-    .sticky-cta .inner{
-      width: min(var(--max), calc(100% - 2*12px));
-      margin: 0 auto;
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      justify-content: space-between;
-      min-width: 0;
-    }
-    .sticky-cta .txt{
-      display:flex;
-      flex-direction: column;
-      gap: 2px;
-      min-width: 0;
-    }
-    .sticky-cta .txt b{
-      font-size: 12px;
-      line-height: 1.2;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .sticky-cta .txt span{
-      font-size: 11px;
-      color: rgba(255,255,255,.62);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .cookie{
@@ -1513,7 +1375,6 @@
     @media (max-width: 640px){
       .header-inner{ padding: 12px 0; }
       .pill{ display:none; }
-      .sticky-cta{ display:block; }
       .hero-media::before{ opacity: .26; }
       .footer-video video{ opacity: .22; }
       .logo{ height: 32px; }
@@ -1900,11 +1761,82 @@
           <button class="tab" data-tab="d3" role="tab" aria-selected="false"><i data-lucide="sunset"></i> День 3</button>
         </div>
 
-        <div class="program">
+        <div class="program" style="grid-template-columns: 1fr;">
           <div class="glass program-main reveal" id="programMain" aria-live="polite">
             <h3 id="programTitle">Что будет на 1-м дне:</h3>
             <ul id="programList"></ul>
             <div class="bonus" id="programBonus"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="transform">
+      <div class="container">
+        <!-- Заголовок секции удален по задаче, сам блок оставлен -->
+
+        <div class="transform">
+          <div class="glass list reveal">
+            <h3><i data-lucide="cloud-rain"></i> Чтобы из жизни, когда:</h3>
+            <ul>
+              <li>Работа не приносит радости, сидишь там с утра до вечера и возвращаешься домой как выжатая тряпка</li>
+              <li>Нет уверенности за свое будущее;</li>
+              <li>вечно что-то надо успеть, кому-то помочь, о чем-то не забыть;</li>
+              <li>деньги исчезают быстрее, чем появляются - и ты уже не помнишь, когда спокойно вздыхала после зарплаты;</li>
+              <li>ощущение, что все вокруг куда-то двигаются, растут, пробуют новое… а ты как будто стоишь на месте;</li>
+              <li>страшно менять что-то, потому что нет ни времени, ни поддержки, ни понимания «с чего начать»;</li>
+              <li>внутри сидит тихая мысль: «я могу больше… но где взять шанс?»</li>
+            </ul>
+
+            <div class="transform-media" aria-label="Фото в рамке">
+              <div class="photo-frame">
+                <img src="images/transform-when.jpg" alt="Фото — «Чтобы из жизни, когда»" loading="lazy" />
+              </div>
+            </div>
+          </div>
+
+          <div class="glass list reveal">
+            <h3><i data-lucide="sun"></i> Попасть в жизнь, когда:</h3>
+            <ul>
+              <li>Ты работаешь дома или где хочешь — без пробок, без начальника, без нервотрепки. Хоть с кухни, хоть из другого города или страны;</li>
+              <li>у тебя есть стабильный онлайн-доход, а не вечная тревожность из-за постоянно растущих расходов;</li>
+              <li>время наконец-то твое: ты сама выбираешь график и нагрузку;</li>
+              <li>ты спокойна, потому что знаешь: твои навыки ценят, тебя выбирают, ты можешь найти проект в любой момент;</li>
+              <li>появляется чувство полезности, нужности, а не выжатости;</li>
+              <li>жизнь становится легче, свободнее и… наконец-то про твое будущее, а не про выживание</li>
+            </ul>
+
+            <div class="transform-media" aria-label="Галерея в рамке">
+              <div class="gallery" id="lifeGallery" tabindex="0" aria-label="Галерея фото (5)">
+                <div class="gallery-viewport" aria-label="Слайды">
+                  <div class="gallery-track">
+                    <div class="gallery-slide"><img src="images/life-1.jpg" alt="Фото 1" loading="lazy"></div>
+                    <div class="gallery-slide"><img src="images/life-2.jpg" alt="Фото 2" loading="lazy"></div>
+                    <div class="gallery-slide"><img src="images/life-3.jpg" alt="Фото 3" loading="lazy"></div>
+                    <div class="gallery-slide"><img src="images/life-4.jpg" alt="Фото 4" loading="lazy"></div>
+                    <div class="gallery-slide"><img src="images/life-5.jpg" alt="Фото 5" loading="lazy"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="gallery-controls" aria-label="Управление галереей">
+                <button class="gallery-btn" type="button" data-g-prev aria-label="Предыдущее фото">
+                  <i data-lucide="chevron-left"></i> Назад
+                </button>
+
+                <div class="gallery-dots" role="tablist" aria-label="Переключение слайдов">
+                  <button class="dot active" type="button" aria-label="Слайд 1" data-goto="0"></button>
+                  <button class="dot" type="button" aria-label="Слайд 2" data-goto="1"></button>
+                  <button class="dot" type="button" aria-label="Слайд 3" data-goto="2"></button>
+                  <button class="dot" type="button" aria-label="Слайд 4" data-goto="3"></button>
+                  <button class="dot" type="button" aria-label="Слайд 5" data-goto="4"></button>
+                </div>
+
+                <button class="gallery-btn" type="button" data-g-next aria-label="Следующее фото">
+                  Вперед <i data-lucide="chevron-right"></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2120,7 +2052,6 @@
         if(url.trim()){
           window.open(url, '_blank', 'noopener');
         }else{
-          // Если ссылка не задана — просто скроллим к регистрации
           const reg = document.getElementById('register');
           if(reg) reg.scrollIntoView({behavior:'smooth', block:'start'});
         }
@@ -2158,7 +2089,6 @@
         d.addEventListener('click', ()=> go(parseInt(d.getAttribute('data-goto'), 10)));
       });
 
-      // Touch swipe
       let startX = 0, dx = 0, isDown = false;
 
       wrap.addEventListener('touchstart', (e)=>{
@@ -2180,7 +2110,6 @@
         }
       });
 
-      // Keyboard
       wrap.addEventListener('keydown', (e)=>{
         if(e.key === 'ArrowLeft') go(index - 1);
         if(e.key === 'ArrowRight') go(index + 1);
@@ -2211,13 +2140,11 @@
       const success = document.getElementById('successBox');
       if(!form || !success) return;
 
-      // Автовключение галочек при загрузке (на случай, если браузер сбросил состояние)
       const checks = form.querySelectorAll('input[type="checkbox"]');
       checks.forEach(ch => { if(!ch.checked) ch.checked = true; });
 
       form.addEventListener('submit', (e)=>{
         e.preventDefault();
-        // Валидация браузером
         if(!form.checkValidity()){
           form.reportValidity();
           return;
