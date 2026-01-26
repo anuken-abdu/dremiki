@@ -250,19 +250,17 @@
       margin: 14px 0 12px;
       letter-spacing: .01em;
       position: relative;
-      text-shadow: 0 14px 44px rgba(0,0,0,.55);
     }
     .hero h1::before{
       content:"";
       position:absolute;
-      inset: -12px -10px -16px -10px;
+      inset: -18px -10px -18px -10px;
       border-radius: 18px;
-      background:
-        radial-gradient(120% 160% at 18% 0%, rgba(0,0,0,.55), rgba(0,0,0,.18) 62%, rgba(0,0,0,.08) 100%);
-      border: 1px solid rgba(255,255,255,.08);
-      backdrop-filter: blur(14px) saturate(1.05);
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
       z-index: -1;
-      box-shadow: 0 18px 60px rgba(0,0,0,.38);
+      box-shadow: 0 18px 60px rgba(0,0,0,.45);
     }
 
     .hero h1 .accent{
@@ -278,7 +276,6 @@
       font-size: clamp(14px, 1.35vw, 16px);
       line-height: 1.7;
       max-width: 64ch;
-      text-shadow: 0 10px 28px rgba(0,0,0,.45);
     }
 
     .hero-meta{
@@ -300,11 +297,6 @@
     }
     .badge i{ opacity: .92; }
 
-    @supports not (gap: 10px){
-      .hero-meta{ margin: 18px 0 12px; }
-      .hero-meta .badge{ margin: 0 10px 10px 0; }
-    }
-
     .hero-cta{
       display:flex;
       align-items:center;
@@ -317,21 +309,14 @@
       color: var(--muted);
       font-size: 12px;
     }
-
     .sub-cta a{
-      display: inline-grid;
-      grid-template-columns: auto 1fr;
-      align-items: start;
-      gap: 8px;
-
+      display:inline-flex; align-items:center; gap: 8px;
       color: rgba(255,255,255,.86);
       opacity: .95;
       transition: opacity .2s ease, transform .2s ease;
       width: fit-content;
-      max-width: 100%;
     }
     .sub-cta a:hover{ opacity: 1; transform: translateY(-1px); }
-    .sub-cta a .sub-cta-linktext{ min-width: 0; }
 
     .hero-card{
       position: relative;
@@ -356,101 +341,79 @@
     }
     .hero-card > *{ position: relative; z-index: 1; }
 
-    /* ===== ИЗМЕНЕНО ТОЛЬКО ДЛЯ КАРТОЧКИ С ФОТО (без рамок + текст поверх фото) ===== */
-    .hero-card.hero-card-photo{
-      padding: 0;
-      border: none;
-      background: transparent;
-      backdrop-filter: none;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      min-height: 520px;
+    .author{
+      display:flex; flex-direction:column; gap: 14px;
+      height: 100%;
+      justify-content: space-between;
+      min-width: 0;
     }
-    .hero-card.hero-card-photo:before{ display:none; }
 
-    .hero-card-bg{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
+    .author-top{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      min-width: 0;
+    }
+    .author-photo{
+      width: 138px;
+      aspect-ratio: 3 / 4;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.25);
+      overflow:hidden;
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+      flex: 0 0 auto;
+    }
+    .author-photo img{
+      width: 100%; height: 100%;
       object-fit: cover;
       object-position: 50% 30%;
       display:block;
       transform: scale(1.02);
-      filter: saturate(1.06) contrast(1.03);
     }
-
-    .hero-card-overlay{
-      position:absolute;
-      inset:0;
-      display:flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 16px;
-      z-index: 1;
+    .author-meta{
+      display:flex; flex-direction:column; gap: 6px;
+      min-width: 0;
     }
-    .hero-card-overlay::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(
-        180deg,
-        rgba(0,0,0,.62) 0%,
-        rgba(0,0,0,.10) 46%,
-        rgba(0,0,0,.78) 100%
-      );
-      z-index: 0;
-    }
-    .hero-card-overlay > *{
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-card-topline{
+    .author-meta .name{
       font-weight: 900;
       letter-spacing: .01em;
-      font-size: 13px;
-      color: rgba(255,255,255,.92);
-      text-shadow: 0 14px 44px rgba(0,0,0,.55);
+      font-size: 15px;
+      line-height: 1.2;
     }
-    .hero-card-subline{
-      margin-top: 6px;
-      color: rgba(255,255,255,.72);
+    .author-meta .role{
+      color: var(--muted);
       font-size: 12px;
-      text-shadow: 0 12px 36px rgba(0,0,0,.55);
+      line-height: 1.4;
     }
 
-    .hero-over-meta{
+    .author-points{
       display:grid;
-      grid-template-columns: 1fr 1fr; /* 2 ряда максимум */
-      gap: 10px 14px;
-      padding: 12px 12px;
-      border-radius: 18px;
-      background: rgba(0,0,0,.20); /* без рамок, просто «слияние» */
-      backdrop-filter: blur(14px);
-    }
-    .hero-over-item{
-      display:flex;
-      align-items:center;
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
-      font-weight: 900;
+      margin-top: 6px;
+    }
+    .mini{
+      border-radius: 16px;
+      padding: 12px 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(14px);
+      min-height: 78px;
+    }
+    .mini .t{
+      color: rgba(255,255,255,.90);
+      font-weight: 800;
       font-size: 12px;
-      color: rgba(255,255,255,.92);
-      min-width: 0;
-      text-shadow: 0 12px 32px rgba(0,0,0,.55);
+      display:flex; align-items:center; gap: 8px;
     }
-    .hero-over-item i{
-      width: 18px; height: 18px;
-      opacity: .95;
-      flex: 0 0 auto;
+    .mini .d{
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
     }
-    .hero-over-item span{
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      min-width: 0;
-    }
-    /* ===== /ИЗМЕНЕНО ===== */
 
     section{
       padding: clamp(34px, 6vw, 74px) 0;
@@ -563,6 +526,7 @@
       min-width: 0;
     }
 
+    /* ВАЖНО: делаем список навыков GRID, чтобы gap работал стабильно на телефонах (в т.ч. Safari) */
     .skill-list{
       display:grid;
       gap: 12px;
@@ -622,12 +586,14 @@
       color: rgba(255,255,255,.92);
     }
 
+    /* Мобилка: карточка навыка становится в 1 колонку,
+       а плашка дохода аккуратно фиксируется справа сверху */
     @media (max-width: 640px){
       .skill{
         grid-template-columns: 1fr;
         gap: 10px;
         position: relative;
-        padding-top: 52px;
+        padding-top: 52px; /* место под плашку дохода */
       }
 
       .skill .pay{
@@ -866,6 +832,179 @@
       line-height: 1.4;
     }
 
+    .transform{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      min-width: 0;
+    }
+    .list{ padding: 18px; min-width: 0; }
+    .list h3{
+      margin: 0 0 10px;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .01em;
+    }
+    .list ul{
+      margin:0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 13px;
+    }
+    .list li{ margin: 6px 0; }
+
+    /* ===== TRANSFORM: рамки для фото/галерея ===== */
+    .transform-media{ margin-top: 14px; }
+
+    .photo-frame{
+      position: relative;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    }
+    .photo-frame:before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(520px 280px at 18% 0%, rgba(255,122,24,.18), transparent 60%),
+        radial-gradient(520px 300px at 92% 10%, rgba(255,155,47,.10), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.08), transparent 42%);
+      pointer-events:none;
+      opacity: .9;
+      z-index: 0;
+    }
+    .photo-frame img{
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      display:block;
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+      filter: saturate(1.05) contrast(1.02);
+      transform: scale(1.01);
+    }
+
+    .gallery{
+      position: relative;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    }
+    .gallery:before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(520px 280px at 18% 0%, rgba(255,122,24,.18), transparent 60%),
+        radial-gradient(520px 300px at 92% 10%, rgba(255,155,47,.10), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.08), transparent 42%);
+      pointer-events:none;
+      opacity: .9;
+      z-index: 0;
+    }
+    .gallery-viewport{
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      overflow: hidden;
+      touch-action: pan-y;
+    }
+    .gallery-track{
+      display:flex;
+      width: 100%;
+      transform: translateX(0%);
+      transition: transform .35s ease;
+      will-change: transform;
+    }
+    .gallery-slide{
+      flex: 0 0 100%;
+      width: 100%;
+    }
+    .gallery-slide img{
+      width: 100%;
+      height: auto;
+      display:block;
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+      filter: saturate(1.05) contrast(1.02);
+      transform: scale(1.01);
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    .gallery-controls{
+      margin-top: 10px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .gallery-btn{
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(14px);
+      color: rgba(255,255,255,.92);
+      font-weight: 800;
+      font-size: 12px;
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      user-select:none;
+      white-space: nowrap;
+    }
+    .gallery-btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,155,47,.45);
+      background: rgba(255,255,255,.06);
+    }
+    .gallery-btn:active{ transform: translateY(0px) scale(.99); }
+
+    .gallery-dots{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      backdrop-filter: blur(14px);
+    }
+    .gallery-dots .dot{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.14);
+      cursor: pointer;
+      padding: 0;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .gallery-dots .dot:hover{ transform: scale(1.08); }
+    .gallery-dots .dot.active{
+      background: linear-gradient(135deg, rgba(255,122,24,1), rgba(255,155,47,1));
+      border-color: rgba(255,122,24,.55);
+      box-shadow: 0 0 18px rgba(255,122,24,.18);
+    }
+
+    @media (max-width: 640px){
+      .photo-frame img,
+      .gallery-slide img{
+        aspect-ratio: 4 / 3;
+      }
+      .gallery-controls{
+        justify-content: center;
+      }
+    }
+
     .faq{
       display:grid;
       grid-template-columns: 1fr;
@@ -1056,9 +1195,11 @@
       margin-top: 18px;
       gap: 14px;
     }
+    /* скрываем подписи у обычных полей (как в примере), но НЕ трогаем чекбоксы */
     #register .form-card .field > label{
       display: none;
     }
+    /* оранжевая рамка и крупнее поля только внутри формы регистрации */
     #register .form-card input,
     #register .form-card select{
       border-color: rgba(255,122,24,.35);
@@ -1075,6 +1216,7 @@
       box-shadow: 0 0 0 3px rgba(255,122,24,.18), inset 0 1px 0 rgba(255,255,255,.06);
     }
 
+    /* Телефон: одно поле (3-е поле), префикс внутри */
     #register .phone-single{
       position: relative;
       width: 100%;
@@ -1096,7 +1238,7 @@
       z-index: 1;
     }
     #register .phone-single input{
-      padding-left: 96px;
+      padding-left: 96px; /* место под "🇰🇿 +7" */
     }
 
     .phone-combo{
@@ -1120,6 +1262,7 @@
       margin-top: 2px;
     }
 
+    /* ===== ИЗМЕНЕНО ТОЛЬКО ЗДЕСЬ: микро-текст + микро-чекбоксы + авто-галочка внутри квадрата ===== */
     #register .consent{
       gap: 10px;
       align-items: flex-start;
@@ -1158,7 +1301,9 @@
     #register .consent a{
       font-size: 11px;
     }
+    /* ===== /ИЗМЕНЕНО ===== */
 
+    /* кнопка как на примере: крупная и на всю ширину */
     #register .form-card button.btn-primary{
       width: 100%;
       padding: 16px 18px;
@@ -1238,6 +1383,7 @@
       max-width: 66ch;
     }
 
+    /* Линия разработчика */
     .devline{
       margin-top: 10px;
       color: rgba(255,255,255,.60);
@@ -1349,11 +1495,19 @@
       .skills{ grid-template-columns: 1fr; }
       .video{ grid-template-columns: 1fr; }
       .program{ grid-template-columns: 1fr; }
+      .transform{ grid-template-columns: 1fr; }
       .form-wrap{ grid-template-columns: 1fr; }
       .row{ grid-template-columns: 1fr; }
 
-      .hero-card.hero-card-photo{
-        min-height: 560px;
+      .author-top{
+        grid-template-columns: 1fr;
+        justify-items: stretch;
+        align-items: start;
+      }
+      .author-photo{
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 3 / 4;
       }
     }
     @media (max-width: 640px){
@@ -1364,13 +1518,6 @@
       .footer-video video{ opacity: .22; }
       .logo{ height: 32px; }
       .btn{ padding: 12px 14px; }
-
-      .hero-card.hero-card-photo{
-        min-height: 540px;
-      }
-      .hero-over-item span{
-        max-width: 18ch;
-      }
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -1451,42 +1598,47 @@
                 <span>и получить БОНУС за регистрацию:</span>
                 <a href="#register">
                   <i data-lucide="gift"></i>
-                  <span class="sub-cta-linktext"><b>Топ-4 навыка в онлайне</b>, за которые платят от 300 000 тенге в месяц</span>
+                  <b>Топ-4 навыка в онлайне</b>, за которые платят от 300 000 тенге в месяц
                 </a>
               </div>
             </div>
           </div>
 
-          <!-- ИЗМЕНЕНО: карточка справа — без рамок, текст снизу поверх фото, компактные строки -->
-          <aside class="hero-card hero-card-photo reveal float" aria-label="Карточка интенсива">
-            <img class="hero-card-bg" src="images/author.jpg" alt="NextGen Academy" />
-            <div class="hero-card-overlay">
+          <aside class="hero-card reveal float" aria-label="Карточка интенсива">
+            <div class="author">
               <div>
-                <div class="hero-card-topline">3 дня • сертификат • старт без опыта</div>
-                <div class="hero-card-subline">онлайн • практика</div>
-              </div>
+                <div class="author-top">
+                  <div class="author-meta">
+                    <div class="name">3 дня • сертификат • без опыта</div>
+                    <div class="role">после интенсива • в онлайне</div>
+                  </div>
 
-              <div class="hero-over-meta" aria-label="Ключевые параметры">
-                <div class="hero-over-item">
-                  <i data-lucide="calendar-days"></i>
-                  <span><span id="cardDates">13–15 янв</span>, 20:00</span>
+                  <div class="author-photo" aria-label="Изображение">
+                    <img src="images/author.jpg" alt="NextGen Academy" />
+                  </div>
                 </div>
-                <div class="hero-over-item">
-                  <i data-lucide="gift"></i>
-                  <span>Бонус</span>
-                </div>
-                <div class="hero-over-item">
-                  <i data-lucide="briefcase"></i>
-                  <span>Онлайн-ассистент</span>
-                </div>
-                <div class="hero-over-item">
-                  <i data-lucide="coins"></i>
-                  <span>от 300 000 ₸/мес</span>
+
+                <div class="author-points">
+                  <div class="mini">
+                    <div class="t"><i data-lucide="calendar-days"></i> 13-14-15 января</div>
+                    <div class="d">в 20:00 по Астане</div>
+                  </div>
+                  <div class="mini">
+                    <div class="t"><i data-lucide="gift"></i> БОНУС</div>
+                    <div class="d">за регистрацию</div>
+                  </div>
+                  <div class="mini">
+                    <div class="t"><i data-lucide="briefcase"></i> Профессия</div>
+                    <div class="d">ОНЛАЙН-АССИСТЕНТ</div>
+                  </div>
+                  <div class="mini">
+                    <div class="t"><i data-lucide="coins"></i> Доход</div>
+                    <div class="d">от 300 000 тенге в месяц</div>
+                  </div>
                 </div>
               </div>
             </div>
           </aside>
-          <!-- /ИЗМЕНЕНО -->
         </div>
       </div>
     </section>
@@ -1627,12 +1779,7 @@
               ОСВОИТЬ ПРОФЕССИЮ БЕСПЛАТНО
             </div>
             <div style="margin-top:12px;">
-              <a class="btn btn-primary" href="#register" style="width:100%; justify-content:center;">
-                <i data-lucide="arrow-right"></i> ЗАРЕГИСТРИРОВАТЬСЯ
-              </a>
-              <div class="disclaimer">
-                Бонус за регистрацию придёт на указанные контакты после отправки формы.
-              </div>
+              <a class="btn btn-primary" href="#register"><i data-lucide="arrow-right"></i> ОСВОИТЬ ПРОФЕССИЮ БЕСПЛАТНО</a>
             </div>
           </aside>
         </div>
@@ -1643,51 +1790,111 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <h2>Профессия онлайн-ассистента — это старт в удалёнке</h2>
-            <p>Понятные задачи, быстрый вход без опыта и возможность расти по доходу.</p>
+            <h2>ПРОФЕССИЯ ОНЛАЙН-АССИСТЕНТ ЛУЧШАЯ ТОЧКА ВХОДА В ОНЛАЙН</h2>
+            <p></p>
           </div>
-          <a class="btn btn-ghost" href="#register"><i data-lucide="arrow-right"></i> ПРИСОЕДИНИТЬСЯ</a>
         </div>
 
         <div class="grid-3">
           <div class="card reveal">
-            <div class="icon"><i data-lucide="target"></i></div>
-            <h3>Понятные задачи</h3>
-            <p>Планирование, контроль дедлайнов, таблицы, коммуникация, организация процессов — то, что реально дают новичкам.</p>
+            <div class="icon"><i data-lucide="coins"></i></div>
+            <h3>Зарабатываешь больше, а работаешь меньше</h3>
+            <p>
+              Тебе не нужно сидеть в офисе с 9 до 18, чтобы получать нормальные деньги.
+              Онлайн-ассистент ведет задачи, помогает руководителю освобождать время и может зарабатывать от 150.000₸-300.000₸ в месяц,
+              уделяя 2-3 часа в день на старте
+            </p>
           </div>
+
           <div class="card reveal">
-            <div class="icon"><i data-lucide="shield-check"></i></div>
-            <h3>Спокойный старт</h3>
-            <p>Без риска «уйти в никуда». Начинаете параллельно с текущей занятостью и выстраиваете маршрут шаг за шагом.</p>
+            <div class="icon"><i data-lucide="users"></i></div>
+            <h3>Ассистенты нужны всем</h3>
+            <p>
+              Каждый руководитель в онлайне тонет в хаосе задач. Им нужна правая рука - человек, который напомнит, организует,
+              возьмет рутину на себя. Онлайн-ассистент закрывает этот вопрос, поэтому спрос растет из года в год
+              и даже ИИ никогда не заменит живого ассистента
+            </p>
           </div>
+
           <div class="card reveal">
             <div class="icon"><i data-lucide="trending-up"></i></div>
-            <h3>Рост по доходу</h3>
-            <p>От первых задач к стабильной занятости и повышению чека — по мере укрепления навыков и ответственности.</p>
+            <h3>Профессия с быстрым ростом</h3>
+            <p>
+              Через 2-3 месяца практики доход увеличивается до 150.000–3000.000₸, а дальше можно расти в менеджера, проджекта, куратора,
+              дизайнера, тех. спеца - куда захочешь
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon"><i data-lucide="globe"></i></div>
+            <h3>Можно работать из любой точки мира</h3>
+            <p>
+              Поехала в другой город? Переехала в другую страну? Работа остается с тобой.
+              Тебе нужен только телефон и ноут - все. Не нужно стоять в пробках по дороге на работу и отчитываться за опоздания
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon"><i data-lucide="layers"></i></div>
+            <h3>Можно совмещать с основной работой</h3>
+            <p>
+              На старте достаточно 2–3 часов в день, чтобы взять первый проект.
+              Ты не увольняешься, не рискуешь, не стрессуешь. Просто добавляешь +1 зарплату сверху к текущей
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon"><i data-lucide="heart-handshake"></i></div>
+            <h3>Освоит любая девушка</h3>
+            <p>
+              Не нужен диплом, не нужно быть технарем, блогером или айтишником.
+              Мы учим с нуля: как вести задачи, как общаться, как работать в приложениях.
+              Даже если ты думаешь «я ничего не умею» - на деле, все это уже есть у тебя в быту
+            </p>
           </div>
         </div>
 
-        <div class="glass reveal" style="margin-top:14px; padding:18px;">
-          <div class="grid-2">
-            <div class="card" style="min-height:auto;">
-              <div class="icon"><i data-lucide="check-circle-2"></i></div>
-              <h3>После интенсива вы будете понимать:</h3>
-              <p style="line-height:1.8;">
-                — что делает онлайн-ассистент и за что платят<br>
-                — какие навыки у вас уже есть и как их упаковать<br>
-                — где искать первые проекты и как откликаться<br>
-                — как выстроить план на 2–4 недели для старта
-              </p>
-            </div>
+        <div style="margin-top:14px;" class="reveal">
+          <a class="btn btn-primary" href="#register"><i data-lucide="arrow-right"></i> ОСВОИТЬ ПРОФЕССИЮ БЕСПЛАТНО</a>
+        </div>
+      </div>
+    </section>
 
-            <div class="card" style="min-height:auto;">
-              <div class="icon"><i data-lucide="sparkles"></i></div>
-              <h3>И получите бонус:</h3>
-              <p style="line-height:1.8;">
-                — «Топ-4 навыка в онлайне», за которые платят от 300 000₸/мес<br>
-                — чек-лист «первые шаги в удалёнке»<br>
-                — шаблон структуры отклика на проект
-              </p>
+    <section id="video">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Почему онлайн-ассистенты на вес золота?</h2>
+            <p>
+              Смотри это короткое видео, чтобы понять, почему на самом деле руководители ищут онлайн-ассистентов,
+              почему спрос на них растет каждый месяц и как ты можешь начать зарабатывать в онлайне уже в ближайший месяц
+            </p>
+          </div>
+        </div>
+
+        <div class="video">
+          <div class="video-frame reveal" id="videoFrame" data-video-url="">
+            <div class="ratio">
+              <div class="play" id="playVideo" role="button" tabindex="0" aria-label="Открыть видео">
+                <span class="picon"><i data-lucide="play"></i></span>
+                <span class="ptxt">
+                  <b>Смотреть видео</b>
+                  <span>Откроется в новой вкладке</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass reveal" style="padding:18px;">
+            <div class="card" style="min-height:auto; background: rgba(255,255,255,.03);">
+              <div class="icon"><i data-lucide="search"></i></div>
+              <h3>Почему руководители ищут онлайн-ассистентов</h3>
+              <p>Почему спрос на них растет каждый месяц</p>
+            </div>
+            <div class="card" style="min-height:auto; margin-top:14px; background: rgba(255,255,255,.03);">
+              <div class="icon"><i data-lucide="arrow-right"></i></div>
+              <h3>Как начать зарабатывать в онлайне</h3>
+              <p>Уже в ближайший месяц</p>
             </div>
           </div>
         </div>
@@ -1698,48 +1905,127 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <h2>Программа 3 дней</h2>
-            <p>Выберите день — и посмотрите, что вы разберёте на интенсиве.</p>
+            <h2>Программа: что будет на 1-м, 2-м и 3-м дне</h2>
+            <p></p>
           </div>
-          <a class="btn btn-primary" href="#register"><i data-lucide="arrow-right"></i> УЧАСТВОВАТЬ</a>
+          <a class="btn btn-ghost" href="#register"><i data-lucide="arrow-right"></i> ЗАРЕГИСТРИРОВАТЬСЯ</a>
         </div>
 
-        <div class="tabs reveal" role="tablist" aria-label="Дни интенсива">
-          <button class="tab active" type="button" data-tab="day1"><i data-lucide="calendar"></i> День 1</button>
-          <button class="tab" type="button" data-tab="day2"><i data-lucide="calendar"></i> День 2</button>
-          <button class="tab" type="button" data-tab="day3"><i data-lucide="calendar"></i> День 3</button>
+        <div class="tabs reveal" role="tablist" aria-label="Программа по дням">
+          <button class="tab active" data-tab="d1" role="tab" aria-selected="true"><i data-lucide="sun"></i> День 1</button>
+          <button class="tab" data-tab="d2" role="tab" aria-selected="false"><i data-lucide="sunrise"></i> День 2</button>
+          <button class="tab" data-tab="d3" role="tab" aria-selected="false"><i data-lucide="sunset"></i> День 3</button>
         </div>
 
-        <div class="program reveal glass">
-          <div class="program-main" id="programContent">
-            <h3>День 1 — Понимание профессии</h3>
-            <ul>
-              <li>Кто такой онлайн-ассистент и за что платят</li>
-              <li>Что из ваших навыков уже подходит под эту роль</li>
-              <li>Какие задачи дают новичкам</li>
-              <li>Как выглядит «рабочий день» в онлайне</li>
-            </ul>
-
-            <div class="bonus">
-              <b>Бонус:</b> «Топ-4 навыка в онлайне», за которые платят от 300 000₸/мес
-            </div>
+        <div class="program">
+          <div class="glass program-main reveal" id="programMain" aria-live="polite">
+            <h3 id="programTitle">Что будет на 1-м дне:</h3>
+            <ul id="programList"></ul>
+            <div class="bonus" id="programBonus"></div>
           </div>
 
-          <aside class="program-side">
+          <aside class="glass program-side reveal">
             <div class="stat">
-              <div class="t"><span><i data-lucide="clock-3"></i> Длительность</span><span>~ 60–90 мин</span></div>
-              <div class="v">Плотная практика без «воды». В конце — понятные шаги.</div>
+              <div class="t">
+                <span><i data-lucide="calendar-clock"></i> Даты и время</span>
+                <span style="color: var(--orange2); font-weight: 900;">13-14-15 января</span>
+              </div>
+              <div class="v">в 20:00 по Астане</div>
             </div>
+
             <div class="stat">
-              <div class="t"><span><i data-lucide="laptop"></i> Формат</span><span>Онлайн</span></div>
-              <div class="v">Подойдёт с телефона и ноутбука. Запись/доступ — по регистрации.</div>
+              <div class="t">
+                <span><i data-lucide="gift"></i> БОНУС за регистрацию</span>
+                <span style="color: var(--orange2); font-weight: 900;">получить</span>
+              </div>
+              <div class="v">Топ-4 навыка в онлайне, за которые платят от 300 000 тенге в месяц</div>
             </div>
+
             <div class="stat">
-              <div class="t"><span><i data-lucide="award"></i> Результат</span><span>План</span></div>
-              <div class="v">Вы выйдете с понятной дорожной картой старта.</div>
-              <div class="highlight"><i data-lucide="sparkles"></i> Сертификат после интенсива</div>
+              <div class="t">
+                <span><i data-lucide="arrow-right"></i> Действие</span>
+                <span style="color: var(--orange2); font-weight: 900;">сейчас</span>
+              </div>
+              <div class="v">ЗАРЕГИСТРИРОВАТЬСЯ</div>
+              <div class="highlight"><i data-lucide="lock-open"></i> бесплатно</div>
             </div>
           </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="transform">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Чтобы из жизни, когда — попасть в жизнь, когда</h2>
+            <p></p>
+          </div>
+        </div>
+
+        <div class="transform">
+          <div class="glass list reveal">
+            <h3><i data-lucide="cloud-rain"></i> Чтобы из жизни, когда:</h3>
+            <ul>
+              <li>Работа не приносит радости, сидишь там с утра до вечера и возвращаешься домой как выжатая тряпка</li>
+              <li>Нет уверенности за свое будущее;</li>
+              <li>вечно что-то надо успеть, кому-то помочь, о чем-то не забыть;</li>
+              <li>деньги исчезают быстрее, чем появляются - и ты уже не помнишь, когда спокойно вздыхала после зарплаты;</li>
+              <li>ощущение, что все вокруг куда-то двигаются, растут, пробуют новое… а ты как будто стоишь на месте;</li>
+              <li>страшно менять что-то, потому что нет ни времени, ни поддержки, ни понимания «с чего начать»;</li>
+              <li>внутри сидит тихая мысль: «я могу больше… но где взять шанс?»</li>
+            </ul>
+
+            <div class="transform-media" aria-label="Фото в рамке">
+              <div class="photo-frame">
+                <img src="images/transform-when.jpg" alt="Фото — «Чтобы из жизни, когда»" loading="lazy" />
+              </div>
+            </div>
+          </div>
+
+          <div class="glass list reveal">
+            <h3><i data-lucide="sun"></i> Попасть в жизнь, когда:</h3>
+            <ul>
+              <li>Ты работаешь дома или где хочешь — без пробок, без начальника, без нервотрепки. Хоть с кухни, хоть из другого города или страны;</li>
+              <li>у тебя есть стабильный онлайн-доход, а не вечная тревожность из-за постоянно растущих расходов;</li>
+              <li>время наконец-то твое: ты сама выбираешь график и нагрузку;</li>
+              <li>ты спокойна, потому что знаешь: твои навыки ценят, тебя выбирают, ты можешь найти проект в любой момент;</li>
+              <li>появляется чувство полезности, нужности, а не выжатости;</li>
+              <li>жизнь становится легче, свободнее и… наконец-то про твое будущее, а не про выживание</li>
+            </ul>
+
+            <div class="transform-media" aria-label="Галерея в рамке">
+              <div class="gallery" id="lifeGallery" tabindex="0" aria-label="Галерея фото (5)">
+                <div class="gallery-viewport" aria-label="Слайды">
+                  <div class="gallery-track">
+                    <div class="gallery-slide"><img src="images/life-1.jpg" alt="Фото 1" loading="lazy"></div>
+                    <div class="gallery-slide"><img src="images/life-2.jpg" alt="Фото 2" loading="lazy"></div>
+                    <div class="gallery-slide"><img src="images/life-3.jpg" alt="Фото 3" loading="lazy"></div>
+                    <div class="gallery-slide"><img src="images/life-4.jpg" alt="Фото 4" loading="lazy"></div>
+                    <div class="gallery-slide"><img src="images/life-5.jpg" alt="Фото 5" loading="lazy"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="gallery-controls" aria-label="Управление галереей">
+                <button class="gallery-btn" type="button" data-g-prev aria-label="Предыдущее фото">
+                  <i data-lucide="chevron-left"></i> Назад
+                </button>
+
+                <div class="gallery-dots" role="tablist" aria-label="Переключение слайдов">
+                  <button class="dot active" type="button" aria-label="Слайд 1" data-goto="0"></button>
+                  <button class="dot" type="button" aria-label="Слайд 2" data-goto="1"></button>
+                  <button class="dot" type="button" aria-label="Слайд 3" data-goto="2"></button>
+                  <button class="dot" type="button" aria-label="Слайд 4" data-goto="3"></button>
+                  <button class="dot" type="button" aria-label="Слайд 5" data-goto="4"></button>
+                </div>
+
+                <button class="gallery-btn" type="button" data-g-next aria-label="Следующее фото">
+                  Вперед <i data-lucide="chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1748,43 +2034,51 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <h2>Этот интенсив — про уверенный старт</h2>
-            <p>Ответы на частые вопросы, чтобы у вас не осталось сомнений.</p>
+            <h2>Частые вопросы</h2>
+            <p>Если остались сомнения — посмотри ответы ниже.</p>
           </div>
-          <a class="btn btn-ghost" href="#register"><i data-lucide="arrow-right"></i> РЕГИСТРАЦИЯ</a>
+          <a class="btn btn-ghost" href="#register"><i data-lucide="arrow-right"></i> ЗАРЕГИСТРИРОВАТЬСЯ</a>
         </div>
 
-        <div class="faq reveal">
+        <div class="faq reveal" aria-label="FAQ">
           <details class="faq-item">
             <summary>
-              Сколько стоит участие?
+              Это правда бесплатно?
               <span class="chev"><i data-lucide="chevron-down"></i></span>
             </summary>
-            <div class="ans">Интенсив бесплатный. Нужно только зарегистрироваться, чтобы получить доступ и бонус.</div>
+            <div class="ans">
+              Да, участие в 3-дневном интенсиве бесплатное. После регистрации вы получите инструкции и ссылку на подключение.
+            </div>
           </details>
 
           <details class="faq-item">
             <summary>
-              Нужен ли опыт работы в онлайне?
+              Я без опыта — мне подойдет?
               <span class="chev"><i data-lucide="chevron-down"></i></span>
             </summary>
-            <div class="ans">Нет. Интенсив рассчитан на новичков и тех, кто только начинает.</div>
+            <div class="ans">
+              Да. На интенсиве разберем профессию онлайн-ассистента с нуля и дадим понятные шаги, как начать.
+            </div>
           </details>
 
           <details class="faq-item">
             <summary>
-              Будет ли запись?
+              Будет запись?
               <span class="chev"><i data-lucide="chevron-down"></i></span>
             </summary>
-            <div class="ans">Доступ/запись зависит от формата запуска. Регистрируйтесь — и вы получите всю информацию после отправки формы.</div>
+            <div class="ans">
+              Информацию по доступу и формату участия вы получите после регистрации.
+            </div>
           </details>
 
           <details class="faq-item">
             <summary>
-              Что мне нужно для участия?
+              Что нужно для участия?
               <span class="chev"><i data-lucide="chevron-down"></i></span>
             </summary>
-            <div class="ans">Телефон или ноутбук, интернет и 60–90 минут в день на участие.</div>
+            <div class="ans">
+              Телефон/ноутбук и доступ в интернет. Ссылку на подключение отправим после регистрации.
+            </div>
           </details>
         </div>
       </div>
@@ -1795,89 +2089,75 @@
         <div class="section-head reveal">
           <div>
             <h2>Регистрация</h2>
-            <p>Заполните форму — и получите доступ + бонус за регистрацию.</p>
+            <p>Заполни данные — получишь инструкции и ссылку на подключение. Бонус отправим вместе с подтверждением.</p>
           </div>
         </div>
 
         <div class="form-wrap">
-          <div class="form-card glass reveal">
-            <h3>ЗАРЕГИСТРИРУЙСЯ СЕЙЧАС</h3>
-            <p class="form-subtitle">
-              Заполните данные — и мы отправим информацию об интенсиве и бонус.
-            </p>
+          <div class="glass form-card reveal">
+            <h3>Заполни данные,<br> чтобы принять<br> участие на мастер-классе</h3>
+            <p class="form-subtitle">После регистрации вы получите инструкции и ссылку на подключение. Бонус отправим вместе с подтверждением.</p>
 
-            <form id="regForm" autocomplete="on">
+            <form id="regForm" novalidate>
               <div class="field">
-                <label>Имя</label>
-                <input type="text" name="name" placeholder="Ваше имя" required />
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="Email" autocomplete="email" required />
               </div>
 
               <div class="field">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="Ваш email" required />
+                <label for="name">Имя</label>
+                <input id="name" name="name" type="text" placeholder="Имя" autocomplete="name" required />
               </div>
 
               <div class="field">
-                <label>Телефон</label>
+                <label for="phone">Телефон</label>
+
                 <div class="phone-single">
                   <span class="phone-prefix">🇰🇿 +7</span>
-                  <input type="tel" name="phone" placeholder="Ваш номер телефона" inputmode="tel" required />
+                  <input id="phone" name="phone" type="tel" placeholder="Телефон" autocomplete="tel" inputmode="tel" required />
                 </div>
+              </div>
+
+              <div class="consents">
+                <label class="consent">
+                  <input type="checkbox" name="c1" checked required />
+                  <span>Я даю согласие на обработку персональных данных согласно <a href="pd-consent.html" target="_blank" rel="noopener">политике</a></span>
+                </label>
+
+                <label class="consent">
+                  <input type="checkbox" name="c2" checked required />
+                  <span>Я принимаю условия <a href="offer.html" target="_blank" rel="noopener"><b>публичной оферты</b></a></span>
+                </label>
               </div>
 
               <button class="btn btn-primary" type="submit">
-                <span class="muted-dot" aria-hidden="true"></span>
                 ЗАРЕГИСТРИРОВАТЬСЯ
               </button>
 
-              <div class="consents">
-                <div class="consent">
-                  <input type="checkbox" required />
-                  <div>
-                    Я согласен(а) с <a href="pd-consent.html" target="_blank" rel="noopener">политикой обработки персональных данных</a>
-                  </div>
-                </div>
-                <div class="consent">
-                  <input type="checkbox" required />
-                  <div>
-                    Я принимаю <a href="offer.html" target="_blank" rel="noopener">публичную оферту</a>
-                  </div>
-                </div>
+              <div class="disclaimer">
+                Нажимая кнопку, вы подтверждаете согласие с условиями и правилами участия.
               </div>
 
               <div class="success" id="successBox">
-                <b>Готово!</b> Заявка отправлена. Проверьте контакты — скоро придёт доступ и бонус.
+                <b>Готово!</b> Регистрация принята. Инструкции и ссылка на подключение придут на указанный контакт.
               </div>
             </form>
           </div>
 
-          <aside class="side-info glass reveal">
+          <aside class="glass side-info reveal">
             <div class="block">
-              <h4><i data-lucide="calendar-days"></i> Даты</h4>
-              <p><b id="sideDates">13-14-15 января</b><br>20:00 по Астане</p>
+              <h4><i data-lucide="calendar-clock"></i> Даты и время</h4>
+              <p><b>13–14–15 января</b> • 20:00 по Астане</p>
             </div>
 
             <div class="block">
               <h4><i data-lucide="gift"></i> Бонус</h4>
-              <p>«Топ-4 навыка в онлайне», за которые платят от 300 000₸/мес</p>
+              <p>Топ-4 навыка в онлайне, за которые платят от 300 000 тенге в месяц.</p>
             </div>
 
             <div class="block">
-              <h4><i  data-lucide="shield-check"></i> Что вы получите</h4>
-              <p style="line-height:1.8;">
-                — доступ к 3 дням интенсива<br>
-                — бонус за регистрацию<br>
-                — понятный план старта
-              </p>
-            </div>
-
-            <div class="block">
-              <h4><i data-lucide="help-circle"></i> Вопросы</h4>
-              <p>Если возникнут сложности с регистрацией — напишите нам в поддержку.</p>
-            </div>
-
-            <div class="disclaimer">
-              Отправляя форму, вы подтверждаете согласие с условиями оферты и обработкой персональных данных.
+              <h4><i data-lucide="shield-check"></i> Важно</h4>
+              <p>Проверьте корректность Email и номера телефона — туда придут инструкции и ссылка на подключение.</p>
             </div>
           </aside>
         </div>
@@ -1888,183 +2168,249 @@
   <footer>
     <div class="footer-video" aria-hidden="true">
       <video autoplay muted loop playsinline>
-        <source src="images/footer.mp4" type="video/mp4">
+        <source src="images/footer.mp4" type="video/mp4" />
       </video>
     </div>
 
     <div class="container">
       <div class="footer-grid">
         <div class="copy">
-          <b>NextGen Academy</b><br>
-          Интенсив проходит онлайн. Даты: <span id="footerDates">13-14-15 января</span>, время: 20:00 по Астане.
+          © <span id="year"></span> NextGen Academy. Все права защищены.
+          <div class="devline">Разработка: <a href="https://anukenn.vercel.app" target="_blank" rel="noopener">Anuken</a></div>
         </div>
 
-        <div class="footer-links" aria-label="Документы">
-          <a href="offer.html" target="_blank" rel="noopener">Оферта</a>
-          <a href="pd-consent.html" target="_blank" rel="noopener">Персональные данные</a>
+        <div class="footer-links" aria-label="Юридические ссылки">
+          <a href="pd-consent.html" target="_blank" rel="noopener">Политика</a>
+          <a href="offer.html" target="_blank" rel="noopener">Публичная оферта</a>
           <a href="cookies.html" target="_blank" rel="noopener">Cookies</a>
         </div>
-      </div>
-
-      <div class="devline">
-        Разработка: <a href="#" onclick="return false;">NextGen</a>
       </div>
     </div>
   </footer>
 
-  <div class="sticky-cta" aria-label="Быстрая регистрация">
+  <div class="sticky-cta" aria-label="Нижняя панель">
     <div class="inner">
       <div class="txt">
-        <b>Интенсив: 3 дня • старт без опыта</b>
-        <span><span id="stickyDates">13–15 янв</span> • 20:00 (Астана)</span>
+        <b>Бесплатный интенсив • 3 дня</b>
+        <span>13–14–15 января • 20:00 по Астане</span>
       </div>
-      <a class="btn btn-primary" href="#register">ЗАРЕГИСТРИРОВАТЬСЯ</a>
+      <a class="btn btn-primary" href="#register">
+        <span class="muted-dot" aria-hidden="true"></span>
+        ЗАПИСАТЬСЯ
+      </a>
     </div>
   </div>
 
-  <div class="cookie" id="cookieBar" role="dialog" aria-live="polite" aria-label="Cookie уведомление">
+  <div class="cookie" id="cookieBar" aria-label="Cookie">
     <div class="bar">
       <p>
-        Мы используем файлы cookie для улучшения работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с использованием cookie.
+        Мы используем cookies для улучшения работы сайта. Подробнее — в <a href="cookies.html" target="_blank" rel="noopener">политике cookies</a>.
       </p>
       <div style="display:flex; gap:10px; align-items:center;">
-        <a class="btn" href="cookies.html" target="_blank" rel="noopener">Подробнее</a>
-        <button class="btn btn-primary" id="cookieAccept" type="button">Принять</button>
+        <button class="btn btn-primary" type="button" id="cookieAccept">ОК</button>
       </div>
     </div>
   </div>
 
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <script>
-    // Lucide Icons
+    // Icons
+    try { lucide.createIcons(); } catch(e){}
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal on scroll
     (function(){
-      const s = document.createElement('script');
-      s.src = "https://unpkg.com/lucide@latest";
-      s.onload = () => window.lucide && window.lucide.createIcons();
-      document.head.appendChild(s);
-    })();
-
-    // ===== ДИНАМИЧЕСКИЕ ДАТЫ (оставлено как было) =====
-    (function(){
-      const now = new Date();
-      // базовый режим: показать статично, если даты в тексте уже заданы
-      // здесь ничего не меняем, просто синхронизируем места с одинаковым текстом
-      const d1 = document.getElementById('heroDates');
-      const d2 = document.getElementById('sideDates');
-      const d3 = document.getElementById('footerDates');
-      const d4 = document.getElementById('stickyDates');
-      const d5 = document.getElementById('cardDates');
-
-      const fixedHero = (d1 && d1.textContent) ? d1.textContent.trim() : "13-14-15 января";
-
-      if(d2) d2.textContent = fixedHero;
-      if(d3) d3.textContent = fixedHero;
-      if(d4) d4.textContent = "13–15 янв";
-      if(d5) d5.textContent = "13–15 янв";
-    })();
-
-    // ===== Reveal on scroll =====
-    (function(){
-      const els = Array.from(document.querySelectorAll('.reveal'));
+      const els = document.querySelectorAll('.reveal');
+      if(!('IntersectionObserver' in window)){
+        els.forEach(el => el.classList.add('show'));
+        return;
+      }
       const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){
-            e.target.classList.add('show');
-            io.unobserve(e.target);
+        entries.forEach(ent=>{
+          if(ent.isIntersecting){
+            ent.target.classList.add('show');
+            io.unobserve(ent.target);
           }
         });
-      }, { threshold: 0.12 });
-      els.forEach(el=>io.observe(el));
+      }, { threshold: 0.14 });
+      els.forEach(el => io.observe(el));
     })();
 
-    // ===== Tabs (Program) =====
+    // Program tabs
     (function(){
-      const tabs = Array.from(document.querySelectorAll('.tab'));
-      const content = document.getElementById('programContent');
-
       const data = {
-        day1: {
-          t: "День 1 — Понимание профессии",
+        d1: {
+          title: "Что будет на 1-м дне:",
           list: [
-            "Кто такой онлайн-ассистент и за что платят",
-            "Что из ваших навыков уже подходит под эту роль",
-            "Какие задачи дают новичкам",
-            "Как выглядит «рабочий день» в онлайне"
+            "Разберем, кто такой онлайн-ассистент и почему эта профессия — лучшая точка входа в онлайн",
+            "Какие задачи реально дают новичкам и сколько за это платят",
+            "Где искать первые проекты и как не попасть на обман"
           ],
-          bonus: "«Топ-4 навыка в онлайне», за которые платят от 300 000₸/мес"
+          bonus: "<b>БОНУС:</b> Топ-4 навыка в онлайне, за которые платят от 300 000 тенге в месяц"
         },
-        day2: {
-          t: "День 2 — Навыки и первые шаги",
+        d2: {
+          title: "Что будет на 2-м дне:",
           list: [
-            "Какие 4 навыка ценятся выше всего",
-            "Как упаковать себя: позиционирование и сильные стороны",
-            "Где искать первые проекты",
-            "Как откликаться, чтобы вам отвечали"
+            "Как упаковать себя как ассистента (даже без опыта)",
+            "Как вести коммуникацию с руководителем и клиентами",
+            "Какие сервисы и приложения нужны для работы"
           ],
-          bonus: "Чек-лист «первые шаги в удалёнке»"
+          bonus: "<b>БОНУС:</b> Шаблон структуры задач для старта (чек-лист)"
         },
-        day3: {
-          t: "День 3 — План и выход на доход",
+        d3: {
+          title: "Что будет на 3-м дне:",
           list: [
-            "Как выстроить план на 2–4 недели",
-            "Как держать темп и не «сливаться»",
-            "Ошибки новичков и как их обходить",
-            "Что делать после интенсива: сценарии роста"
+            "Как выйти на первые деньги: простая пошаговая стратегия",
+            "Как расти в доходе и расширять навыки",
+            "Как сделать удалёнку стабильной и спокойной"
           ],
-          bonus: "Шаблон структуры отклика на проект"
+          bonus: "<b>БОНУС:</b> Рекомендации по первым шагам после интенсива"
         }
       };
 
+      const tabs = document.querySelectorAll('.tab');
+      const title = document.getElementById('programTitle');
+      const list = document.getElementById('programList');
+      const bonus = document.getElementById('programBonus');
+
       function render(key){
-        const d = data[key];
-        if(!d || !content) return;
-        content.innerHTML = `
-          <h3>${d.t}</h3>
-          <ul>${d.list.map(x=>`<li>${x}</li>`).join('')}</ul>
-          <div class="bonus"><b>Бонус:</b> ${d.bonus}</div>
-        `;
-        if(window.lucide && window.lucide.createIcons) window.lucide.createIcons();
+        const x = data[key];
+        title.textContent = x.title;
+        list.innerHTML = x.list.map(i => `<li>${i}</li>`).join('');
+        bonus.innerHTML = x.bonus;
+        tabs.forEach(t=>{
+          const active = t.dataset.tab === key;
+          t.classList.toggle('active', active);
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        try { lucide.createIcons(); } catch(e){}
       }
 
       tabs.forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          tabs.forEach(t=>t.classList.remove('active'));
-          btn.classList.add('active');
-          render(btn.dataset.tab);
-        });
+        btn.addEventListener('click', ()=> render(btn.dataset.tab));
       });
+
+      render('d1');
     })();
 
-    // ===== Form submit (демо) =====
+    // Video (opens new tab if URL set)
     (function(){
-      const form = document.getElementById('regForm');
-      const ok = document.getElementById('successBox');
-      if(!form) return;
+      const frame = document.getElementById('videoFrame');
+      const play = document.getElementById('playVideo');
+      if(!frame || !play) return;
 
-      form.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        // Здесь обычно отправка на сервер/CRM.
-        // Оставляем как демо, чтобы страница работала без бэкенда.
-        if(ok) ok.style.display = 'block';
-        form.scrollIntoView({behavior:'smooth', block:'start'});
-        form.reset();
+      function openVideo(){
+        const url = frame.getAttribute('data-video-url') || "";
+        if(url.trim()){
+          window.open(url, '_blank', 'noopener');
+        }else{
+          // Если ссылка не задана — просто скроллим к регистрации
+          const reg = document.getElementById('register');
+          if(reg) reg.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      }
+      play.addEventListener('click', openVideo);
+      play.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          openVideo();
+        }
       });
     })();
 
-    // ===== Cookie bar =====
+    // Gallery slider
+    (function(){
+      const wrap = document.getElementById('lifeGallery');
+      if(!wrap) return;
+
+      const track = wrap.querySelector('.gallery-track');
+      const slides = Array.from(wrap.querySelectorAll('.gallery-slide'));
+      const dots = Array.from(document.querySelectorAll('.gallery-dots .dot'));
+      const prev = document.querySelector('[data-g-prev]');
+      const next = document.querySelector('[data-g-next]');
+      let index = 0;
+
+      function go(i){
+        index = (i + slides.length) % slides.length;
+        track.style.transform = `translateX(${-index * 100}%)`;
+        dots.forEach((d, di)=> d.classList.toggle('active', di === index));
+      }
+
+      if(prev) prev.addEventListener('click', ()=> go(index - 1));
+      if(next) next.addEventListener('click', ()=> go(index + 1));
+      dots.forEach(d=>{
+        d.addEventListener('click', ()=> go(parseInt(d.getAttribute('data-goto'), 10)));
+      });
+
+      // Touch swipe
+      let startX = 0, dx = 0, isDown = false;
+
+      wrap.addEventListener('touchstart', (e)=>{
+        isDown = true;
+        startX = e.touches[0].clientX;
+        dx = 0;
+      }, {passive:true});
+
+      wrap.addEventListener('touchmove', (e)=>{
+        if(!isDown) return;
+        dx = e.touches[0].clientX - startX;
+      }, {passive:true});
+
+      wrap.addEventListener('touchend', ()=>{
+        if(!isDown) return;
+        isDown = false;
+        if(Math.abs(dx) > 42){
+          go(dx < 0 ? index + 1 : index - 1);
+        }
+      });
+
+      // Keyboard
+      wrap.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowLeft') go(index - 1);
+        if(e.key === 'ArrowRight') go(index + 1);
+      });
+
+      go(0);
+    })();
+
+    // Cookie bar
     (function(){
       const bar = document.getElementById('cookieBar');
       const btn = document.getElementById('cookieAccept');
-      const key = 'cookieAccepted_v1';
       if(!bar || !btn) return;
 
-      const accepted = localStorage.getItem(key);
-      if(!accepted){
+      const key = 'ng_cookie_ok';
+      if(!localStorage.getItem(key)){
         bar.style.display = 'block';
       }
-
       btn.addEventListener('click', ()=>{
         localStorage.setItem(key, '1');
         bar.style.display = 'none';
+      });
+    })();
+
+    // Form submit (demo)
+    (function(){
+      const form = document.getElementById('regForm');
+      const success = document.getElementById('successBox');
+      if(!form || !success) return;
+
+      // Автовключение галочек при загрузке (на случай, если браузер сбросил состояние)
+      const checks = form.querySelectorAll('input[type="checkbox"]');
+      checks.forEach(ch => { if(!ch.checked) ch.checked = true; });
+
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        // Валидация браузером
+        if(!form.checkValidity()){
+          form.reportValidity();
+          return;
+        }
+        success.style.display = 'block';
+        success.scrollIntoView({behavior:'smooth', block:'nearest'});
       });
     })();
   </script>
